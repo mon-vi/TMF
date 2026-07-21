@@ -1,75 +1,71 @@
-# React + TypeScript + Vite
+# TalentMakers Foundation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for TalentMakers Foundation (TMF), a tech-education nonprofit.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Node.js** 18+
+- **npm** 9+
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/mon-vi/TMF.git
+cd TMF
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Opens at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start Vite dev server with HMR |
+| `npm run build` | Type-check then production build |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the project |
+
+## Project structure
 
 ```
+src/
+  components/         Shared across pages (Navbar, Footer)
+  sections/<page>/    One file per Figma section frame
+  pages/              Route-level composition only
+  lib/                Data, constants, asset references
+```
+
+## Tech stack
+
+| Layer | Choice |
+|---|---|
+| Framework | React 19 |
+| Language | TypeScript ~6.0 |
+| Build | Vite 8 |
+| Styling | Tailwind CSS 3 (design tokens in config) |
+| Routing | react-router-dom v6 |
+| Linting | ESLint + TypeScript-aware rules |
+
+## Working with the design
+
+This site is a faithful implementation of a Figma design — not a design exercise.
+Read `AGENTS.md` for the full workflow, then consult:
+
+| Doc | When |
+|---|---|
+| `docs/DESIGN_SYSTEM.md` | Any styling work |
+| `docs/FIGMA_MAP.md` | Before implementing a page or section |
+| `docs/CONVENTIONS.md` | Before creating files or components |
+
+**Never hardcode a colour, font size, or font family.** Every visual value comes
+from `tailwind.config.js` or the component classes in `src/index.css`.
+
+## Verification before pushing
+
+```bash
+npx tsc --noEmit && npm run build
+```
+
+Both must pass with zero errors.
