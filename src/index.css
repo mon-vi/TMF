@@ -32,12 +32,27 @@
   }
 
   .h1-display {
-    @apply text-h1 font-display font-bold;
+    @apply text-h1 font-display font-semibold lg:text-h1-lg;
   }
+  /* Verified (docs): mobile 44/52 -0.44, desktop 72/84 -1.44
+     NOTE: mobile hero node 173:7436 read font-bold, but 9 desktop heading nodes
+     consistently returned font-semibold. Going semibold site-wide. */
 
   .h2-display {
-    @apply text-h2 font-display font-bold;
+    @apply text-h2 font-display font-semibold lg:text-h2-lg;
   }
+  /* Verified (node): mobile 32/40 -0.32, desktop 48/56 -0.48 — confirmed on 208:3061, 208:3099
+     NOTE: consistent font-semibold across all desktop heading reads. */
+
+  .lead {
+    @apply text-lead text-body-muted lg:text-lead-lg;
+  }
+  /* Verified (docs): mobile 16/24, desktop 20/32 */
+
+  .stat-display {
+    @apply text-stat font-display font-semibold lg:text-stat-lg;
+  }
+  /* Verified (node): mobile 36/44, desktop 72/84 -1.44 */
 
   .btn-solid {
     @apply bg-accent px-10 pt-[16.5px] pb-[17.5px] font-sans font-normal text-body text-white;
@@ -45,5 +60,46 @@
 
   .btn-outline {
     @apply border border-accent bg-white px-[41px] py-[17px] font-sans font-normal text-body text-accent;
+  }
+
+  .metric-eyebrow {
+    @apply text-metric-eyebrow font-sans font-semibold uppercase text-accent;
+  }
+  /* Verified (node): 20px / 1.4px tracking — Impact Metrics stat labels */
+
+  .metric-caption {
+    @apply text-small font-sans font-semibold uppercase tracking-[1.4px] text-body-muted;
+  }
+  /* Verified (node): 14px / 1.4px tracking — stat captions under numbers */
+
+  .btn-cta {
+    @apply bg-accent px-10 py-4 font-sans font-bold uppercase text-cta text-white lg:px-64 lg:py-24;
+  }
+  /* Verified (node): desktop 18px / 1.8px tracking, px-64 py-24 from node 208:3097.
+     Inferred: mobile px-10 py-4 — mobile CTA node 173:7488 not read. */
+}
+
+@layer utilities {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 }

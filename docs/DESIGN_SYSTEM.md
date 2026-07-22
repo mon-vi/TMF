@@ -18,6 +18,14 @@ node gets read.
 | Ink | `#1E1E1E` | `ink` | Verified — hero background |
 | Nav tint | `rgba(246,250,255,0.8)` | `nav-tint` | Verified — nav bar |
 | Nav border | `rgba(190,201,191,0.3)` | `nav-border` | Verified — nav bottom border |
+| Heading | `#141D23` | `heading` | Verified — desktop hero H1 (a blue-black, NOT `ink`) |
+| Body grey | `#5F5E5E` | `body-muted` | Verified — desktop lead paragraph |
+| Image panel | `#ECF5FE` | `panel` | Verified — desktop hero image background |
+
+**Important:** headings on a light background are `#141D23`, not `ink`
+(`#1E1E1E`). `ink` is the hero *background* fill. The mobile read couldn't
+reveal this because the mobile hero heading is white over an image. Use
+`text-heading` for dark-on-light headings.
 
 Only two colours are bound as Figma variables. Everything else in the file is a
 raw value, so colours must be read per section rather than assumed.
@@ -46,20 +54,30 @@ same image-plus-scrim treatment.
 Two families. Playfair Display for display, Public Sans for everything else.
 Loaded from Google Fonts in `index.html`.
 
-| Role | Family | Size / line height | Tracking | Status |
-|---|---|---|---|---|
-| `text-h1` | Playfair Display Bold | 44 / 52 | `-0.44px` | Verified |
-| `text-h2` | Playfair Display Bold | 32 / 40 | `-0.32px` | Inferred |
-| `text-h3` | Playfair Display Bold | 28 / 36 | — | Inferred |
-| `text-h4` | Playfair Display Bold | 20 / 28 | — | Inferred |
-| `text-stat` | Playfair Display Bold | 36 / 44 | — | Inferred |
-| `text-body` | Public Sans Regular | 16 / 24 | — | Verified |
-| `text-small` | Public Sans | 14 / 20 | — | Verified |
-| `text-eyebrow` | Public Sans Semibold | 14 / 20 | `2.8px` | Verified |
+The type scale is **responsive** — desktop is not a scaled-up mobile. Build
+mobile-first and step up at the `lg` breakpoint (1024px). Both columns below are
+the value at that breakpoint.
 
-The h2/h3/h4 sizes are the weakest part of this table. Mobile frames show
-heading blocks at 40px, 56px, and 104px tall, which implies more than three
-display sizes. Read the owning node before relying on them.
+| Role | Family | Mobile (base) | Desktop (`lg:`) | Tracking | Status |
+|---|---|---|---|---|---|
+| `text-h1` | Playfair Bold | 44 / 52 | 72 / 84 | mob `-0.44px` · desk `-1.44px` | Verified both |
+| `text-h2` | Playfair Bold | 32 / 40 | ~56 / 64 | `-0.32px` | mob Verified · desk Inferred |
+| `text-h3` | Playfair Bold | 28 / 36 | ~40 | — | Inferred |
+| `text-h4` | Playfair Bold | 20 / 28 | 20 / 28 | — | Inferred |
+| `text-stat` | Playfair Bold | 36 / 44 | ~96 | — | mob Inferred · desk from Impact block |
+| `text-lead` | Public Sans Regular | 16 / 24 | 20 / 32 | — | Verified — hero lead paragraph |
+| `text-body` | Public Sans Regular | 16 / 24 | 16 / 24 | — | Verified |
+| `text-small` | Public Sans | 14 / 20 | 14 / 20 | — | Verified |
+| `text-eyebrow` | Public Sans Semibold | 14 / 20 | 14 / 20 | `2.8px` | Verified |
+
+Notes:
+- **H1** is fully verified at both ends. The jump is large (44→72); it is real,
+  not a guess.
+- **`text-lead`** is new — the hero's intro paragraph is 20/32 on desktop,
+  distinct from `text-body`. Colour `body-muted` (`#5F5E5E`).
+- Desktop h2/h3/stat sizes are read from frame heights, not a `get_design_context`
+  call yet. Treat the `~` values as Inferred and confirm per section.
+- `.h1-display` etc. must carry the `lg:` step internally so callers don't repeat it.
 
 ### Eyebrow
 
@@ -73,11 +91,21 @@ uppercase it, so screen readers don't read it as an initialism.
 
 ## Spacing
 
-Mobile frames are 390px wide with a 24px gutter, giving a 342px content column.
-`.container-page` implements this and caps at 1200px on larger screens.
+Two verified grids:
 
-Observed section rhythm (mobile): 60–96px top padding, 80px between major
-blocks. Treat as inferred.
+| | Frame | Side margin | Content column | Gutter |
+|---|---|---|---|---|
+| Mobile | 390 | 24 | 342 | — |
+| Desktop | 1280 | 64 | 1152 | 32 (12-col) |
+
+`.container-page` handles the outer gutter (24px mobile). On desktop the design
+uses a **12-column grid** with a 32px gutter inside the 1152px column — the hero
+is a 6/6 split, Blog is an 8-col grid plus a 240px sidebar. Reach for
+`lg:grid lg:grid-cols-12 lg:gap-8` inside `.container-page` for those layouts.
+
+Section rhythm: desktop sections open with 120px top padding consistently
+(verified across Impact, Programs, About). Mobile is 60–96px. The 120px desktop
+figure is solid; the mobile range is still Inferred.
 
 ---
 
@@ -105,10 +133,18 @@ Buttons have **no border radius** anywhere in the design. Keep it that way.
 
 ## Known gaps
 
-- Heading scale above h1 is inferred throughout.
-- Footer typography and colour are entirely unextracted (node `189:918`).
+- Desktop h2/h3/stat sizes read from frame heights, not `get_design_context`.
+  Confirm per section.
+- Footer typography and colour still unextracted. Desktop footer is node
+  `208:3105` (544px tall), mobile is `189:918` (946px). Both pending.
 - No hover, focus, active, or disabled states are specified in the design.
   Current hovers (`opacity-90`, colour inversion) are invented. Flag before
   treating them as final.
 - No dark mode in the design. Don't build one.
-- Desktop type scale unknown — canvas `1:3` not yet read.
+- **Nav height is inconsistent in the design itself** — desktop frames show it
+  at 80px on some pages, 104/105px on others. This is a design inconsistency, not
+  a spec. Standardize on one (recommend 104px desktop / 79px mobile) and flag it;
+  do not faithfully reproduce the variance.
+- Tablet (`md`, 768px) has no frame in either canvas. Only mobile (390) and
+  desktop (1280) are designed. `md` behaviour is interpolation — mark it Inferred
+  wherever you introduce it.
