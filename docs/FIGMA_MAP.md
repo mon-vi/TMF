@@ -93,9 +93,15 @@ Alumni carousel internals: `314:1224` (a 2580px strip of ten 240px cards).
 
 Enough to start each page without re-reading the whole canvas.
 
-**About Us** — `161:3003`
-Cinematic hero `161:3055` · Mission & Vision `161:3004` · Timeline `161:3066` ·
-Board of Trustees `161:3026` · Join the Mission CTA `192:3170`
+**About Us** — `161:3003` (mobile) / `208:3460` (desktop)
+| Section | Node | Component | Status |
+|---|---|---|---|
+| Cinematic Hero | `208:3498` | `sections/about/CinematicHero.tsx` | Verified (node) |
+| Our Story | `208:3462` | `sections/about/OurStory.tsx` | Verified (node) |
+| Mission & Vision | `208:3473` | `sections/about/MissionVision.tsx` | Verified (node) |
+| Milestones | `346:1534` | `sections/about/Milestones.tsx` | Inferred — no expanded content in design |
+| Board of Trustees | `208:3557` | `sections/about/BoardTrustees.tsx` | Verified (node) |
+| Join the Mission CTA | `208:3487` | `sections/about/JoinMissionCTA.tsx` | Verified (node) |
 
 **Programs** — `161:1420`
 Hero `161:1421` · Scholarship block `161:1430` · Tech Spark block `161:1458` ·
@@ -123,12 +129,14 @@ Hero `199:3245` · Pathway cards `199:3253` · Catalyst Effect `199:3302`
 **Contact** — `161:3303`
 Hero `161:3305` · Form `161:3333` · Contact info `161:3310`
 
-**Donate** — `161:744`
-Hero image `161:746` · Content `161:749` · Amount presets `161:755` ·
-Amount input + submit `161:799`
+**Donate** — `161:744` (mobile) / `208:3108` (desktop)
+Hero `208:3110` · Form `208:3135`
 
-Donate note: the design shows a Paystack security badge (`161:809`). Payment
-integration is unspecified — ask before building anything beyond the UI.
+Donate sections built:
+| Section | Node | Component | Status |
+|---|---|---|---|
+| Donate Hero | `208:3110` | `sections/donate/DonateHero.tsx` | Verified (node) |
+| Donate Form | `208:3135` | `sections/donate/DonateForm.tsx` | Verified (node), payment stubbed |
 
 ---
 

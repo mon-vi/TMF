@@ -77,6 +77,26 @@
   }
   /* Verified (node): desktop 18px / 1.8px tracking, px-64 py-24 from node 208:3097.
      Inferred: mobile px-10 py-4 — mobile CTA node 173:7488 not read. */
+
+  .btn-donate {
+    @apply w-full h-[90px] bg-accent font-sans font-semibold uppercase text-cta tracking-[1.4px] text-white flex items-center justify-center gap-3;
+  }
+  /* Verified (node): desktop 18px / 1.4px tracking from node 208:3135.
+     NOTE: node says 32px — design bug, line-height 20 confirms.
+      NOTE: font-semibold is deliberately heavier than .btn-solid's font-normal — this
+     may be intentional emphasis on the donation CTA or design drift; worth review. */
+
+  .btn-invert-solid {
+    @apply bg-white text-accent px-12 py-[21px] text-small font-sans font-semibold uppercase tracking-[1.4px];
+  }
+  /* Verified (node): node 208:3487 — white on accent-bg CTA, third button pair in system */
+
+  .btn-invert-outline {
+    @apply border border-white/40 text-white px-12 py-[21px] text-small font-sans font-semibold uppercase tracking-[1.4px];
+  }
+  /* Verified (node): node 208:3487 — white border on accent-bg CTA */
+  /* NOTE: the button system now has 5 styles across 3 pairs (solid/outline, donate, invert-*).
+     Worth reviewing whether these should be consolidated. */
 }
 
 @layer utilities {

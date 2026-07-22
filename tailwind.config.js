@@ -12,6 +12,10 @@ export default {
         "nav-tint": "rgba(246,250,255,0.8)",
         "nav-border": "rgba(190,201,191,0.3)",
         "card-divider": "#6F7A71", // Verified (node) — Programs card hairline divider
+        prose: "#3F4942", // Verified (node) — systemic body-grey (#3F4942) used in Donate, About Story, Board quote
+        "surface-light": "#F6FAFF", // Verified (node) — nav-tint at full opacity; Mission/Vision + Board bg
+        mint: "#9CF5C1", // Verified (node) — About hero eyebrow, not accent; hero-specific
+        "preset-border": "#BEC9BF", // Verified (node) — Donate preset card borders (full-opacity nav-border green)
       },
       fontFamily: {
         display: ['"Playfair Display"', "serif"],
@@ -49,12 +53,20 @@ export default {
         body: ["16px", { lineHeight: "24px" }],
         small: ["14px", { lineHeight: "20px" }],
         eyebrow: ["14px", { lineHeight: "20px", letterSpacing: "2.8px" }],
+        "timeline-year": [
+          "64px",
+          { lineHeight: "64px" },
+        ], // Verified (node) — Timeline year display, desktop
+        "timeline-year-mobile": ["40px", { lineHeight: "48px" }], // Verified (node) — Timeline year display, mobile
       },
       backgroundImage: {
         "hero-scrim":
           "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%)",
         "alumni-overlay":
           "linear-gradient(to bottom, rgba(33,22,13,0.9), rgba(135,92,54,0.9))",
+      },
+      boxShadow: {
+        card: "0px 0px 2px rgba(0,0,0,0.25)", // Verified (node) — Timeline card shadow
       },
     },
   },
