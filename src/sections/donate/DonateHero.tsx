@@ -6,6 +6,7 @@ import { ASSETS, DONATE_PRESETS } from "@/lib/site";
   Flag #3: h1-lg line-height is 90 here vs 84 in .h1-display — lg:leading-[90px] override.
   Flag #4: preset cards now CLICKABLE (was static; requirement changed — clicking auto-fills the form amount).
   Flag #6: hero background bg-panel confirmed by user (not in initial spec read).
+  Flag #9: NGN amounts are USD presets × live exchange rate (exchangerate-api.com).
 */
 
 function currencySymbol(c: "USD" | "NGN") {
@@ -15,9 +16,10 @@ function currencySymbol(c: "USD" | "NGN") {
 interface Props {
   currency: "USD" | "NGN";
   onSelectAmount: (value: number) => void;
+  rate: number;
 }
 
-export default function DonateHero({ currency, onSelectAmount }: Props) {
+export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
   return (
     <section
       className="bg-panel lg:pt-[104px]"
@@ -54,14 +56,17 @@ export default function DonateHero({ currency, onSelectAmount }: Props) {
             <div className="flex flex-col sm:flex-row gap-4">
               {DONATE_PRESETS.map((preset) => {
                 const symbol = currencySymbol(currency);
-                const display =
-                  symbol + preset.value.toLocaleString();
+                const value =
+                  currency === "NGN"
+                    ? Math.round(preset.value * rate)
+                    : preset.value;
+                const display = symbol + value.toLocaleString();
 
                 return (
                   <button
                     key={preset.value}
                     type="button"
-                    onClick={() => onSelectAmount(preset.value)}
+                    onClick={() => onSelectAmount(value)}
                     className="flex-1 border border-preset-border p-[25px] h-[156px] flex flex-col justify-center text-left hover:border-accent transition-colors focus-visible:border-accent"
                   >
                     <p className="text-h2 font-display font-semibold text-accent mb-2">

@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Donate from "@/pages/Donate";
+import DonateThankYou from "@/pages/DonateThankYou";
 import About from "@/pages/About";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/donate/thank-you" element={<DonateThankYou />} />
       </Routes>
       <Footer />
     </BrowserRouter>
