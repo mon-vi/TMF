@@ -53,6 +53,16 @@ export default function Navbar() {
               {link.label}
             </NavLink>
           ))}
+          <NavLink
+            to="/get-involved"
+            className={({ isActive }) =>
+              `text-small transition-opacity hover:opacity-70 ${
+                isActive ? "font-semibold text-accent" : "text-ink/80"
+              }`
+            }
+          >
+            Get Involved
+          </NavLink>
           <Link
             to="/donate"
             className="btn-solid text-small ml-4"
@@ -109,6 +119,18 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+
+            <NavLink
+              to="/get-involved"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `text-h4 font-medium transition-opacity hover:opacity-70 ${
+                  isActive ? "text-accent font-semibold" : "text-heading"
+                }`
+              }
+            >
+              Get Involved
+            </NavLink>
 
             <Link
               to="/donate"

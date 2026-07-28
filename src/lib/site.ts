@@ -5,11 +5,10 @@ export const ASSETS = {
     "https://www.figma.com/api/mcp/asset/811e57ff-9893-4106-ab10-04569b788c98",
   homeHero:
     "https://www.figma.com/api/mcp/asset/a0bd6469-5874-4139-a326-e4adeb2b390a",
-  donateHero: "", // TODO(assets): export Donate hero image from Figma node 208:3110
-  aboutHero: "", // TODO(assets): export About hero image from Figma node 208:3498
-  boardPortrait: "", // TODO(assets): export board portrait from Figma node 208:3557
-  // TODO(assets): program card images — export from Figma, add to /public/assets
-  // TODO(assets): alumni portrait images — export from Figma, add to /public/assets
+  defaultProgram: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+  donateHero: "", 
+  aboutHero: "", 
+  boardPortrait: "", 
 } as const;
 
 export const NAV_LINKS = [
@@ -44,12 +43,14 @@ export const PROGRAMS = [
     description:
       "Academic excellence shouldn&rsquo;t be limited by financial boundaries. We provide full-ride scholarships to the world&rsquo;s leading institutions.",
     href: "/programs/scholarship",
+    image: "",
   },
   {
     title: "Tech Spark",
     description:
       "Equipping the next generation of engineers with high-performance computing access, mentorship, and industry-standard labs.",
     href: "/programs/tech-spark",
+    image: "",
   },
 ] as const;
 
