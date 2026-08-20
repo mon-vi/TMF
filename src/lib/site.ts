@@ -41,7 +41,7 @@ export const PROGRAMS = [
   {
     title: "TMF Scholarships",
     description:
-      "Academic excellence shouldn&rsquo;t be limited by financial boundaries. We provide full-ride scholarships to the world&rsquo;s leading institutions.",
+      "Academic excellence shouldn’t be limited by financial boundaries. We provide full-ride scholarships to the world’s leading institutions.",
     href: "/programs/scholarship",
     image: "",
   },
