@@ -1,5 +1,5 @@
-import { Quote, Sparkles } from "lucide-react";
-import { ASSETS, BOARD_MEMBER } from "@/lib/site";
+import { Quote } from "lucide-react";
+import { BOARD_MEMBER } from "@/lib/site";
 
 export default function BoardTrustees() {
   return (
@@ -22,18 +22,10 @@ export default function BoardTrustees() {
 
         <div className="tmf-glass-panel mx-auto grid max-w-5xl overflow-hidden rounded-[28px] p-3 lg:grid-cols-[0.9fr_1.1fr] lg:p-4">
           <div className="relative min-h-[360px] overflow-hidden rounded-[22px] bg-slate-200 lg:min-h-[520px]">
-            {ASSETS.boardPortrait ? (
-              <img
-                src={ASSETS.boardPortrait}
-                alt={BOARD_MEMBER.name}
-                className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
-              />
-            ) : (
-              <div
-                className="h-full w-full bg-gradient-to-br from-accent to-violet-300"
-                aria-hidden="true"
-              />
-            )}
+            <div
+              className="h-full w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300"
+              aria-hidden="true"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 tmf-glass-chip px-4 py-3 text-white">
               <p className="text-xs font-bold uppercase tracking-[2px] text-white/70">
@@ -61,8 +53,7 @@ export default function BoardTrustees() {
                 {BOARD_MEMBER.role}
               </p>
             </div>
-            <div className="mt-8 flex items-center gap-2 text-sm text-body-muted">
-              <Sparkles className="h-4 w-4 text-accent" aria-hidden="true" />
+            <div className="mt-8 text-sm text-body-muted">
               Stewarding the next generation of African talent
             </div>
           </div>

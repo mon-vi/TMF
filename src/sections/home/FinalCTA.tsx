@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function FinalCTA() {
@@ -11,9 +11,6 @@ export default function FinalCTA() {
       <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl tmf-animate-float-slow" />
       <div className="container-page relative">
         <div className="tmf-mesh-surface tmf-glass-panel mx-auto max-w-5xl rounded-[28px] p-8 text-center sm:p-12 lg:p-20 tmf-animate-fade-in-up">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-white shadow-lg shadow-accent/20">
-            <Sparkles className="h-6 w-6" aria-hidden="true" />
-          </div>
           <p className="eyebrow mt-6 text-xs">Join us today</p>
           <h2 className="h2-display mx-auto mt-4 max-w-2xl text-heading">
             Ready to make a lasting impact?

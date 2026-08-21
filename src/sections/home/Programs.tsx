@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ASSETS, PROGRAMS } from "@/lib/site";
+import { PROGRAMS } from "@/lib/site";
 
 export default function Programs() {
   return (
@@ -38,10 +38,9 @@ export default function Programs() {
               style={{ animationDelay: `${index * 150 + 120}ms` }}
             >
               <div className="relative h-[280px] overflow-hidden rounded-[18px] lg:h-[350px]">
-                <img
-                  src={program.image || ASSETS.defaultProgram}
-                  alt={program.title}
-                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                <div
+                  className="h-full w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300"
+                  aria-hidden="true"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
                 <span className="absolute left-5 top-5 rounded-full border border-white/40 bg-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[1.6px] text-white backdrop-blur-md">

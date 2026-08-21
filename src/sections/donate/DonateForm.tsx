@@ -1,4 +1,4 @@
-import { LockKeyhole, ShieldCheck, Sparkles } from "lucide-react";
+import { LockKeyhole, ShieldCheck } from "lucide-react";
 import {
   useState,
   type Dispatch,
@@ -101,9 +101,6 @@ export default function DonateForm({
       <div className="container-page relative">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-16">
           <div className="pt-2 tmf-animate-fade-in-up">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent-subtle text-accent">
-              <Sparkles className="h-5 w-5" aria-hidden="true" />
-            </div>
             <p className="eyebrow mb-4 text-xs">Make an impact</p>
             <h2 className="h2-display text-heading">Choose your gift.</h2>
             <p className="mt-5 text-base leading-relaxed text-body-muted">

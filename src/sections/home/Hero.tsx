@@ -1,6 +1,5 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ASSETS } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -17,7 +16,6 @@ export default function Hero() {
           <div className="relative z-10 lg:col-span-6">
             <div className="tmf-animate-fade-in-up">
               <span className="tmf-glass-chip mb-6 inline-flex items-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-[2.8px] text-accent">
-                <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Invest in the future
               </span>
               <h1 className="h1-display max-w-3xl text-heading">
@@ -44,10 +42,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="tmf-glass-panel mt-12 flex max-w-md items-center gap-4 p-4 tmf-animate-fade-in-up delay-300">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-subtle text-accent">
-                <Sparkles className="h-5 w-5" aria-hidden="true" />
-              </div>
+            <div className="tmf-glass-panel mt-12 max-w-md p-4 tmf-animate-fade-in-up delay-300">
               <div>
                 <p className="font-display text-xl font-semibold text-heading">
                   120+ lives in motion
@@ -64,10 +59,9 @@ export default function Hero() {
             <div className="absolute -bottom-6 -left-6 z-10 hidden h-32 w-32 rounded-full bg-accent/20 blur-2xl lg:block tmf-animate-pulse-soft" />
             <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl tmf-animate-fade-in-up delay-150">
               <div className="relative overflow-hidden rounded-[22px]">
-                <img
-                  src={ASSETS.homeHero}
-                  alt="TalentMakers Foundation community"
-                  className="h-[440px] w-full object-cover transition-transform duration-1000 hover:scale-105 lg:h-[610px]"
+                <div
+                  className="h-[440px] w-full bg-gradient-to-br from-violet-950 via-accent to-sky-300 lg:h-[610px]"
+                  aria-hidden="true"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 tmf-glass-chip p-4 text-white">

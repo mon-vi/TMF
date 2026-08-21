@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function JoinMissionCTA() {
@@ -12,7 +12,7 @@ export default function JoinMissionCTA() {
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-indigo-300/20 blur-3xl tmf-animate-float-slow" />
       <div className="container-page relative mx-auto max-w-4xl text-center">
         <div className="tmf-glass-chip mx-auto mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[2.8px] text-white">
-          <Sparkles className="h-4 w-4" aria-hidden="true" /> Shape the future
+          Shape the future
         </div>
         <h2 className="h2-display text-white">Join the mission.</h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85 lg:text-xl">

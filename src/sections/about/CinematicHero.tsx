@@ -1,5 +1,4 @@
-import { ArrowDown, Sparkles } from "lucide-react";
-import { ASSETS } from "@/lib/site";
+import { ArrowDown } from "lucide-react";
 
 export default function CinematicHero() {
   return (
@@ -7,15 +6,10 @@ export default function CinematicHero() {
       className="relative isolate min-h-[620px] overflow-hidden bg-ink lg:min-h-[760px]"
       data-node-id="208:3498"
     >
-      {ASSETS.aboutHero ? (
-        <img
-          src={ASSETS.aboutHero}
-          alt="Students learning together in a classroom"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-ink" aria-hidden="true" />
-      )}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-slate-950 via-accent to-violet-300"
+        aria-hidden="true"
+      />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/55 to-accent/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20" />
       <div className="absolute -right-28 top-28 h-80 w-80 rounded-full bg-fuchsia-400/25 blur-3xl tmf-animate-pulse-soft" />
@@ -24,7 +18,6 @@ export default function CinematicHero() {
       <div className="container-page relative flex min-h-[620px] items-end py-20 lg:min-h-[760px] lg:py-28">
         <div className="max-w-3xl tmf-animate-fade-in-up">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[3px] text-purple-100 backdrop-blur-md">
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
             Est. 2023 · Our story
           </div>
           <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-8xl">
@@ -36,10 +29,7 @@ export default function CinematicHero() {
             philanthropy, full-ride scholarships, and technology education for
             underserved communities.
           </p>
-          <div className="tmf-glass-panel mt-10 flex max-w-xl items-center gap-4 p-4 text-white tmf-animate-fade-in-up delay-300">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-purple-100">
-              <Sparkles className="h-5 w-5" aria-hidden="true" />
-            </div>
+          <div className="tmf-glass-panel mt-10 max-w-xl p-4 text-white tmf-animate-fade-in-up delay-300">
             <p className="text-sm leading-relaxed text-white/85">
               We find high-potential talent, then make the path to leadership
               visible.
