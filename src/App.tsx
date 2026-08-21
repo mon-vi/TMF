@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Donate from "@/pages/Donate";
+import DonateThankYou from "@/pages/DonateThankYou";
 import About from "@/pages/About";
 import ProgramsPage from "@/pages/ProgramsPage";
 import EventsPage from "@/pages/EventsPage";

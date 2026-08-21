@@ -19,10 +19,7 @@ export default function BoardTrustees() {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div
-                className="w-full h-full bg-ink/10"
-                aria-hidden="true"
-              />
+              <div className="w-full h-full bg-ink/10" aria-hidden="true" />
             )}
             <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
           </div>
@@ -38,9 +35,7 @@ export default function BoardTrustees() {
 
           <blockquote className="text-[20px] leading-[26px] font-sans italic text-prose">
             &ldquo;
-            <span
-              dangerouslySetInnerHTML={{ __html: BOARD_MEMBER.quote }}
-            />
+            <span dangerouslySetInnerHTML={{ __html: BOARD_MEMBER.quote }} />
             &rdquo;
           </blockquote>
         </div>

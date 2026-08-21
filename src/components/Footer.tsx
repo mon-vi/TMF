@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { ASSETS, FOOTER_QUICK_LINKS, FOOTER_CONNECT, FOOTER_LEGAL, FOOTER_DESCRIPTION } from "@/lib/site";
+import {
+  ASSETS,
+  FOOTER_QUICK_LINKS,
+  FOOTER_CONNECT,
+  FOOTER_LEGAL,
+  FOOTER_DESCRIPTION,
+} from "@/lib/site";
 
 /*
   TODO(design): exact footer type sizes/spacing NOT node-verified —
@@ -86,7 +92,8 @@ export default function Footer() {
       <div className="border-t border-nav-border">
         <div className="container-page py-4 text-center lg:text-left">
           <p className="text-small text-ink/50">
-            &copy; {currentYear} TalentMakers Foundation. Empowering future leaders.
+            &copy; {currentYear} TalentMakers Foundation. Empowering future
+            leaders.
           </p>
         </div>
       </div>

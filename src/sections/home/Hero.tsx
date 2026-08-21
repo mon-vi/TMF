@@ -9,7 +9,10 @@ import { ASSETS } from "@/lib/site";
 
 export default function Hero() {
   return (
-    <section className="relative bg-panel lg:pt-[104px]" data-node-id="173:7430">
+    <section
+      className="relative bg-panel lg:pt-[104px]"
+      data-node-id="173:7430"
+    >
       {/* Mobile: image + scrim overlay */}
       <div className="relative lg:hidden">
         <img
@@ -48,8 +51,8 @@ export default function Hero() {
               </h1>
               <p className="lead mb-8 max-w-lg">
                 Bridging opportunity gaps through strategic philanthropy,
-                full-ride scholarships, and technology education for
-                underserved communities.
+                full-ride scholarships, and technology education for underserved
+                communities.
               </p>
               <div className="flex gap-4">
                 <Link to="/programs" className="btn-solid">

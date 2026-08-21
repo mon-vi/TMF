@@ -38,11 +38,6 @@ export function useCountUp(
   useEffect(() => {
     if (!triggered) return;
 
-    if (prefersReducedMotion()) {
-      setCount(target);
-      return;
-    }
-
     const start = performance.now();
 
     function tick(now: number) {
@@ -53,6 +48,11 @@ export function useCountUp(
       if (progress < 1) {
         rafRef.current = requestAnimationFrame(tick);
       }
+    }
+
+    if (prefersReducedMotion()) {
+      rafRef.current = requestAnimationFrame(() => setCount(target));
+      return () => cancelAnimationFrame(rafRef.current);
     }
 
     rafRef.current = requestAnimationFrame(tick);
