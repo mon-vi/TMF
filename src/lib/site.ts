@@ -5,10 +5,11 @@ export const ASSETS = {
     "https://www.figma.com/api/mcp/asset/811e57ff-9893-4106-ab10-04569b788c98",
   homeHero:
     "https://www.figma.com/api/mcp/asset/a0bd6469-5874-4139-a326-e4adeb2b390a",
-  defaultProgram: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-  donateHero: "", 
-  aboutHero: "", 
-  boardPortrait: "", 
+  defaultProgram:
+    "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+  donateHero: "",
+  aboutHero: "",
+  boardPortrait: "",
 } as const;
 
 export const NAV_LINKS = [

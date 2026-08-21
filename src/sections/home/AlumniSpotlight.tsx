@@ -2,14 +2,18 @@ import { ALUMNI } from "@/lib/site";
 
 export default function AlumniSpotlight() {
   return (
-    <section className="bg-white py-20 lg:py-[120px] border-b border-card-divider" data-node-id="173:7466">
+    <section
+      className="bg-white py-20 lg:py-[120px] border-b border-card-divider"
+      data-node-id="173:7466"
+    >
       <div className="container-page mb-12 lg:mb-16 text-center">
         <p className="eyebrow mb-3 text-xs">Community</p>
         <h2 className="text-3xl lg:text-5xl font-display font-semibold text-heading">
           Alumni Spotlight
         </h2>
         <p className="text-body-muted text-base mt-4 max-w-xl mx-auto">
-          Meet the scholars and tech innovators whose journeys were catalyzed by TMF fellowships and mentorship.
+          Meet the scholars and tech innovators whose journeys were catalyzed by
+          TMF fellowships and mentorship.
         </p>
       </div>
 
