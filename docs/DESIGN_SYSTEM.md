@@ -11,19 +11,19 @@ node gets read.
 
 ## Colour
 
-| Token | Value | Tailwind | Status |
-|---|---|---|---|
-| Accent | `#6A0DAD` | `accent` | Verified — bound Figma variable |
-| Primary / white | `#FFFFFF` | `white` | Verified — bound Figma variable |
-| Ink | `#1E1E1E` | `ink` | Verified — hero background |
-| Nav tint | `rgba(246,250,255,0.8)` | `nav-tint` | Verified — nav bar |
-| Nav border | `rgba(190,201,191,0.3)` | `nav-border` | Verified — nav bottom border |
-| Heading | `#141D23` | `heading` | Verified — desktop hero H1 (a blue-black, NOT `ink`) |
-| Body grey | `#5F5E5E` | `body-muted` | Verified — desktop lead paragraph |
-| Image panel | `#ECF5FE` | `panel` | Verified — desktop hero image background |
+| Token           | Value                   | Tailwind     | Status                                               |
+| --------------- | ----------------------- | ------------ | ---------------------------------------------------- |
+| Accent          | `#6A0DAD`               | `accent`     | Verified — bound Figma variable                      |
+| Primary / white | `#FFFFFF`               | `white`      | Verified — bound Figma variable                      |
+| Ink             | `#1E1E1E`               | `ink`        | Verified — hero background                           |
+| Nav tint        | `rgba(246,250,255,0.8)` | `nav-tint`   | Verified — nav bar                                   |
+| Nav border      | `rgba(190,201,191,0.3)` | `nav-border` | Verified — nav bottom border                         |
+| Heading         | `#141D23`               | `heading`    | Verified — desktop hero H1 (a blue-black, NOT `ink`) |
+| Body grey       | `#5F5E5E`               | `body-muted` | Verified — desktop lead paragraph                    |
+| Image panel     | `#ECF5FE`               | `panel`      | Verified — desktop hero image background             |
 
 **Important:** headings on a light background are `#141D23`, not `ink`
-(`#1E1E1E`). `ink` is the hero *background* fill. The mobile read couldn't
+(`#1E1E1E`). `ink` is the hero _background_ fill. The mobile read couldn't
 reveal this because the mobile hero heading is white over an image. Use
 `text-heading` for dark-on-light headings.
 
@@ -58,19 +58,20 @@ The type scale is **responsive** — desktop is not a scaled-up mobile. Build
 mobile-first and step up at the `lg` breakpoint (1024px). Both columns below are
 the value at that breakpoint.
 
-| Role | Family | Mobile (base) | Desktop (`lg:`) | Tracking | Status |
-|---|---|---|---|---|---|
-| `text-h1` | Playfair Bold | 44 / 52 | 72 / 84 | mob `-0.44px` · desk `-1.44px` | Verified both |
-| `text-h2` | Playfair Bold | 32 / 40 | ~56 / 64 | `-0.32px` | mob Verified · desk Inferred |
-| `text-h3` | Playfair Bold | 28 / 36 | ~40 | — | Inferred |
-| `text-h4` | Playfair Bold | 20 / 28 | 20 / 28 | — | Inferred |
-| `text-stat` | Playfair Bold | 36 / 44 | ~96 | — | mob Inferred · desk from Impact block |
-| `text-lead` | Public Sans Regular | 16 / 24 | 20 / 32 | — | Verified — hero lead paragraph |
-| `text-body` | Public Sans Regular | 16 / 24 | 16 / 24 | — | Verified |
-| `text-small` | Public Sans | 14 / 20 | 14 / 20 | — | Verified |
-| `text-eyebrow` | Public Sans Semibold | 14 / 20 | 14 / 20 | `2.8px` | Verified |
+| Role           | Family               | Mobile (base) | Desktop (`lg:`) | Tracking                       | Status                                |
+| -------------- | -------------------- | ------------- | --------------- | ------------------------------ | ------------------------------------- |
+| `text-h1`      | Playfair Bold        | 44 / 52       | 72 / 84         | mob `-0.44px` · desk `-1.44px` | Verified both                         |
+| `text-h2`      | Playfair Bold        | 32 / 40       | ~56 / 64        | `-0.32px`                      | mob Verified · desk Inferred          |
+| `text-h3`      | Playfair Bold        | 28 / 36       | ~40             | —                              | Inferred                              |
+| `text-h4`      | Playfair Bold        | 20 / 28       | 20 / 28         | —                              | Inferred                              |
+| `text-stat`    | Playfair Bold        | 36 / 44       | ~96             | —                              | mob Inferred · desk from Impact block |
+| `text-lead`    | Public Sans Regular  | 16 / 24       | 20 / 32         | —                              | Verified — hero lead paragraph        |
+| `text-body`    | Public Sans Regular  | 16 / 24       | 16 / 24         | —                              | Verified                              |
+| `text-small`   | Public Sans          | 14 / 20       | 14 / 20         | —                              | Verified                              |
+| `text-eyebrow` | Public Sans Semibold | 14 / 20       | 14 / 20         | `2.8px`                        | Verified                              |
 
 Notes:
+
 - **H1** is fully verified at both ends. The jump is large (44→72); it is real,
   not a guess.
 - **`text-lead`** is new — the hero's intro paragraph is 20/32 on desktop,
@@ -93,10 +94,10 @@ uppercase it, so screen readers don't read it as an initialism.
 
 Two verified grids:
 
-| | Frame | Side margin | Content column | Gutter |
-|---|---|---|---|---|
-| Mobile | 390 | 24 | 342 | — |
-| Desktop | 1280 | 64 | 1152 | 32 (12-col) |
+|         | Frame | Side margin | Content column | Gutter      |
+| ------- | ----- | ----------- | -------------- | ----------- |
+| Mobile  | 390   | 24          | 342            | —           |
+| Desktop | 1280  | 64          | 1152           | 32 (12-col) |
 
 `.container-page` handles the outer gutter (24px mobile). On desktop the design
 uses a **12-column grid** with a 32px gutter inside the 1152px column — the hero
@@ -114,14 +115,14 @@ figure is solid; the mobile range is still Inferred.
 Defined in `src/index.css` under `@layer components`. Prefer these over
 assembling utilities inline — that's what keeps sections consistent.
 
-| Class | Purpose | Status |
-|---|---|---|
-| `.container-page` | Page gutter and max width | Inferred |
-| `.eyebrow` | Section label | Verified |
-| `.h1-display` | Page title | Verified |
-| `.h2-display` | Section title | Inferred |
-| `.btn-solid` | Primary button — accent fill, white text | Verified |
-| `.btn-outline` | Secondary — white fill, accent border and text | Verified |
+| Class             | Purpose                                        | Status   |
+| ----------------- | ---------------------------------------------- | -------- |
+| `.container-page` | Page gutter and max width                      | Inferred |
+| `.eyebrow`        | Section label                                  | Verified |
+| `.h1-display`     | Page title                                     | Verified |
+| `.h2-display`     | Section title                                  | Inferred |
+| `.btn-solid`      | Primary button — accent fill, white text       | Verified |
+| `.btn-outline`    | Secondary — white fill, accent border and text | Verified |
 
 Button geometry is verified from the hero: solid is 40px horizontal padding with
 16.5/17.5px vertical; outline is 41px/17px, the 1px difference absorbing its

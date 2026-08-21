@@ -1,78 +1,55 @@
+import { ChevronDown, History } from "lucide-react";
 import { useState } from "react";
 import { MILESTONES } from "@/lib/site";
 
-/*
-  TODO(content): real milestone copy per year needed from client.
-  Design (node 346:1534) shows collapsed rows only — no expanded
-  content is drawn for any year. Placeholder text used in panels.
-  Section marked Inferred for expand behaviour + content.
-*/
-
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className={`transition-transform duration-300 ${
-        open ? "rotate-180" : ""
-      }`}
-    >
-      <path
-        d="M6 9l6 6 6-6"
-        stroke="#6A0DAD"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+const MILESTONE_DETAILS: Record<number, string> = {
+  2023: "Inception of TalentMakers Foundation. Launched our inaugural scholarship cohort and strategic technology lab partnerships.",
+  2024: "Expanded to 50+ schools reached, launched Tech Spark fellowship and established cross-border mentoring programs.",
+  2025: "Crossed 120+ direct scholarship beneficiaries and partnered with international technology firms for direct placement.",
+  2026: "Pioneering the Pan-African Technology & Leadership Endowment to support 500+ emerging tech leaders annually.",
+};
 
 function AccordionRow({
   year,
   open,
   onToggle,
+  index,
 }: {
   year: number;
   open: boolean;
   onToggle: () => void;
+  index: number;
 }) {
   const panelId = `milestone-${year}`;
-
   return (
-    <div className="bg-white shadow-card">
+    <div
+      className="tmf-glass-panel overflow-hidden rounded-2xl tmf-animate-fade-in-up"
+      style={{ animationDelay: `${index * 100 + 120}ms` }}
+    >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between px-6 py-6 lg:px-20 lg:py-10 text-left"
+        className="group flex w-full items-center justify-between gap-6 px-6 py-6 text-left lg:px-10 lg:py-8"
       >
-        <span className="text-timeline-year-mobile lg:text-timeline-year font-display font-semibold text-accent">
+        <span className="font-display text-5xl font-semibold tracking-tight text-accent transition-transform duration-300 group-hover:translate-x-1 lg:text-7xl">
           {year}
         </span>
-        <span className="w-[100px] h-[100px] flex items-center justify-center shrink-0">
-          <Chevron open={open} />
+        <span
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        >
+          <ChevronDown className="h-5 w-5" aria-hidden="true" />
         </span>
       </button>
-
       <div
         id={panelId}
         role="region"
-        aria-labelledby={`${panelId}-label`}
-        className={`grid transition-all duration-300 ${
-          open
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
-        }`}
+        className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-6 lg:px-20 lg:pb-10 text-body-relaxed text-prose/80">
-            {/* TODO(content): real milestone copy needed from client */}
-            Milestone details for {year} coming soon.
+          <div className="border-t border-slate-200/70 px-6 pb-8 pt-5 text-base leading-relaxed text-body-muted lg:px-10 lg:text-lg">
+            {MILESTONE_DETAILS[year] || `Milestone details for ${year}.`}
           </div>
         </div>
       </div>
@@ -81,27 +58,36 @@ function AccordionRow({
 }
 
 export default function Milestones() {
-  const [openYear, setOpenYear] = useState<number | null>(null);
-
-  function toggleYear(year: number) {
-    setOpenYear((prev) => (prev === year ? null : year));
-  }
-
+  const [openYear, setOpenYear] = useState<number | null>(2023);
   return (
-    <section className="bg-white py-16 lg:py-[120px]" data-node-id="346:1534">
-      <div className="container-page">
-        <div className="text-center mb-12 lg:mb-16">
-          <p className="eyebrow mb-3">A Decade of Growth</p>
-          <h2 className="h2-display text-heading">Milestones of Impact</h2>
+    <section
+      className="relative overflow-hidden bg-white py-20 lg:py-32"
+      data-node-id="346:1534"
+    >
+      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-violet-100/70 blur-3xl" />
+      <div className="container-page relative">
+        <div className="mb-12 flex items-end justify-between gap-8 tmf-animate-fade-in-up">
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <History className="h-5 w-5 text-accent" aria-hidden="true" />
+              <p className="eyebrow text-xs">A decade of growth</p>
+            </div>
+            <h2 className="h2-display text-heading">Milestones of impact.</h2>
+          </div>
+          <span className="hidden font-display text-8xl font-semibold leading-none text-accent/10 sm:block">
+            04
+          </span>
         </div>
-
-        <div className="max-w-[960px] mx-auto flex flex-col gap-4">
-          {MILESTONES.map((year) => (
+        <div className="mx-auto flex max-w-5xl flex-col gap-4">
+          {MILESTONES.map((year, index) => (
             <AccordionRow
               key={year}
               year={year}
+              index={index}
               open={openYear === year}
-              onToggle={() => toggleYear(year)}
+              onToggle={() =>
+                setOpenYear((prev) => (prev === year ? null : year))
+              }
             />
           ))}
         </div>

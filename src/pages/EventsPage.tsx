@@ -82,6 +82,7 @@ const EVENT_ICONS = {
 
 export default function EventsPage() {
   return (
+<<<<<<< HEAD
     <main className="min-h-screen bg-tmf-page font-ui text-tmf-text-primary">
       {/* Hero */}
       <section className="pt-28 lg:pt-40 pb-20 lg:pb-32 overflow-x-clip">
@@ -102,6 +103,56 @@ export default function EventsPage() {
               <a
                 href="#featured"
                 className="rounded-none inline-flex items-center gap-2 bg-tmf-primary px-8 py-4 text-base font-medium text-white transition-colors hover:bg-tmf-primary-hover"
+=======
+    <div className="min-h-screen bg-black text-white">
+      {/* Top Hero Section (Dark Theme matching the design) */}
+      <div className="container-page py-16 lg:py-24 pt-32 lg:pt-40">
+        <div className="max-w-3xl mb-16">
+          <span className="eyebrow mb-3 block text-accent font-semibold tracking-wider text-sm uppercase">
+            UPCOMING EVENTS
+          </span>
+          <h1 className="text-4xl lg:text-6xl font-display font-bold text-white leading-tight mb-6">
+            Tech Spark Conference 2027
+          </h1>
+          <p className="text-gray-400 text-lg leading-relaxed">
+            Join global visionaries and rising talents for an immersive weekend
+            of dialogue, innovation, and strategic networking in the heart of
+            Zurich.
+          </p>
+        </div>
+
+        {/* Featured Event Card with Background Image */}
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 mb-28">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={techSparkConfImg}
+              alt="Tech Spark Conference 2027"
+              className="w-full h-full object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+          </div>
+
+          <div className="relative z-10 p-8 lg:p-16 flex flex-col justify-end min-h-[480px]">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-300 mb-4">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-accent" />
+                <span>Oct 12-14, 2027</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-accent" />
+                <span>Zurich, CH</span>
+              </div>
+            </div>
+
+            <h3 className="text-2xl lg:text-3xl font-display font-semibold text-white mb-6">
+              Shaping the Next Decade of Philanthropy
+            </h3>
+
+            <div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center bg-accent text-white font-medium px-8 py-3.5 rounded-md hover:bg-accent/90 transition-colors shadow-lg"
+>>>>>>> main
               >
                 RSVP to Tech Spark 2027
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -339,6 +390,7 @@ export default function EventsPage() {
             </p>
           </div>
 
+<<<<<<< HEAD
           <div className="border-b border-tmf-line">
             {ARCHIVE.map((item) => (
               <article
@@ -374,6 +426,12 @@ export default function EventsPage() {
             <Link
               to="/contact"
               className="group inline-flex items-center gap-2 border-b-2 border-tmf-primary pb-1 text-small font-bold uppercase tracking-[0.18em] text-tmf-primary transition-colors hover:text-tmf-primary-hover hover:border-tmf-primary-hover"
+=======
+          <div className="mt-16 pt-8 border-t border-gray-300 text-center">
+            <Link
+              to="/archives"
+              className="inline-flex items-center gap-2 text-heading font-semibold hover:text-accent transition-colors tracking-wide text-sm uppercase border-b border-heading pb-1 hover:border-accent"
+>>>>>>> main
             >
               Request Event Recaps
               <ArrowRight

@@ -8,10 +8,10 @@ tools.
 
 ## Canvases
 
-| Canvas | Node | Status |
-|---|---|---|
-| Mobile Design (390px) | `1:2` | Mapped below |
-| Web Design (1280px) | `1:3` | Mapped below — full desktop layouts for every page |
+| Canvas                | Node  | Status                                             |
+| --------------------- | ----- | -------------------------------------------------- |
+| Mobile Design (390px) | `1:2` | Mapped below                                       |
+| Web Design (1280px)   | `1:3` | Mapped below — full desktop layouts for every page |
 
 Both breakpoints are fully designed. Build responsive from both, mobile-first,
 stepping up at `lg` (1024px). Desktop is NOT a scaled mobile — layouts differ
@@ -27,18 +27,18 @@ cause — it isn't a tool bug.
 
 ## Pages (mobile, 390px)
 
-| Page | Mobile node | Desktop node | Route |
-|---|---|---|---|
-| Homepage | `173:7383` | `208:3011` | `/` |
-| About Us | `161:3003` | `208:3460` | `/about` |
-| Programs | `161:1420` | `208:3165` | `/programs` |
-| Scholarship Program | `199:3831` | `208:3760` | `/programs/scholarship` |
-| Tech Spark | `199:4226` | `208:3888` | `/programs/tech-spark` |
-| Events | `161:2643` | `208:3246` | `/events` |
-| Blog | `161:3573` | `208:3327` | `/blog` |
-| Get Involved | `199:3244` | `208:3657` | `/get-involved` |
-| Contact | `161:3303` | `208:3574` | `/contact` |
-| Donate | `161:744` | `208:3108` | `/donate` |
+| Page                | Mobile node | Desktop node | Route                   |
+| ------------------- | ----------- | ------------ | ----------------------- |
+| Homepage            | `173:7383`  | `208:3011`   | `/`                     |
+| About Us            | `161:3003`  | `208:3460`   | `/about`                |
+| Programs            | `161:1420`  | `208:3165`   | `/programs`             |
+| Scholarship Program | `199:3831`  | `208:3760`   | `/programs/scholarship` |
+| Tech Spark          | `199:4226`  | `208:3888`   | `/programs/tech-spark`  |
+| Events              | `161:2643`  | `208:3246`   | `/events`               |
+| Blog                | `161:3573`  | `208:3327`   | `/blog`                 |
+| Get Involved        | `199:3244`  | `208:3657`   | `/get-involved`         |
+| Contact             | `161:3303`  | `208:3574`   | `/contact`              |
+| Donate              | `161:744`   | `208:3108`   | `/donate`               |
 
 Workflow per section: read the mobile node AND the desktop node, implement
 mobile-first, add `lg:` overrides for the desktop layout. They often differ in
@@ -63,11 +63,11 @@ structure (column count, sidebars, image placement), not just spacing.
 
 Instanced on every page. Build once.
 
-| Component | Node | Status |
-|---|---|---|
-| Top navigation | `189:890` (container `189:870`) | **Verified** — implemented (rebuilt) |
-| Mobile menu overlay | `173:7504` | Structure implemented, styling inferred |
-| Footer | mobile `189:918` (946px) · desktop `208:3105` (544px) | **Inferred** — type/spacing NOT node-verified |
+| Component           | Node                                                  | Status                                        |
+| ------------------- | ----------------------------------------------------- | --------------------------------------------- |
+| Top navigation      | `189:890` (container `189:870`)                       | **Verified** — implemented (rebuilt)          |
+| Mobile menu overlay | `173:7504`                                            | Structure implemented, styling inferred       |
+| Footer              | mobile `189:918` (946px) · desktop `208:3105` (544px) | **Inferred** — type/spacing NOT node-verified |
 
 The footer appears on all ten pages at both breakpoints. Highest-value remaining
 extraction. Read both nodes — mobile is 946px tall (stacked), desktop is 544px
@@ -77,13 +77,13 @@ extraction. Read both nodes — mobile is 946px tall (stacked), desktop is 544px
 
 ## Homepage sections — `173:7383`
 
-| Section | Node | Component | Status |
-|---|---|---|---|
-| Hero | `173:7430` | `sections/home/Hero.tsx` | Verified (node) |
-| Impact Metrics | `173:7384` | `sections/home/ImpactMetrics.tsx` | Verified (node) |
-| Programs | `173:7440` | `sections/home/Programs.tsx` | Verified (node) |
+| Section                 | Node       | Component                           | Status                             |
+| ----------------------- | ---------- | ----------------------------------- | ---------------------------------- |
+| Hero                    | `173:7430` | `sections/home/Hero.tsx`            | Verified (node)                    |
+| Impact Metrics          | `173:7384` | `sections/home/ImpactMetrics.tsx`   | Verified (node)                    |
+| Programs                | `173:7440` | `sections/home/Programs.tsx`        | Verified (node)                    |
 | Featured Story / Alumni | `173:7466` | `sections/home/AlumniSpotlight.tsx` | Verified (node), portraits pending |
-| Final CTA | `173:7482` | `sections/home/FinalCTA.tsx` | Verified (node) |
+| Final CTA               | `173:7482` | `sections/home/FinalCTA.tsx`        | Verified (node)                    |
 
 Alumni carousel internals: `314:1224` (a 2580px strip of ten 240px cards).
 
@@ -94,14 +94,15 @@ Alumni carousel internals: `314:1224` (a 2580px strip of ten 240px cards).
 Enough to start each page without re-reading the whole canvas.
 
 **About Us** — `161:3003` (mobile) / `208:3460` (desktop)
-| Section | Node | Component | Status |
-|---|---|---|---|
-| Cinematic Hero | `208:3498` | `sections/about/CinematicHero.tsx` | Verified (node) |
-| Our Story | `208:3462` | `sections/about/OurStory.tsx` | Verified (node) |
-| Mission & Vision | `208:3473` | `sections/about/MissionVision.tsx` | Verified (node) |
-| Milestones | `346:1534` | `sections/about/Milestones.tsx` | Inferred — no expanded content in design |
-| Board of Trustees | `208:3557` | `sections/about/BoardTrustees.tsx` | Verified (node) |
-| Join the Mission CTA | `208:3487` | `sections/about/JoinMissionCTA.tsx` | Verified (node) |
+
+| Section              | Node       | Component                           | Status                                   |
+| -------------------- | ---------- | ----------------------------------- | ---------------------------------------- |
+| Cinematic Hero       | `208:3498` | `sections/about/CinematicHero.tsx`  | Verified (node)                          |
+| Our Story            | `208:3462` | `sections/about/OurStory.tsx`       | Verified (node)                          |
+| Mission & Vision     | `208:3473` | `sections/about/MissionVision.tsx`  | Verified (node)                          |
+| Milestones           | `346:1534` | `sections/about/Milestones.tsx`     | Inferred — no expanded content in design |
+| Board of Trustees    | `208:3557` | `sections/about/BoardTrustees.tsx`  | Verified (node)                          |
+| Join the Mission CTA | `208:3487` | `sections/about/JoinMissionCTA.tsx` | Verified (node)                          |
 
 **Programs** — `161:1420`
 Hero `161:1421` · Scholarship block `161:1430` · Tech Spark block `161:1458` ·
@@ -133,9 +134,10 @@ Hero `161:3305` · Form `161:3333` · Contact info `161:3310`
 Hero `208:3110` · Form `208:3135`
 
 Donate sections built:
-| Section | Node | Component | Status |
-|---|---|---|---|
-| Donate Hero | `208:3110` | `sections/donate/DonateHero.tsx` | Verified (node) |
+
+| Section     | Node       | Component                        | Status                           |
+| ----------- | ---------- | -------------------------------- | -------------------------------- |
+| Donate Hero | `208:3110` | `sections/donate/DonateHero.tsx` | Verified (node)                  |
 | Donate Form | `208:3135` | `sections/donate/DonateForm.tsx` | Verified (node), payment stubbed |
 
 ---

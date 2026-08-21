@@ -42,23 +42,14 @@ export default {
       },
       fontSize: {
         h1: ["44px", { lineHeight: "52px", letterSpacing: "-0.44px" }],
-        "h1-lg": [
-          "72px",
-          { lineHeight: "84px", letterSpacing: "-1.44px" },
-        ], // Verified (docs)
+        "h1-lg": ["72px", { lineHeight: "84px", letterSpacing: "-1.44px" }], // Verified (docs)
         h2: ["32px", { lineHeight: "40px", letterSpacing: "-0.32px" }],
-        "h2-lg": [
-          "48px",
-          { lineHeight: "56px", letterSpacing: "-0.48px" },
-        ], // Verified (node) — confirmed on 208:3061, 208:3099
+        "h2-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.48px" }], // Verified (node) — confirmed on 208:3061, 208:3099
         h3: ["28px", { lineHeight: "36px" }],
         "h3-lg": ["40px", { lineHeight: "48px" }], // Estimated (frame height)
         h4: ["20px", { lineHeight: "28px" }],
         stat: ["36px", { lineHeight: "44px" }],
-        "stat-lg": [
-          "72px",
-          { lineHeight: "84px", letterSpacing: "-1.44px" },
-        ], // Verified (node) — same dimensions as h1-lg
+        "stat-lg": ["72px", { lineHeight: "84px", letterSpacing: "-1.44px" }], // Verified (node) — same dimensions as h1-lg
         "metric-eyebrow": [
           "20px",
           { lineHeight: "28px", letterSpacing: "1.4px" },
@@ -72,10 +63,7 @@ export default {
         body: ["16px", { lineHeight: "24px" }],
         small: ["14px", { lineHeight: "20px" }],
         eyebrow: ["14px", { lineHeight: "20px", letterSpacing: "2.8px" }],
-        "timeline-year": [
-          "64px",
-          { lineHeight: "64px" },
-        ], // Verified (node) — Timeline year display, desktop
+        "timeline-year": ["64px", { lineHeight: "64px" }], // Verified (node) — Timeline year display, desktop
         "timeline-year-mobile": ["40px", { lineHeight: "48px" }], // Verified (node) — Timeline year display, mobile
       },
       backgroundImage: {
