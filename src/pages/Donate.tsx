@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import DonateHero from "@/sections/donate/DonateHero";
 import DonateForm from "@/sections/donate/DonateForm";
 import { useExchangeRate } from "@/lib/exchange";
+import "@/styles/tmf-premium-pages.css";
 
 type Currency = "USD" | "NGN";
 
@@ -20,7 +21,7 @@ export default function Donate() {
   }, []);
 
   return (
-    <main>
+    <main className="tmf-page-scope">
       <DonateHero
         currency={currency}
         onSelectAmount={handleSelectAmount}

@@ -8,7 +8,6 @@ export default function ProgramsPage() {
   return (
     <main className="min-h-screen bg-white text-ink">
       <div className="container-page py-12 lg:py-20 pt-32 lg:pt-40">
-        
         {/* Top Header Section with Right Border Divider */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-24 pb-12 border-b border-gray-200">
           <div>
@@ -21,7 +20,8 @@ export default function ProgramsPage() {
           </div>
           <div className="lg:border-l lg:border-gray-300 lg:pl-12">
             <p className="text-gray-600 text-lg leading-relaxed">
-              Cultivating the next generation of Africa&rsquo;s talent through rigorous mentorship and strategic resource allocation.
+              Cultivating the next generation of Africa&rsquo;s talent through
+              rigorous mentorship and strategic resource allocation.
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function ProgramsPage() {
             <p className="text-gray-600 leading-relaxed">
               {PROGRAMS[0].description}
             </p>
-            
+
             <div className="space-y-3 pt-2">
               <span className="text-accent font-semibold text-xs uppercase tracking-wider block mb-2">
                 ELIGIBILITY PILLARS
@@ -65,8 +65,8 @@ export default function ProgramsPage() {
             </div>
 
             <div className="pt-4">
-              <Link 
-                to={PROGRAMS[0].href} 
+              <Link
+                to={PROGRAMS[0].href}
                 className="inline-flex items-center gap-2 bg-accent text-white font-medium px-8 py-3.5 rounded-md hover:bg-accent/90 transition-colors shadow-sm"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />
@@ -75,9 +75,9 @@ export default function ProgramsPage() {
           </div>
 
           <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 aspect-[3/4]">
-            <img 
-              src={tmfScholarshipImg} 
-              alt={PROGRAMS[0].title} 
+            <img
+              src={tmfScholarshipImg}
+              alt={PROGRAMS[0].title}
               className="w-full h-full object-fill object-center"
             />
           </div>
@@ -86,9 +86,9 @@ export default function ProgramsPage() {
         {/* Program 2: Tech Spark (Image Left, Content Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
           <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 aspect-[16/10] order-2 lg:order-1">
-            <img 
-              src={techSparkImg} 
-              alt={PROGRAMS[1].title} 
+            <img
+              src={techSparkImg}
+              alt={PROGRAMS[1].title}
               className="w-full h-full object-cover object-center"
             />
           </div>
@@ -109,7 +109,8 @@ export default function ProgramsPage() {
                   01 / Skill Building
                 </span>
                 <p className="text-sm text-gray-700">
-                  Advanced immersion in AI, Quantum Computing, and Sustainable Bio-engineering.
+                  Advanced immersion in AI, Quantum Computing, and Sustainable
+                  Bio-engineering.
                 </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
@@ -117,14 +118,15 @@ export default function ProgramsPage() {
                   02 / Venture Forge
                 </span>
                 <p className="text-sm text-gray-700">
-                  Converting breakthrough research into scalable, world-changing ventures.
+                  Converting breakthrough research into scalable, world-changing
+                  ventures.
                 </p>
               </div>
             </div>
 
             <div className="pt-4">
-              <Link 
-                to={PROGRAMS[1].href} 
+              <Link
+                to={PROGRAMS[1].href}
                 className="inline-flex items-center gap-2 border border-accent text-accent font-medium px-8 py-3.5 rounded-md hover:bg-accent/5 transition-colors"
               >
                 Learn More <ArrowRight className="w-4 h-4" />
@@ -132,14 +134,14 @@ export default function ProgramsPage() {
             </div>
           </div>
         </div>
-
       </div>
 
       {/* Bottom Quote Banner */}
       <section className="bg-accent py-20 text-white text-center px-6">
         <div className="max-w-4xl mx-auto">
           <blockquote className="text-2xl lg:text-4xl font-display font-medium leading-relaxed italic">
-            &ldquo;The talent we cultivate today defines the global landscape of tomorrow.&rdquo;
+            &ldquo;The talent we cultivate today defines the global landscape of
+            tomorrow.&rdquo;
           </blockquote>
         </div>
       </section>

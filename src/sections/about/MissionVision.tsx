@@ -1,78 +1,52 @@
+import { Eye, Target } from "lucide-react";
 import { MISSION_VISION } from "@/lib/site";
-
-/*
-  Flag #7: Card titles use text-[32px] leading-[40px], NOT .h2-display.
-  .h2-display would scale to 48px at lg; node values confirm 32/40 at all breakpoints.
-*/
-
-function TargetIcon() {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="16" cy="16" r="13" stroke="#6A0DAD" strokeWidth="2" />
-      <circle cx="16" cy="16" r="8" stroke="#6A0DAD" strokeWidth="2" />
-      <circle cx="16" cy="16" r="3" fill="#6A0DAD" />
-      <line x1="16" y1="2" x2="16" y2="5" stroke="#6A0DAD" strokeWidth="2" />
-      <line x1="16" y1="27" x2="16" y2="30" stroke="#6A0DAD" strokeWidth="2" />
-      <line x1="2" y1="16" x2="5" y2="16" stroke="#6A0DAD" strokeWidth="2" />
-      <line x1="27" y1="16" x2="30" y2="16" stroke="#6A0DAD" strokeWidth="2" />
-    </svg>
-  );
-}
-
-function EyeIcon() {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M2 16S7 6 16 6s14 10 14 10-5 10-14 10S2 16 2 16z"
-        stroke="#6A0DAD"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="16" cy="16" r="5" stroke="#6A0DAD" strokeWidth="2" />
-      <circle cx="16" cy="16" r="2" fill="#6A0DAD" />
-    </svg>
-  );
-}
-
-const ICONS = {
-  target: TargetIcon,
-  eye: EyeIcon,
-};
 
 export default function MissionVision() {
   return (
     <section
-      className="bg-surface-light py-16 lg:py-[120px]"
+      id="mission"
+      className="relative overflow-hidden border-y border-slate-200/70 bg-panel py-20 lg:py-32"
       data-node-id="208:3473"
     >
-      <div className="container-page">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {MISSION_VISION.map((item) => {
-            const Icon = ICONS[item.icon];
+      <div className="absolute inset-0 tmf-surface-grid opacity-40" />
+      <div className="container-page relative">
+        <div className="mb-12 max-w-2xl tmf-animate-fade-in-up">
+          <p className="eyebrow mb-4 text-xs">What guides us</p>
+          <h2 className="h2-display text-heading">Purpose, made practical.</h2>
+          <p className="mt-5 text-lg leading-relaxed text-body-muted">
+            The belief system behind every scholarship, partnership, and
+            opportunity we create.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {MISSION_VISION.map((item, index) => {
+            const isTarget = item.icon === "target";
             return (
-              <div
+              <article
                 key={item.title}
-                className="bg-white border border-preset-border p-8 lg:p-[65px] flex flex-col gap-6"
+                className="tmf-glass-panel group rounded-[24px] p-7 tmf-hover-lift lg:p-10 tmf-animate-fade-in-up"
+                style={{ animationDelay: `${index * 150 + 120}ms` }}
               >
-                <Icon />
-                <h3 className="text-[32px] leading-[40px] font-display font-semibold text-heading">
+                <div className="flex items-start justify-between">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                    {isTarget ? (
+                      <Target className="h-7 w-7 stroke-[1.8]" />
+                    ) : (
+                      <Eye className="h-7 w-7 stroke-[1.8]" />
+                    )}
+                  </div>
+                  <span className="font-display text-6xl font-semibold text-accent/10">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="mt-10 font-display text-3xl font-semibold text-heading">
                   {item.title}
                 </h3>
-                <p className="text-body-relaxed text-prose">{item.body}</p>
-              </div>
+                <p className="mt-5 text-base leading-relaxed text-body-muted lg:text-lg">
+                  {item.body}
+                </p>
+              </article>
             );
           })}
         </div>

@@ -1,0 +1,146 @@
+/* Page-scoped visual layer for Home, About Us, and Donate Us only. */
+.tmf-page-scope {
+  --tmf-primary: #6b21a8;
+  --tmf-primary-dark: #581c87;
+  --tmf-surface: rgba(255, 255, 255, 0.64);
+  --tmf-border: rgba(255, 255, 255, 0.72);
+  --tmf-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+}
+
+.tmf-page-scope .tmf-glass-panel {
+  border: 1px solid var(--tmf-border);
+  background: var(--tmf-surface);
+  box-shadow: var(--tmf-shadow);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms ease,
+    border-color 420ms ease;
+}
+
+.tmf-page-scope .tmf-glass-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.34);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
+}
+
+.tmf-page-scope .tmf-glass-chip {
+  border: 1px solid var(--tmf-border);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.1);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease;
+}
+
+.tmf-page-scope .tmf-glass-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
+}
+
+.tmf-page-scope .tmf-mesh-surface {
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(216, 180, 254, 0.24),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(125, 211, 252, 0.18),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.74),
+      rgba(240, 244, 248, 0.92)
+    );
+}
+
+.tmf-page-scope .tmf-surface-grid {
+  background-image:
+    linear-gradient(rgba(107, 33, 168, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 33, 168, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.tmf-page-scope .tmf-text-gradient {
+  background: linear-gradient(90deg, #6b21a8, #8b5cf6, #d946ef);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tmf-page-scope .tmf-hover-lift {
+  transition:
+    transform 500ms ease,
+    box-shadow 500ms ease;
+}
+
+.tmf-page-scope .tmf-hover-lift:hover {
+  transform: translateY(-0.5rem);
+}
+
+@keyframes tmf-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tmf-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes tmf-pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.tmf-page-scope .tmf-animate-fade-in-up {
+  animation: tmf-fade-in-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tmf-page-scope .tmf-animate-float-slow {
+  animation: tmf-float-slow 7s ease-in-out infinite;
+}
+
+.tmf-page-scope .tmf-animate-pulse-soft {
+  animation: tmf-pulse-soft 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmf-page-scope .tmf-animate-fade-in-up,
+  .tmf-page-scope .tmf-animate-float-slow,
+  .tmf-page-scope .tmf-animate-pulse-soft {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .tmf-page-scope .tmf-glass-panel:hover,
+  .tmf-page-scope .tmf-glass-chip:hover,
+  .tmf-page-scope .tmf-hover-lift:hover {
+    transform: none;
+  }
+}

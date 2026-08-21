@@ -15,16 +15,18 @@ export default function EventsPage() {
             Tech Spark Conference 2027
           </h1>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Join global visionaries and rising talents for an immersive weekend of dialogue, innovation, and strategic networking in the heart of Zurich.
+            Join global visionaries and rising talents for an immersive weekend
+            of dialogue, innovation, and strategic networking in the heart of
+            Zurich.
           </p>
         </div>
 
         {/* Featured Event Card with Background Image */}
         <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 mb-28">
           <div className="absolute inset-0 z-0">
-            <img 
-              src={techSparkConfImg} 
-              alt="Tech Spark Conference 2027" 
+            <img
+              src={techSparkConfImg}
+              alt="Tech Spark Conference 2027"
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
@@ -47,8 +49,8 @@ export default function EventsPage() {
             </h3>
 
             <div>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center bg-accent text-white font-medium px-8 py-3.5 rounded-md hover:bg-accent/90 transition-colors shadow-lg"
               >
                 RSVP NOW
@@ -109,8 +111,8 @@ export default function EventsPage() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-gray-300 text-center">
-            <Link 
-              to="/archives" 
+            <Link
+              to="/archives"
               className="inline-flex items-center gap-2 text-heading font-semibold hover:text-accent transition-colors tracking-wide text-sm uppercase border-b border-heading pb-1 hover:border-accent"
             >
               EXPLORE FULL ARCHIVES <ArrowRight className="w-4 h-4" />

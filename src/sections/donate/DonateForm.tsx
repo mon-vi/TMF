@@ -1,63 +1,17 @@
+import { LockKeyhole, ShieldCheck } from "lucide-react";
 import {
   useState,
-  type FormEvent,
   type Dispatch,
+  type FormEvent,
   type SetStateAction,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { stripePromise } from "@/lib/stripe";
 import { openPaystackPopup } from "@/lib/payment";
 
-/*
-  TODO(payment): real keys in .env — currently stub values.
-
-  Flag #1: Figma node says "OR ENTER CUSTOM AMOUNT" label and button text are 32px —
-  design bug (line-height 20 confirms). Rendered label at text-h4 (20px), button at text-cta (~18px).
-  Flag #7: .btn-donate is font-semibold while .btn-solid is font-normal — could be
-  intentional emphasis on the money button or design drift; worth review.
-  Flag #8: email field not in Figma design 208:3135 — required by both Paystack and Stripe.
-*/
-
 type Currency = "USD" | "NGN";
 
-const SYMBOL: Record<Currency, string> = { USD: "$", NGN: "\u20A6" };
-
-function LockIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <rect x="2.5" y="7" width="11" height="7" rx="1" fill="white" />
-      <path
-        d="M5 7V5a3 3 0 0 1 6 0v2"
-        stroke="white"
-        strokeWidth="2"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg
-      width="14"
-      height="16"
-      viewBox="0 0 14 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M7 0L0 3v5.5C0 12.5 4 15 7 16c3-1 7-3.5 7-7.5V3L7 0z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+const SYMBOL: Record<Currency, string> = { USD: "$", NGN: "₦" };
 
 interface Props {
   amount: string;
@@ -78,7 +32,7 @@ export default function DonateForm({
   const navigate = useNavigate();
 
   const parsedAmount = parseFloat(amount.replace(/,/g, ""));
-  const amountValid = !isNaN(parsedAmount) && parsedAmount > 0;
+  const amountValid = !Number.isNaN(parsedAmount) && parsedAmount > 0;
   const emailValid = email.trim() !== "";
   const isValid = amountValid && emailValid;
 
@@ -97,6 +51,7 @@ export default function DonateForm({
         setPending(false);
         return;
       }
+
       const { error: stripeError } = await stripe.redirectToCheckout({
         lineItems: [
           {
@@ -116,6 +71,7 @@ export default function DonateForm({
         cancelUrl: `${window.location.origin}/donate`,
         customerEmail: email.trim(),
       });
+
       if (stripeError) {
         setError(stripeError.message ?? "Payment failed. Please try again.");
         setPending(false);
@@ -137,102 +93,123 @@ export default function DonateForm({
   }
 
   return (
-    <section className="bg-white py-16 lg:py-[120px]" data-node-id="208:3135">
-      <div className="container-page lg:max-w-[640px]">
-        <form onSubmit={handleSubmit} noValidate>
-          <p className="text-h4 font-sans font-semibold uppercase tracking-[0.7px] text-body-muted mb-6">
-            Or Enter Custom Amount
-          </p>
-
-          <div className="flex border border-preset-border mb-20">
-            <button
-              type="button"
-              onClick={() => onCurrencyChange("USD")}
-              className={`flex-1 py-3 text-center text-small font-sans font-semibold transition-colors ${
-                currency === "USD"
-                  ? "bg-accent text-white"
-                  : "bg-white text-heading hover:bg-panel"
-              }`}
-            >
-              USD ($)
-            </button>
-            <button
-              type="button"
-              onClick={() => onCurrencyChange("NGN")}
-              className={`flex-1 py-3 text-center text-small font-sans font-semibold transition-colors ${
-                currency === "NGN"
-                  ? "bg-accent text-white"
-                  : "bg-white text-heading hover:bg-panel"
-              }`}
-            >
-              NGN (&#8358;)
-            </button>
-          </div>
-
-          <div className="flex items-end border-b border-card-divider pb-4 mb-20">
-            <span
-              className="text-[48px] leading-none font-display font-semibold text-accent mr-3"
-              aria-hidden="true"
-            >
-              {SYMBOL[currency]}
-            </span>
-            <input
-              type="text"
-              inputMode="decimal"
-              id="donate-amount"
-              aria-label={`Enter donation amount in ${currency === "USD" ? "dollars" : "naira"}`}
-              placeholder="0.00"
-              value={amount}
-              onChange={(e) => onAmountChange(e.target.value)}
-              disabled={pending}
-              className="w-full bg-transparent text-[48px] leading-none font-display font-semibold text-heading placeholder:text-nav-border/50 outline-none border-none"
-            />
-          </div>
-
-          <div className="border-b border-card-divider pb-4 mb-6">
-            <label
-              htmlFor="donate-email"
-              className="block text-small font-sans font-semibold uppercase tracking-[0.7px] text-body-muted mb-2"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="donate-email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={pending}
-              placeholder="you@example.com"
-              className="w-full bg-transparent text-body font-sans text-heading placeholder:text-nav-border/50 outline-none"
-            />
-          </div>
-
-          {error && (
-            <p
-              className="text-small font-sans font-semibold text-red-600 mb-6"
-              role="alert"
-            >
-              {error}
+    <section
+      className="relative overflow-hidden bg-white py-20 lg:py-32"
+      data-node-id="208:3135"
+    >
+      <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-violet-200/30 blur-3xl" />
+      <div className="container-page relative">
+        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-16">
+          <div className="pt-2 tmf-animate-fade-in-up">
+            <p className="eyebrow mb-4 text-xs">Make an impact</p>
+            <h2 className="h2-display text-heading">Choose your gift.</h2>
+            <p className="mt-5 text-base leading-relaxed text-body-muted">
+              Every contribution helps us move talent closer to the opportunity
+              it deserves.
             </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={!isValid || pending}
-            className="btn-donate disabled:opacity-50 disabled:cursor-not-allowed mb-6"
-          >
-            <LockIcon />
-            {pending ? "Processing..." : "Continue to Payment"}
-          </button>
-
-          <div className="flex items-center justify-center gap-1 opacity-40">
-            <ShieldIcon />
-            <ShieldIcon />
-            <span className="text-small font-sans font-semibold tracking-[1px] uppercase text-body-muted">
-              Secured by Paystack
-            </span>
+            <div className="mt-8 border-l-2 border-accent/30 pl-4 text-sm leading-relaxed text-body-muted">
+              Secure checkout powered by trusted payment partners. Your
+              generosity stays focused on people, not overhead.
+            </div>
           </div>
-        </form>
+
+          <div className="tmf-glass-panel rounded-[28px] p-4 sm:p-6 lg:p-8 tmf-animate-fade-in-up delay-150">
+            <form onSubmit={handleSubmit} noValidate>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[1.8px] text-accent">
+                Or enter a custom amount
+              </p>
+
+              <div className="mb-8 grid grid-cols-2 overflow-hidden rounded-xl border border-slate-200 bg-white/70 p-1">
+                {(["USD", "NGN"] as const).map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => onCurrencyChange(option)}
+                    className={`rounded-lg px-4 py-3 text-sm font-semibold transition-all ${
+                      currency === option
+                        ? "bg-accent text-white shadow-md shadow-accent/20"
+                        : "text-body-muted hover:bg-violet-50 hover:text-accent"
+                    }`}
+                  >
+                    {option === "USD" ? "USD ($)" : "NGN (₦)"}
+                  </button>
+                ))}
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white/70 p-5 transition-colors focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/10 sm:p-6">
+                <label
+                  htmlFor="donate-amount"
+                  className="block text-xs font-bold uppercase tracking-[1.5px] text-body-muted"
+                >
+                  Donation amount
+                </label>
+                <div className="mt-3 flex items-baseline gap-3">
+                  <span
+                    className="font-display text-4xl font-semibold text-accent"
+                    aria-hidden="true"
+                  >
+                    {SYMBOL[currency]}
+                  </span>
+                  <input
+                    type="text"
+                    inputMode="decimal"
+                    id="donate-amount"
+                    aria-label={`Enter donation amount in ${currency === "USD" ? "dollars" : "naira"}`}
+                    placeholder="0.00"
+                    value={amount}
+                    onChange={(e) => onAmountChange(e.target.value)}
+                    disabled={pending}
+                    className="w-full bg-transparent font-display text-4xl font-semibold text-heading outline-none placeholder:text-slate-300"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/70 p-5 transition-colors focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/10">
+                <label
+                  htmlFor="donate-email"
+                  className="block text-xs font-bold uppercase tracking-[1.5px] text-body-muted"
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="donate-email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={pending}
+                  placeholder="you@example.com"
+                  className="mt-3 w-full bg-transparent text-body text-heading outline-none placeholder:text-slate-400"
+                />
+              </div>
+
+              {error && (
+                <p
+                  className="mt-4 text-sm font-semibold text-red-600"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={!isValid || pending}
+                className="btn-donate mt-6 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <LockKeyhole className="h-5 w-5" aria-hidden="true" />
+                {pending ? "Processing..." : "Continue to payment"}
+              </button>
+
+              <div className="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold uppercase tracking-[1.2px] text-body-muted/80">
+                <ShieldCheck
+                  className="h-4 w-4 text-accent"
+                  aria-hidden="true"
+                />
+                Secure 256-bit encrypted checkout
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );

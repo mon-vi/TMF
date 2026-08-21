@@ -1,82 +1,102 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ASSETS } from "@/lib/site";
-
-/*
-  NOTE: "Get Involved" is misspelled as "Get Invovlved" (two v's) in the Figma design.
-  Rendering the correct spelling here.
-  TODO(design): confirm exact H1 and lead copy from node 208:3013 (desktop) / 173:7430 (mobile).
-*/
 
 export default function Hero() {
   return (
     <section
-      className="relative bg-panel lg:pt-[104px]"
+      className="relative isolate overflow-hidden bg-panel pt-24 lg:pt-32"
       data-node-id="173:7430"
     >
-      {/* Mobile: image + scrim overlay */}
-      <div className="relative lg:hidden">
-        <img
-          src={ASSETS.homeHero}
-          alt=""
-          aria-hidden="true"
-          className="w-full h-[600px] object-cover"
-        />
-        <div className="absolute inset-0 bg-hero-scrim" />
-        <div className="absolute inset-0 flex flex-col justify-end px-6 pb-12">
-          <h1 className="h1-display text-white mb-4">
-            Empowering Future Leaders
-          </h1>
-          <p className="lead text-white/90 mb-8 max-w-md">
-            Bridging opportunity gaps through strategic philanthropy, full-ride
-            scholarships, and technology education for underserved communities.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link to="/programs" className="btn-solid text-center">
-              Our Programs
-            </Link>
-            <Link to="/get-involved" className="btn-outline text-center">
-              Get Involved
-            </Link>
-          </div>
-        </div>
-      </div>
+      <div className="absolute inset-0 -z-10 tmf-surface-grid opacity-60" />
+      <div className="absolute -left-24 top-24 -z-10 h-72 w-72 rounded-full bg-violet-300/35 blur-3xl tmf-animate-pulse-soft" />
+      <div className="absolute -right-24 top-8 -z-10 h-96 w-96 rounded-full bg-sky-200/35 blur-3xl tmf-animate-float-slow" />
 
-      {/* Desktop: 6/6 grid, panel bg */}
-      <div className="hidden lg:block">
-        <div className="container-page">
-          <div className="grid grid-cols-12 gap-8 min-h-[680px] items-center">
-            <div className="col-span-6 py-20">
-              <h1 className="h1-display text-heading mb-6">
-                Empowering Future Leaders
+      <div className="container-page relative">
+        <div className="grid items-center gap-12 pb-20 lg:grid-cols-12 lg:gap-16 lg:pb-28">
+          <div className="relative z-10 lg:col-span-6">
+            <div className="tmf-animate-fade-in-up">
+              <span className="tmf-glass-chip mb-6 inline-flex items-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-[2.8px] text-accent">
+                Invest in the future
+              </span>
+              <h1 className="h1-display max-w-3xl text-heading">
+                Empowering{" "}
+                <span className="tmf-text-gradient italic">future</span>{" "}
+                leaders.
               </h1>
-              <p className="lead mb-8 max-w-lg">
+              <p className="lead mt-7 max-w-xl text-body-muted">
                 Bridging opportunity gaps through strategic philanthropy,
                 full-ride scholarships, and technology education for underserved
                 communities.
               </p>
-              <div className="flex gap-4">
-                <Link to="/programs" className="btn-solid">
-                  Our Programs
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link to="/programs" className="btn-solid group">
+                  Explore our programs
+                  <ArrowUpRight
+                    className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    aria-hidden="true"
+                  />
                 </Link>
-                <Link
-                  to="/get-involved"
-                  className="btn-outline lg:bg-transparent"
-                >
-                  Get Involved
+                <Link to="/get-involved" className="btn-outline">
+                  Get involved
                 </Link>
               </div>
             </div>
-            <div className="col-span-6">
-              <div className="bg-panel rounded-none">
-                <img
-                  src={ASSETS.homeHero}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-full h-[480px] object-cover"
-                />
+
+            <div className="tmf-glass-panel mt-12 max-w-md p-4 tmf-animate-fade-in-up delay-300">
+              <div>
+                <p className="font-display text-xl font-semibold text-heading">
+                  120+ lives in motion
+                </p>
+                <p className="mt-1 text-sm text-body-muted">
+                  A growing community of bold, future-ready leaders.
+                </p>
               </div>
             </div>
           </div>
+
+          <div className="relative lg:col-span-6">
+            <div className="absolute -right-5 -top-5 z-10 hidden h-24 w-24 rounded-full border border-white/70 bg-white/35 backdrop-blur-md lg:block tmf-animate-float-slow" />
+            <div className="absolute -bottom-6 -left-6 z-10 hidden h-32 w-32 rounded-full bg-accent/20 blur-2xl lg:block tmf-animate-pulse-soft" />
+            <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl tmf-animate-fade-in-up delay-150">
+              <div className="relative overflow-hidden rounded-[22px]">
+                <div
+                  className="h-[440px] w-full bg-gradient-to-br from-violet-950 via-accent to-sky-300 lg:h-[610px]"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 tmf-glass-chip p-4 text-white">
+                  <p className="text-xs font-bold uppercase tracking-[2px] text-white/70">
+                    TalentMakers Foundation
+                  </p>
+                  <p className="mt-1 font-display text-xl">
+                    Talent is universal. Opportunity should be too.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 border-t border-slate-200/70 py-6 sm:grid-cols-4">
+          {[
+            ["50+", "Schools reached"],
+            ["10+", "Active scholars"],
+            ["2023", "Founded"],
+            ["01", "Shared mission"],
+          ].map(([value, label], index) => (
+            <div
+              key={label}
+              className="tmf-animate-fade-in-up"
+              style={{ animationDelay: `${index * 100 + 450}ms` }}
+            >
+              <p className="font-display text-2xl font-semibold text-heading lg:text-3xl">
+                {value}
+              </p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[1.4px] text-body-muted">
+                {label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
