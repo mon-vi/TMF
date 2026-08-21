@@ -13,6 +13,16 @@
   box-shadow: var(--tmf-shadow);
   -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms ease,
+    border-color 420ms ease;
+}
+
+.tmf-page-scope .tmf-glass-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.34);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
 }
 
 .tmf-page-scope .tmf-glass-chip {
@@ -21,6 +31,14 @@
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.1);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease;
+}
+
+.tmf-page-scope .tmf-glass-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
 }
 
 .tmf-page-scope .tmf-mesh-surface {
@@ -120,6 +138,8 @@
     transform: none;
   }
 
+  .tmf-page-scope .tmf-glass-panel:hover,
+  .tmf-page-scope .tmf-glass-chip:hover,
   .tmf-page-scope .tmf-hover-lift:hover {
     transform: none;
   }
