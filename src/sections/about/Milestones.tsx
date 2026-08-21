@@ -1,6 +1,6 @@
+import { ChevronDown, History } from "lucide-react";
 import { useState } from "react";
 import { MILESTONES } from "@/lib/site";
-import { ChevronDown } from "lucide-react";
 
 const MILESTONE_DETAILS: Record<number, string> = {
   2023: "Inception of TalentMakers Foundation. Launched our inaugural scholarship cohort and strategic technology lab partnerships.",
@@ -13,44 +13,42 @@ function AccordionRow({
   year,
   open,
   onToggle,
+  index,
 }: {
   year: number;
   open: boolean;
   onToggle: () => void;
+  index: number;
 }) {
   const panelId = `milestone-${year}`;
-
   return (
-    <div className="bg-white border border-card-divider transition-colors hover:border-accent">
+    <div
+      className="tmf-glass-panel overflow-hidden rounded-2xl tmf-animate-fade-in-up"
+      style={{ animationDelay: `${index * 100 + 120}ms` }}
+    >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between px-6 py-6 lg:px-12 lg:py-8 text-left group"
+        className="group flex w-full items-center justify-between gap-6 px-6 py-6 text-left lg:px-10 lg:py-8"
       >
-        <span className="text-4xl lg:text-6xl font-display font-bold text-accent group-hover:text-accent-hover transition-colors">
+        <span className="font-display text-5xl font-semibold tracking-tight text-accent transition-transform duration-300 group-hover:translate-x-1 lg:text-7xl">
           {year}
         </span>
-        <span className="w-10 h-10 rounded-lg bg-accent-subtle text-accent flex items-center justify-center shrink-0">
-          <ChevronDown
-            className={`w-5 h-5 transition-transform duration-300 ${
-              open ? "rotate-180" : ""
-            }`}
-          />
+        <span
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        >
+          <ChevronDown className="h-5 w-5" aria-hidden="true" />
         </span>
       </button>
-
       <div
         id={panelId}
         role="region"
-        aria-labelledby={`${panelId}-label`}
-        className={`grid transition-all duration-300 ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-8 lg:px-12 lg:pb-8 pt-2 border-t border-card-divider/60 text-base lg:text-lg text-body-muted leading-relaxed">
+          <div className="border-t border-slate-200/70 px-6 pb-8 pt-5 text-base leading-relaxed text-body-muted lg:px-10 lg:text-lg">
             {MILESTONE_DETAILS[year] || `Milestone details for ${year}.`}
           </div>
         </div>
@@ -61,27 +59,35 @@ function AccordionRow({
 
 export default function Milestones() {
   const [openYear, setOpenYear] = useState<number | null>(2023);
-
-  function toggleYear(year: number) {
-    setOpenYear((prev) => (prev === year ? null : year));
-  }
-
   return (
-    <section className="bg-white py-20 lg:py-[120px]" data-node-id="346:1534">
-      <div className="container-page">
-        <div className="text-center mb-12 lg:mb-16">
-          <p className="eyebrow mb-3 text-xs">A Decade of Growth</p>
-          <h2 className="h2-display text-heading">Milestones of Impact</h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-accent" />
+    <section
+      className="relative overflow-hidden bg-white py-20 lg:py-32"
+      data-node-id="346:1534"
+    >
+      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-violet-100/70 blur-3xl" />
+      <div className="container-page relative">
+        <div className="mb-12 flex items-end justify-between gap-8 tmf-animate-fade-in-up">
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <History className="h-5 w-5 text-accent" aria-hidden="true" />
+              <p className="eyebrow text-xs">A decade of growth</p>
+            </div>
+            <h2 className="h2-display text-heading">Milestones of impact.</h2>
+          </div>
+          <span className="hidden font-display text-8xl font-semibold leading-none text-accent/10 sm:block">
+            04
+          </span>
         </div>
-
-        <div className="max-w-4xl mx-auto flex flex-col gap-4">
-          {MILESTONES.map((year) => (
+        <div className="mx-auto flex max-w-5xl flex-col gap-4">
+          {MILESTONES.map((year, index) => (
             <AccordionRow
               key={year}
               year={year}
+              index={index}
               open={openYear === year}
-              onToggle={() => toggleYear(year)}
+              onToggle={() =>
+                setOpenYear((prev) => (prev === year ? null : year))
+              }
             />
           ))}
         </div>

@@ -1,24 +1,37 @@
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-panel py-20 lg:py-[120px]" data-node-id="173:7482">
-      <div className="container-page max-w-4xl mx-auto">
-        <div className="bg-white border border-card-divider p-10 lg:p-16 text-center shadow-md">
-          <p className="eyebrow mb-4 text-xs">Join Us Today</p>
-          <h2 className="h2-display text-heading mb-6 max-w-2xl mx-auto">
+    <section
+      className="relative overflow-hidden bg-panel py-20 lg:py-32"
+      data-node-id="173:7482"
+    >
+      <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-violet-300/30 blur-3xl tmf-animate-pulse-soft" />
+      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl tmf-animate-float-slow" />
+      <div className="container-page relative">
+        <div className="tmf-mesh-surface tmf-glass-panel mx-auto max-w-5xl rounded-[28px] p-8 text-center sm:p-12 lg:p-20 tmf-animate-fade-in-up">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-white shadow-lg shadow-accent/20">
+            <Sparkles className="h-6 w-6" aria-hidden="true" />
+          </div>
+          <p className="eyebrow mt-6 text-xs">Join us today</p>
+          <h2 className="h2-display mx-auto mt-4 max-w-2xl text-heading">
             Ready to make a lasting impact?
           </h2>
-          <p className="lead mb-10 max-w-2xl mx-auto text-body-muted text-base lg:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-body-muted">
             Your donation fuels scholarships, mentorships, and technology for
             those who will define tomorrow.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/donate" className="btn-solid px-12 py-4">
-              Invest in the Future
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link to="/donate" className="btn-solid group">
+              Invest in the future{" "}
+              <ArrowUpRight
+                className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                aria-hidden="true"
+              />
             </Link>
-            <Link to="/get-involved" className="btn-outline px-10 py-4">
-              Get Involved
+            <Link to="/get-involved" className="btn-outline">
+              Get involved
             </Link>
           </div>
         </div>

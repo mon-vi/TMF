@@ -1,37 +1,52 @@
+import { Eye, Target } from "lucide-react";
 import { MISSION_VISION } from "@/lib/site";
-import { Target, Eye } from "lucide-react";
 
 export default function MissionVision() {
   return (
     <section
-      className="bg-panel py-20 lg:py-[120px] border-y border-card-divider"
+      id="mission"
+      className="relative overflow-hidden border-y border-slate-200/70 bg-panel py-20 lg:py-32"
       data-node-id="208:3473"
     >
-      <div className="container-page">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {MISSION_VISION.map((item) => {
+      <div className="absolute inset-0 tmf-surface-grid opacity-40" />
+      <div className="container-page relative">
+        <div className="mb-12 max-w-2xl tmf-animate-fade-in-up">
+          <p className="eyebrow mb-4 text-xs">What guides us</p>
+          <h2 className="h2-display text-heading">Purpose, made practical.</h2>
+          <p className="mt-5 text-lg leading-relaxed text-body-muted">
+            The belief system behind every scholarship, partnership, and
+            opportunity we create.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {MISSION_VISION.map((item, index) => {
             const isTarget = item.icon === "target";
             return (
-              <div
+              <article
                 key={item.title}
-                className="bg-white border border-card-divider p-8 lg:p-14 flex flex-col gap-6 shadow-sm hover:border-accent transition-colors"
+                className="tmf-glass-panel group rounded-[24px] p-7 tmf-hover-lift lg:p-10 tmf-animate-fade-in-up"
+                style={{ animationDelay: `${index * 150 + 120}ms` }}
               >
-                {/* 8px rounded icon container with #F3E8FF background and #6B21A8 icon */}
-                <div className="w-14 h-14 rounded-lg bg-accent-subtle text-accent flex items-center justify-center">
-                  {isTarget ? (
-                    <Target className="w-7 h-7 stroke-[1.8]" />
-                  ) : (
-                    <Eye className="w-7 h-7 stroke-[1.8]" />
-                  )}
+                <div className="flex items-start justify-between">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                    {isTarget ? (
+                      <Target className="h-7 w-7 stroke-[1.8]" />
+                    ) : (
+                      <Eye className="h-7 w-7 stroke-[1.8]" />
+                    )}
+                  </div>
+                  <span className="font-display text-6xl font-semibold text-accent/10">
+                    0{index + 1}
+                  </span>
                 </div>
-
-                <h3 className="text-2xl lg:text-3xl font-display font-semibold text-heading">
+                <h3 className="mt-10 font-display text-3xl font-semibold text-heading">
                   {item.title}
                 </h3>
-                <p className="text-body text-body-muted leading-relaxed">
+                <p className="mt-5 text-base leading-relaxed text-body-muted lg:text-lg">
                   {item.body}
                 </p>
-              </div>
+              </article>
             );
           })}
         </div>

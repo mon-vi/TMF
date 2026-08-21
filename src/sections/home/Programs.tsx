@@ -1,73 +1,75 @@
-import { Link } from "react-router-dom";
-import { PROGRAMS, ASSETS } from "@/lib/site";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ASSETS, PROGRAMS } from "@/lib/site";
 
 export default function Programs() {
   return (
-    <section className="bg-panel py-20 lg:py-[120px]" data-node-id="173:7440">
-      <div className="container-page">
-        {/* Header row */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16">
-          <div>
-            <p className="eyebrow mb-3 text-xs">Actionable Change</p>
+    <section
+      className="relative overflow-hidden bg-panel py-20 lg:py-32"
+      data-node-id="173:7440"
+    >
+      <div className="absolute inset-0 tmf-surface-grid opacity-40" />
+      <div className="container-page relative">
+        <div className="mb-12 flex flex-col gap-6 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl tmf-animate-fade-in-up">
+            <p className="eyebrow mb-4 text-xs">Actionable change</p>
             <h2 className="h2-display text-heading">
               Programs designed for impact.
             </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-body-muted">
+              Practical pathways that turn curiosity into capability, and
+              capability into leadership.
+            </p>
           </div>
           <Link
             to="/programs"
-            className="inline-flex items-center gap-2 text-sm font-sans font-semibold tracking-[0.7px] text-accent mt-4 lg:mt-0 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3"
           >
-            <span>View All Programs</span>
-            <ArrowRight className="w-4 h-4" />
+            View all programs{" "}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
-          {PROGRAMS.map((program) => (
-            <div
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {PROGRAMS.map((program, index) => (
+            <article
               key={program.title}
-              className="flex flex-col bg-white p-6 lg:p-8 rounded-none border border-card-divider shadow-sm hover:border-accent transition-colors group"
+              className="tmf-glass-panel group rounded-[24px] p-3 tmf-hover-lift tmf-animate-fade-in-up"
+              style={{ animationDelay: `${index * 150 + 120}ms` }}
             >
-              {/* Image container with rounded-2xl imagery */}
-              <div className="w-full h-[280px] lg:h-[340px] rounded-2xl overflow-hidden shadow-inner bg-panel relative">
+              <div className="relative h-[280px] overflow-hidden rounded-[18px] lg:h-[350px]">
                 <img
                   src={program.image || ASSETS.defaultProgram}
                   alt={program.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
+                <span className="absolute left-5 top-5 rounded-full border border-white/40 bg-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[1.6px] text-white backdrop-blur-md">
+                  0{index + 1} · Pathway
+                </span>
               </div>
-
-              <div className="pt-8 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-2xl lg:text-3xl font-display font-semibold text-heading group-hover:text-accent transition-colors">
-                    {program.title}
-                  </h3>
-
-                  <p
-                    className="text-body text-body-muted mt-3 mb-6 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: program.description }}
-                  />
-                </div>
-
-                <div className="pt-4 border-t border-card-divider flex items-center justify-between">
+              <div className="p-5 sm:p-7">
+                <h3 className="font-display text-3xl font-semibold text-heading transition-colors group-hover:text-accent">
+                  {program.title}
+                </h3>
+                <p
+                  className="mt-4 text-base leading-relaxed text-body-muted"
+                  dangerouslySetInnerHTML={{ __html: program.description }}
+                />
+                <div className="mt-7 border-t border-slate-200 pt-5">
                   <Link
                     to={program.href}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:gap-3"
                   >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4" />
+                    Learn more{" "}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
-
-
