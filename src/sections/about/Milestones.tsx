@@ -64,9 +64,7 @@ function AccordionRow({
         role="region"
         aria-labelledby={`${panelId}-label`}
         className={`grid transition-all duration-300 ${
-          open
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">

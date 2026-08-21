@@ -3,3 +3,8 @@ node_modules/
 AGENTS.md
 CLAUDE.md
 .env
+dist/
+coverage/
+test-results/
+playwright-report/
+blob-report/

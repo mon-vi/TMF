@@ -29,51 +29,61 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 border-b border-nav-border bg-nav-tint backdrop-blur-md"
-      data-node-id="189:890"
-    >
-      <nav className="container-page flex items-center justify-between h-[79px] lg:h-[104px]">
-        <Link to="/" aria-label="TalentMakers Foundation home">
-          <img src={ASSETS.logo} alt="TalentMakers Foundation" className="h-10 w-auto" />
-        </Link>
-
-        {/* Desktop links */}
-        <div className="hidden lg:flex lg:items-center lg:gap-8">
-          {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.href}
-              to={link.href}
-              className={({ isActive }) =>
-                `text-small transition-opacity hover:opacity-70 ${
-                  isActive ? "font-semibold text-accent" : "text-ink/80"
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-          <Link
-            to="/donate"
-            className="btn-solid text-small ml-4"
-          >
-            Donate
+    <>
+      <header
+        className="fixed top-0 left-0 right-0 z-50 border-b border-nav-border bg-nav-tint backdrop-blur-md"
+        data-node-id="189:890"
+      >
+        <nav className="container-page flex items-center justify-between h-[79px] lg:h-[104px]">
+          <Link to="/" aria-label="TalentMakers Foundation home">
+            <img
+              src={ASSETS.logo}
+              alt="TalentMakers Foundation"
+              className="h-10 w-auto"
+            />
           </Link>
-        </div>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label="Open navigation menu"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(true)}
-          className="lg:hidden"
-        >
-          <img src={ASSETS.menuIcon} alt="" aria-hidden="true" className="h-6 w-6" />
-        </button>
-      </nav>
+          {/* Desktop links */}
+          <div className="hidden lg:flex lg:items-center lg:gap-8">
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.href}
+                to={link.href}
+                className={({ isActive }) =>
+                  `text-small transition-opacity hover:opacity-70 ${
+                    isActive ? "font-semibold text-accent" : "text-ink/80"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            <Link to="/donate" className="btn-solid text-small ml-4">
+              Donate
+            </Link>
+          </div>
 
-      {/* Mobile full-screen overlay */}
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+            className="lg:hidden"
+          >
+            <img
+              src={ASSETS.menuIcon}
+              alt=""
+              aria-hidden="true"
+              className="h-6 w-6"
+            />
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile full-screen overlay — must live outside <header>: the header's
+        backdrop-blur creates a containing block that would confine this
+        fixed-position overlay to the 79px header strip. */}
       {menuOpen && (
         <div
           className="fixed inset-0 z-50 lg:hidden"
@@ -110,16 +120,12 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            <Link
-              to="/donate"
-              onClick={closeMenu}
-              className="btn-solid mt-4"
-            >
+            <Link to="/donate" onClick={closeMenu} className="btn-solid mt-4">
               Donate
             </Link>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

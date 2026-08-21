@@ -20,9 +20,9 @@ don't split one into three.
 ## Component shape
 
 ```tsx
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const ITEMS = [ /* content lifted from the design */ ];
+const ITEMS = [/* content lifted from the design */];
 
 export default function SectionName() {
   return (
@@ -55,8 +55,8 @@ Rules:
 Use the `@/` alias, which maps to `src/`. No `../../` chains.
 
 ```tsx
-import Hero from '@/sections/home/Hero';   // yes
-import Hero from '../sections/home/Hero';  // no
+import Hero from "@/sections/home/Hero"; // yes
+import Hero from "../sections/home/Hero"; // no
 ```
 
 ## Routes

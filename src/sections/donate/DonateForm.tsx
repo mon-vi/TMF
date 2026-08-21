@@ -1,4 +1,9 @@
-import { useState, type FormEvent, type Dispatch, type SetStateAction } from "react";
+import {
+  useState,
+  type FormEvent,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { stripePromise } from "@/lib/stripe";
 import { openPaystackPopup } from "@/lib/payment";
@@ -132,10 +137,7 @@ export default function DonateForm({
   }
 
   return (
-    <section
-      className="bg-white py-16 lg:py-[120px]"
-      data-node-id="208:3135"
-    >
+    <section className="bg-white py-16 lg:py-[120px]" data-node-id="208:3135">
       <div className="container-page lg:max-w-[640px]">
         <form onSubmit={handleSubmit} noValidate>
           <p className="text-h4 font-sans font-semibold uppercase tracking-[0.7px] text-body-muted mb-6">
@@ -206,7 +208,10 @@ export default function DonateForm({
           </div>
 
           {error && (
-            <p className="text-small font-sans font-semibold text-red-600 mb-6" role="alert">
+            <p
+              className="text-small font-sans font-semibold text-red-600 mb-6"
+              role="alert"
+            >
               {error}
             </p>
           )}

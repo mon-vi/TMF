@@ -44,10 +44,7 @@ export default function CinematicHero() {
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        <div
-          className="absolute inset-0 bg-ink"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 bg-ink" aria-hidden="true" />
       )}
 
       {/* Scrim */}

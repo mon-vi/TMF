@@ -21,10 +21,7 @@ interface Props {
 
 export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
   return (
-    <section
-      className="bg-panel lg:pt-[104px]"
-      data-node-id="208:3110"
-    >
+    <section className="bg-panel lg:pt-[104px]" data-node-id="208:3110">
       <div className="container-page">
         {/* Mobile: image first */}
         <div className="lg:hidden mb-10">
@@ -91,10 +88,7 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
                 className="w-full h-[640px] object-cover"
               />
             ) : (
-              <div
-                className="w-full h-[640px] bg-ink/10"
-                aria-hidden="true"
-              />
+              <div className="w-full h-[640px] bg-ink/10" aria-hidden="true" />
             )}
           </div>
         </div>
