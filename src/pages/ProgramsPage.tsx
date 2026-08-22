@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PROGRAMS, METRICS } from "@/lib/site";
+import { PROGRAMS, METRICS, ASSETS } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import {
   Check,
@@ -10,8 +10,6 @@ import {
   Users,
   BookOpen,
 } from "lucide-react";
-import techSparkImg from "@/assets/tech-spark.png";
-import tmfScholarshipImg from "@/assets/tmf-scholarship.jpg";
 import "@/styles/tmf-premium-pages.css";
 
 const ELIGIBILITY_PILLARS = [
@@ -35,7 +33,7 @@ const TECH_SPARK_TRACKS = [
   },
 ] as const;
 
-const PROGRAM_IMAGES = [tmfScholarshipImg, techSparkImg];
+const PROGRAM_IMAGES = [ASSETS.scholarship, ASSETS.techSpark];
 
 const METRIC_ICONS = [Users, BookOpen, GraduationCap];
 
@@ -161,7 +159,7 @@ export default function ProgramsPage() {
 
                 <Link
                   to={PROGRAMS[0].href}
-                  className="btn-solid tmf-link-arrow mt-11 inline-flex items-center gap-3 rounded-none hover:bg-accent/90"
+                  className="btn-solid tmf-link-arrow mt-11 inline-flex items-center gap-3  hover:bg-accent/90"
                 >
                   Apply Now
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -180,7 +178,7 @@ export default function ProgramsPage() {
                   />
                 </figure>
                 {/* Overlapping sharp block breaking the grid — Pattern #14 */}
-                <div className="absolute bottom-0 left-0 rounded-none bg-accent p-6 shadow-overlay sm:p-8">
+                <div className="absolute bottom-0 left-0  bg-accent p-6 shadow-overlay sm:p-8">
                   <p className="font-display text-stat font-semibold leading-none text-white">
                     100%
                   </p>
@@ -210,7 +208,7 @@ export default function ProgramsPage() {
                     loading="lazy"
                   />
                 </figure>
-                <div className="absolute bottom-0 right-0 rounded-none bg-accent p-6 shadow-overlay sm:p-8">
+                <div className="absolute bottom-0 right-0  bg-accent p-6 shadow-overlay sm:p-8">
                   <p className="font-display text-stat font-semibold leading-none text-white">
                     50+
                   </p>
@@ -274,7 +272,7 @@ export default function ProgramsPage() {
 
                 <Link
                   to={PROGRAMS[1].href}
-                  className="btn-outline tmf-link-arrow mt-11 inline-flex items-center gap-3 rounded-none"
+                  className="btn-outline tmf-link-arrow mt-11 inline-flex items-center gap-3 "
                 >
                   Learn More
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -301,7 +299,7 @@ export default function ProgramsPage() {
 
         <div className="container-page relative">
           <Reveal>
-            <figure className="mx-auto max-w-4xl rounded-none border border-white/25 bg-white/10 px-8 py-12 text-center shadow-overlay backdrop-blur-md sm:px-14 lg:py-16">
+            <figure className="mx-auto max-w-4xl  border border-white/25 bg-white/10 px-8 py-12 text-center shadow-overlay backdrop-blur-md sm:px-14 lg:py-16">
               <span
                 className="mb-8 block font-display text-6xl leading-none text-tmf-secondary"
                 aria-hidden="true"

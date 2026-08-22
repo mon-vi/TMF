@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LenisProvider from "@/lib/motion/LenisProvider";
+import ScrollToTop from "@/lib/motion/ScrollToTop";
+import ScrollProgress from "@/components/ScrollProgress";
 import Home from "@/pages/Home";
 import Donate from "@/pages/Donate";
 import DonateThankYou from "@/pages/DonateThankYou";
@@ -13,18 +16,22 @@ import GetInvolved from "@/pages/GetInvolved";
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/donate/thank-you" element={<DonateThankYou />} />
-        <Route path="/programs" element={<ProgramsPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/get-involved" element={<GetInvolved />} />
-      </Routes>
-      <Footer />
+      <LenisProvider>
+        <ScrollToTop />
+        <ScrollProgress />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/donate/thank-you" element={<DonateThankYou />} />
+          <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/get-involved" element={<GetInvolved />} />
+        </Routes>
+        <Footer />
+      </LenisProvider>
     </BrowserRouter>
   );
 }

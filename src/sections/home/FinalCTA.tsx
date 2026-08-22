@@ -1,5 +1,56 @@
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { gsap, prefersReducedMotion } from "@/lib/motion/gsapSetup";
+
+function MagneticLink({
+  to,
+  className = "",
+  children,
+}: {
+  to: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  const ref = useRef<HTMLAnchorElement | null>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px) and (pointer: fine)", () => {
+      const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3" });
+      const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3" });
+
+      const move = (event: PointerEvent) => {
+        const rect = el.getBoundingClientRect();
+        xTo((event.clientX - rect.left - rect.width / 2) * 0.22);
+        yTo((event.clientY - rect.top - rect.height / 2) * 0.32);
+      };
+      const reset = () => {
+        xTo(0);
+        yTo(0);
+      };
+
+      el.addEventListener("pointermove", move);
+      el.addEventListener("pointerleave", reset);
+      return () => {
+        el.removeEventListener("pointermove", move);
+        el.removeEventListener("pointerleave", reset);
+      };
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  return (
+    <Link ref={ref} to={to} viewTransition className={className}>
+      {children}
+    </Link>
+  );
+}
 
 export default function FinalCTA() {
   return (
@@ -13,23 +64,24 @@ export default function FinalCTA() {
         <div className="tmf-mesh-surface tmf-glass-panel mx-auto max-w-5xl rounded-[28px] p-8 text-center sm:p-12 lg:p-20 tmf-animate-fade-in-up">
           <p className="eyebrow mt-6 text-xs">Join us today</p>
           <h2 className="h2-display mx-auto mt-4 max-w-2xl text-heading">
-            Ready to make a lasting impact?
+            Ready to make a{" "}
+            <span className="tmf-text-gradient italic">lasting impact?</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-body-muted">
             Your donation fuels scholarships, mentorships, and technology for
             those who will define tomorrow.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link to="/donate" className="btn-solid group">
+            <MagneticLink to="/donate" className="btn-solid group">
               Invest in the future{" "}
               <ArrowUpRight
                 className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                 aria-hidden="true"
               />
-            </Link>
-            <Link to="/get-involved" className="btn-outline">
+            </MagneticLink>
+            <MagneticLink to="/get-involved" className="btn-outline">
               Get involved
-            </Link>
+            </MagneticLink>
           </div>
         </div>
       </div>

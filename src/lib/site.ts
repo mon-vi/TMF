@@ -1,14 +1,22 @@
-// Figma MCP asset URLs — extracted 21 Jul 2026, expire ~28 Jul 2026
+// Real assets exported to /public/assets (user-supplied, Aug 2026).
 export const ASSETS = {
-  logo: "https://www.figma.com/api/mcp/asset/fe892f45-a432-4636-93b0-2aa07513507e",
-  menuIcon:
-    "https://www.figma.com/api/mcp/asset/811e57ff-9893-4106-ab10-04569b788c98",
-  homeHero:
-    "https://www.figma.com/api/mcp/asset/a0bd6469-5874-4139-a326-e4adeb2b390a",
-  defaultProgram:
-    "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-  donateHero: "",
-  aboutHero: "",
+  logo: "/assets/logo.jpg",
+  homeHero: "/assets/hero.jpg",
+  aboutHero: "/assets/about-hero.jpg",
+  donateHero: "/assets/donate-hero.jpg",
+  eventsHero: "/assets/events-hero.jpg",
+  getInvolvedHero: "/assets/get-involved-hero.jpg",
+  scholarshipHero: "/assets/scholarship-hero.jpg",
+  scholarship: "/assets/scholarship.jpg",
+  techSpark: "/assets/tech-spark.jpg",
+  techSparkBanner: "/assets/tech-spark-banner.jpg",
+  catalystEffect: "/assets/catalyst-effect.jpg",
+  lifeAtTheSpark: [
+    "/assets/life-at-the-spark-1.jpg",
+    "/assets/life-at-the-spark-2.jpg",
+    "/assets/life-at-the-spark-3.jpg",
+    "/assets/life-at-the-spark-4.jpg",
+  ],
   boardPortrait: "",
 } as const;
 
@@ -44,28 +52,40 @@ export const PROGRAMS = [
     description:
       "Academic excellence shouldn’t be limited by financial boundaries. We provide full-ride scholarships to the world’s leading institutions.",
     href: "/programs/scholarship",
-    image: "",
+    image: "/assets/scholarship.jpg",
   },
   {
     title: "Tech Spark",
     description:
       "Equipping the next generation of engineers with high-performance computing access, mentorship, and industry-standard labs.",
     href: "/programs/tech-spark",
-    image: "",
+    image: "/assets/tech-spark.jpg",
   },
 ] as const;
 
 export const ALUMNI = [
-  "Chinonso N. Tom",
-  "Samuel O. Oghenekaro",
-  "Thankgod U. Ugochukwu",
-  "Jumbo A. Mirabel",
-  "Ugo D. Ebipadou",
-  "Innocent A. Emmanuel",
-  "Ambaiowei P. Solomon",
-  "Samuel I. Daniel",
-  "Koki N. Saviour",
-  "Obulor T. Destiny",
+  { name: "Chinonso N. Tom", image: "/assets/alumni/chinonso-n-tom.jpg" },
+  {
+    name: "Samuel O. Oghenekaro",
+    image: "/assets/alumni/samuel-o-oghenekaro.jpg",
+  },
+  {
+    name: "Thankgod U. Ugochukwu",
+    image: "/assets/alumni/thankgod-u-ugochukwu.jpg",
+  },
+  { name: "Jumbo A. Mirabel", image: "/assets/alumni/jumbo-a-mirabel.jpg" },
+  { name: "Ugo D. Ebipadou", image: "/assets/alumni/ugo-d-ebipadou.jpg" },
+  {
+    name: "Innocent A. Emmanuel",
+    image: "/assets/alumni/innocent-a-emmanuel.jpg",
+  },
+  {
+    name: "Ambaiowei P. Solomon",
+    image: "/assets/alumni/ambaiowei-p-solomon.jpg",
+  },
+  { name: "Samuel I. Daniel", image: "/assets/alumni/samuel-i-daniel.jpg" },
+  { name: "Koki N. Saviour", image: "/assets/alumni/koki-n-saviour.jpg" },
+  { name: "Obulor T. Destiny", image: "/assets/alumni/obulor-t-destiny.jpg" },
 ] as const;
 
 export const FOOTER_QUICK_LINKS = [
@@ -117,7 +137,8 @@ export const MISSION_VISION = [
   },
 ] as const;
 
-export const MILESTONES = [2023, 2024, 2025, 2026] as const;
+// Displayed newest-first on About (user-directed, Aug 2026 — Figma order was ascending).
+export const MILESTONES = [2026, 2025, 2024, 2023] as const;
 
 export const BOARD_MEMBER = {
   name: "Omotoyosi E. Oluwatosin",
