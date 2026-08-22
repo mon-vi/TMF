@@ -16,10 +16,29 @@ export default {
         "surface-light": "#F6FAFF", // Verified (node) — nav-tint at full opacity; Mission/Vision + Board bg
         mint: "#9CF5C1", // Verified (node) — About hero eyebrow, not accent; hero-specific
         "preset-border": "#BEC9BF", // Verified (node) — Donate preset card borders (full-opacity nav-border green)
+        tmf: {
+          primary: "var(--color-brand-primary)",
+          "primary-hover": "var(--color-brand-primary-hover)",
+          secondary: "var(--color-brand-secondary)",
+          page: "var(--color-background-base)",
+          surface: "var(--color-surface)",
+          "text-primary": "var(--color-text-primary)",
+          "text-secondary": "var(--color-text-secondary)",
+          "text-accent": "var(--color-text-accent)",
+          "text-muted": "var(--color-text-muted)",
+          line: "var(--color-border-default)",
+          "icon-wash": "var(--color-icon-wash)",
+        },
       },
       fontFamily: {
         display: ['"Playfair Display"', "serif"],
         sans: ['"Public Sans"', "sans-serif"],
+        ui: ["Inter", "system-ui", "sans-serif"],
+      },
+      borderRadius: {
+        ui: "var(--radius-ui)",
+        icon: "var(--radius-icon)",
+        image: "var(--radius-image)",
       },
       fontSize: {
         h1: ["44px", { lineHeight: "52px", letterSpacing: "-0.44px" }],
@@ -55,6 +74,7 @@ export default {
       },
       boxShadow: {
         card: "0px 0px 2px rgba(0,0,0,0.25)", // Verified (node) — Timeline card shadow
+        overlay: "var(--shadow-overlay)",
       },
     },
   },

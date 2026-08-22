@@ -1,4 +1,4 @@
-/* Page-scoped visual layer for Home, About Us, and Donate Us only. */
+/* Page-scoped visual layer for Home, About Us, Programs, and Donate Us. */
 .tmf-page-scope {
   --tmf-primary: #6b21a8;
   --tmf-primary-dark: #581c87;
@@ -141,6 +141,93 @@
   .tmf-page-scope .tmf-glass-panel:hover,
   .tmf-page-scope .tmf-glass-chip:hover,
   .tmf-page-scope .tmf-hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* --- Programs page additions ------------------------------------------- */
+
+.tmf-page-scope .tmf-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.tmf-page-scope .tmf-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tmf-page-scope .tmf-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.tmf-page-scope .tmf-aurora-drift {
+  animation:
+    tmf-float-slow 9s ease-in-out infinite,
+    tmf-pulse-soft 6s ease-in-out infinite;
+}
+
+.tmf-page-scope .tmf-image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-image);
+  box-shadow: var(--tmf-shadow);
+  transform: translateZ(0);
+}
+
+.tmf-page-scope .tmf-image-frame img {
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.tmf-page-scope
+  .group:hover
+  .tmf-image-frame img,
+.tmf-page-scope .tmf-image-frame:hover img {
+  transform: scale(1.05);
+}
+
+.tmf-page-scope .tmf-link-arrow svg {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tmf-page-scope .tmf-link-arrow:hover svg {
+  transform: translateX(4px);
+}
+
+.tmf-page-scope .tmf-check-pop {
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 350ms ease,
+    color 350ms ease;
+}
+
+.tmf-page-scope li:hover .tmf-check-pop {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmf-page-scope .tmf-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .tmf-page-scope .tmf-aurora-drift,
+  .tmf-page-scope .tmf-image-frame img,
+  .tmf-page-scope .tmf-check-pop {
+    animation: none;
+    transition: none;
+  }
+
+  .tmf-page-scope .tmf-link-arrow:hover svg {
     transform: none;
   }
 }
