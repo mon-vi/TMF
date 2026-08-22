@@ -1,15 +1,36 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Menu } from "lucide-react";
 import { ASSETS, NAV_LINKS } from "@/lib/site";
+import { getLenis } from "@/lib/motion/lenisInstance";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    const lenis = getLenis();
+    if (menuOpen) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
     return () => {
       document.body.style.overflow = "";
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) < 8) return;
+      setNavHidden(!menuOpen && y > lastY && y > 140);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [menuOpen]);
 
   useEffect(() => {
@@ -25,9 +46,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-nav-border bg-nav-tint backdrop-blur-md">
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b border-nav-border bg-nav-tint backdrop-blur-md transition-transform duration-300 ${
+          navHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <nav className="container-page flex h-[79px] items-center justify-between lg:h-[104px]">
-          <Link to="/" aria-label="TalentMakers Foundation home">
+          <Link to="/" viewTransition aria-label="TalentMakers Foundation home">
             <img
               src={ASSETS.logo}
               alt="TalentMakers Foundation"
@@ -38,6 +63,7 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.href}
+                viewTransition
                 to={link.href}
                 className={({ isActive }) =>
                   `text-small transition-opacity hover:opacity-70 ${isActive ? "font-semibold text-accent" : "text-ink/80"}`
@@ -48,13 +74,18 @@ export default function Navbar() {
             ))}
             <NavLink
               to="/get-involved"
+              viewTransition
               className={({ isActive }) =>
                 `text-small transition-opacity hover:opacity-70 ${isActive ? "font-semibold text-accent" : "text-ink/80"}`
               }
             >
               Get Involved
             </NavLink>
-            <Link to="/donate" className="btn-solid ml-4 text-small">
+            <Link
+              to="/donate"
+              viewTransition
+              className="btn-solid ml-4 text-small"
+            >
               Donate
             </Link>
           </div>
@@ -65,12 +96,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(true)}
             className="lg:hidden"
           >
-            <img
-              src={ASSETS.menuIcon}
-              alt=""
-              aria-hidden="true"
-              className="h-6 w-6"
-            />
+            <Menu className="h-6 w-6 text-ink" aria-hidden="true" />
           </button>
         </nav>
       </header>
@@ -97,6 +123,7 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.href}
+                viewTransition
                 to={link.href}
                 onClick={closeMenu}
                 className={({ isActive }) =>
@@ -108,6 +135,7 @@ export default function Navbar() {
             ))}
             <NavLink
               to="/get-involved"
+              viewTransition
               onClick={closeMenu}
               className={({ isActive }) =>
                 `text-h4 font-medium transition-opacity hover:opacity-70 ${isActive ? "font-semibold text-accent" : "text-heading"}`
@@ -115,7 +143,12 @@ export default function Navbar() {
             >
               Get Involved
             </NavLink>
-            <Link to="/donate" onClick={closeMenu} className="btn-solid mt-4">
+            <Link
+              to="/donate"
+              viewTransition
+              onClick={closeMenu}
+              className="btn-solid mt-4"
+            >
               Donate
             </Link>
           </div>

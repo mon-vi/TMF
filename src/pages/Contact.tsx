@@ -92,8 +92,8 @@ export default function Contact() {
                 Get in <span className="tmf-text-gradient">Touch.</span>
               </h1>
               <p className="mt-7 max-w-md text-lg leading-relaxed text-body-muted lg:text-lead-lg">
-                Whether you are a donor, a prospective scholar, or a partner,
-                we are here to listen.
+                Whether you are a donor, a prospective scholar, or a partner, we
+                are here to listen.
               </p>
 
               <div className="mt-10 space-y-4">
@@ -144,7 +144,7 @@ export default function Contact() {
                         setFormData({ ...INITIAL_FORM });
                         setSubmitted(false);
                       }}
-                      className="btn-outline mt-9 rounded-none transition-colors hover:bg-accent/5"
+                      className="btn-outline mt-9  transition-colors hover:bg-accent/5"
                     >
                       Send Another Message
                     </button>
@@ -223,7 +223,7 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="btn-solid w-full rounded-none tracking-[0.7px] transition-colors hover:bg-accent/90"
+                      className="btn-solid w-full  tracking-[0.7px] transition-colors hover:bg-accent/90"
                     >
                       Send Message
                     </button>
@@ -274,7 +274,10 @@ export default function Contact() {
                   className="tmf-link-arrow mt-3 inline-flex items-center gap-2 font-display text-h3 font-medium text-white underline-offset-8 hover:underline sm:text-h3-lg"
                 >
                   info@talentmakers.org
-                  <ArrowUpRight className="h-6 w-6 shrink-0" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="h-6 w-6 shrink-0"
+                    aria-hidden="true"
+                  />
                 </a>
 
                 <div className="mt-9 border-t border-white/20 pt-7">

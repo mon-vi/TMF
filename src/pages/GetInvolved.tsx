@@ -107,14 +107,14 @@ export default function GetInvolved() {
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   to="/contact"
-                  className="btn-solid tmf-link-arrow inline-flex items-center gap-3 rounded-none transition-colors hover:bg-accent/90"
+                  className="btn-solid tmf-link-arrow inline-flex items-center gap-3  transition-colors hover:bg-accent/90"
                 >
                   Get Involved
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <Link
                   to="/donate"
-                  className="btn-outline rounded-none transition-colors hover:bg-accent/5"
+                  className="btn-outline  transition-colors hover:bg-accent/5"
                 >
                   Donate Today
                 </Link>
@@ -125,14 +125,14 @@ export default function GetInvolved() {
               <div className="group relative pb-14 pr-6 sm:pr-12">
                 <figure className="tmf-image-frame aspect-[4/5] sm:aspect-[5/5] bg-white">
                   <img
-                    src={ASSETS.homeHero}
+                    src={ASSETS.getInvolvedHero}
                     alt="The TalentMakers community gathered together"
                     className="h-full w-full object-cover object-center"
                     loading="lazy"
                   />
                 </figure>
                 {/* Floating glass metric chip */}
-                <div className="absolute bottom-0 left-0 rounded-none border border-white/25 bg-white/15 p-5 shadow-overlay backdrop-blur-md sm:p-6">
+                <div className="absolute bottom-0 left-0  border border-white/25 bg-white/15 p-5 shadow-overlay backdrop-blur-md sm:p-6">
                   <p className="font-display text-stat font-semibold leading-none text-heading">
                     120+
                   </p>
@@ -231,14 +231,14 @@ export default function GetInvolved() {
               <div className="group relative pb-20 pr-6 sm:pr-12">
                 <figure className="tmf-image-frame aspect-[4/5] sm:aspect-[5/5] bg-white">
                   <img
-                    src={ASSETS.defaultProgram}
+                    src={ASSETS.catalystEffect}
                     alt="Mentor guiding a scholar through their work"
                     className="h-full w-full object-cover object-center"
                     loading="lazy"
                   />
                 </figure>
                 {/* Overlapping sharp block breaking the grid — Pattern #14 */}
-                <blockquote className="absolute bottom-0 left-0 max-w-xs rounded-none bg-accent p-7 shadow-overlay sm:max-w-sm sm:p-9">
+                <blockquote className="absolute bottom-0 left-0 max-w-xs  bg-accent p-7 shadow-overlay sm:max-w-sm sm:p-9">
                   <p className="font-display text-lg italic leading-snug text-white sm:text-xl">
                     &ldquo;Talent is universal, opportunity is not.&rdquo;
                   </p>

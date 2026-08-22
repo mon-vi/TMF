@@ -1,5 +1,5 @@
 import { ArrowRight, Heart } from "lucide-react";
-import { DONATE_PRESETS } from "@/lib/site";
+import { ASSETS, DONATE_PRESETS } from "@/lib/site";
 
 function currencySymbol(c: "USD" | "NGN") {
   return c === "USD" ? "$" : "₦";
@@ -75,9 +75,10 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
           <div className="order-1 lg:order-2 lg:col-span-6 tmf-animate-fade-in-up delay-150">
             <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl">
               <div className="relative overflow-hidden rounded-[22px]">
-                <div
-                  className="h-[400px] w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300 lg:h-[600px]"
-                  aria-hidden="true"
+                <img
+                  src={ASSETS.donateHero}
+                  alt="A scholar whose path was opened by donor support"
+                  className="h-[400px] w-full object-cover object-center lg:h-[600px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 tmf-glass-chip p-4 text-white">

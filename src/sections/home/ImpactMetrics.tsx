@@ -1,6 +1,8 @@
+import { useLayoutEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { METRICS } from "@/lib/site";
 import { useCountUp } from "@/lib/useCountUp";
+import { gsap, SplitText, prefersReducedMotion } from "@/lib/motion/gsapSetup";
 
 function parseMetricValue(raw: string): { value: number; suffix: string } {
   const match = raw.match(/^(\d+(?:,\d{3})*)(.*)$/);
@@ -48,6 +50,38 @@ function AnimatedStat({
 }
 
 export default function ImpactMetrics() {
+  const leadRef = useRef<HTMLParagraphElement | null>(null);
+
+  useLayoutEffect(() => {
+    const el = leadRef.current;
+    if (!el || prefersReducedMotion()) return;
+
+    let split: SplitText | null = null;
+    const ctx = gsap.context(() => {
+      split = SplitText.create(el, { type: "words", aria: "auto" });
+      gsap.fromTo(
+        split.words,
+        { opacity: 0.16 },
+        {
+          opacity: 1,
+          ease: "none",
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 82%",
+            end: "top 35%",
+            scrub: true,
+          },
+        },
+      );
+    });
+
+    return () => {
+      split?.revert();
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <section
       className="relative overflow-hidden border-y border-slate-200/70 bg-white py-20 lg:py-32"
@@ -60,7 +94,10 @@ export default function ImpactMetrics() {
           <h2 className="h2-display text-heading">
             Small inputs. Lasting change.
           </h2>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-body-muted">
+          <p
+            ref={leadRef}
+            className="mt-5 max-w-xl text-lg leading-relaxed text-body-muted"
+          >
             We measure progress by the people who now have more choices, more
             confidence, and more room to lead.
           </p>

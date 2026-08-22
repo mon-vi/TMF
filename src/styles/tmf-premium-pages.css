@@ -152,13 +152,31 @@
   transform: translateY(32px);
   transition:
     opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 900ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
+}
+
+.tmf-page-scope .tmf-reveal-blur {
+  transform: none;
+  filter: blur(14px);
+}
+
+.tmf-page-scope .tmf-reveal-clip {
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+}
+
+.tmf-page-scope .tmf-reveal-scale {
+  transform: scale(0.94);
 }
 
 .tmf-page-scope .tmf-reveal-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  filter: blur(0);
+  clip-path: inset(0 0 0 0);
 }
 
 .tmf-page-scope .tmf-orb {
@@ -214,9 +232,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tmf-page-scope .tmf-reveal {
+  .tmf-page-scope .tmf-reveal,
+  .tmf-page-scope .tmf-reveal-blur,
+  .tmf-page-scope .tmf-reveal-clip,
+  .tmf-page-scope .tmf-reveal-scale {
     opacity: 1;
     transform: none;
+    filter: none;
+    clip-path: none;
     transition: none;
   }
 
@@ -229,5 +252,58 @@
 
   .tmf-page-scope .tmf-link-arrow:hover svg {
     transform: none;
+  }
+}
+
+/* --- Motion layer: marquee ribbon --------------------------------------- */
+
+.tmf-page-scope .tmf-marquee {
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(107, 33, 168, 0.04),
+    rgba(217, 70, 239, 0.07),
+    rgba(107, 33, 168, 0.04)
+  );
+}
+
+.tmf-page-scope .tmf-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: tmf-marquee-scroll var(--tmf-marquee-duration, 32s) linear infinite;
+}
+
+@keyframes tmf-marquee-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmf-page-scope .tmf-marquee-track {
+    animation: none;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Milestones lit-rail dots (About, node 346:1534 — user-directed storytelling) */
+.tmf-milestone-dot {
+  transition:
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.tmf-page-scope .tmf-milestone-dot.is-lit {
+  background-color: #6b21a8;
+  box-shadow:
+    0 0 0 4px rgb(107 33 168 / 0.15),
+    0 0 16px rgb(107 33 168 / 0.45);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tmf-page-scope .tmf-milestone-dot {
+    background-color: #6b21a8;
+    box-shadow: 0 0 0 3px rgb(107 33 168 / 0.12);
   }
 }

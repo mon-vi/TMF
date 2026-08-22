@@ -38,10 +38,19 @@ export default function Programs() {
               style={{ animationDelay: `${index * 150 + 120}ms` }}
             >
               <div className="relative h-[280px] overflow-hidden rounded-[18px] lg:h-[350px]">
-                <div
-                  className="h-full w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300"
-                  aria-hidden="true"
-                />
+                {program.image ? (
+                  <img
+                    src={program.image}
+                    alt={`${program.title} program`}
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    className="h-full w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300"
+                    aria-hidden="true"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
                 <span className="absolute left-5 top-5 rounded-full border border-white/40 bg-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[1.6px] text-white backdrop-blur-md">
                   0{index + 1} · Pathway

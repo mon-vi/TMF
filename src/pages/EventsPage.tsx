@@ -9,7 +9,7 @@ import {
   Cpu,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import techSparkConfImg from "@/assets/tech-spark-conf-new.jpg";
+import { ASSETS } from "@/lib/site";
 import "@/styles/tmf-premium-pages.css";
 
 const EVENT_HIGHLIGHTS = [
@@ -112,8 +112,8 @@ export default function EventsPage() {
             <div className="group relative mt-16 pb-16 sm:pr-10 lg:mt-24">
               <figure className="tmf-image-frame min-h-[480px] bg-slate-900 lg:min-h-[560px]">
                 <img
-                  src={techSparkConfImg}
-                  alt="Attendees on stage at the Tech Spark Conference"
+                  src={ASSETS.eventsHero}
+                  alt="Attendees gathered at a TalentMakers event"
                   className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
                   loading="lazy"
                 />
@@ -146,7 +146,7 @@ export default function EventsPage() {
 
                   <Link
                     to="/contact"
-                    className="btn-solid tmf-link-arrow mt-9 inline-flex w-fit items-center gap-3 rounded-none hover:bg-accent/90"
+                    className="btn-solid tmf-link-arrow mt-9 inline-flex w-fit items-center gap-3  hover:bg-accent/90"
                   >
                     RSVP Now
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -155,7 +155,7 @@ export default function EventsPage() {
               </figure>
 
               {/* Overlapping sharp block breaking the grid — Pattern #14 */}
-              <div className="absolute bottom-0 right-0 rounded-none bg-accent p-6 shadow-overlay sm:p-8">
+              <div className="absolute bottom-0 right-0  bg-accent p-6 shadow-overlay sm:p-8">
                 <p className="font-display text-stat font-semibold leading-none text-white">
                   72
                 </p>

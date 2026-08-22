@@ -23,7 +23,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-4 lg:gap-8">
           {/* Column 1: Logo + description */}
           <div className="lg:col-span-1">
-            <Link to="/" aria-label="TalentMakers Foundation home">
+            <Link
+              to="/"
+              viewTransition
+              aria-label="TalentMakers Foundation home"
+            >
               <img
                 src={ASSETS.logo}
                 alt="TalentMakers Foundation"
@@ -43,6 +47,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
+                    viewTransition
                     className="text-small text-ink/70 transition-opacity hover:opacity-70"
                   >
                     {link.label}
@@ -60,6 +65,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
+                    viewTransition
                     className="text-small text-ink/70 transition-opacity hover:opacity-70"
                   >
                     {link.label}
@@ -77,6 +83,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
+                    viewTransition
                     className="text-small text-ink/70 transition-opacity hover:opacity-70"
                   >
                     {link.label}
