@@ -40,4 +40,14 @@ test.describe("smoke", () => {
     ).toBeVisible();
     await expect(page.locator("main")).toHaveCount(1);
   });
+
+  test("skip-to-content link is the first element focused via keyboard", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.keyboard.press("Tab");
+    await expect(
+      page.getByRole("link", { name: "Skip to content" }),
+    ).toBeFocused();
+  });
 });

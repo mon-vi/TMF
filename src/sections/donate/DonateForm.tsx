@@ -12,6 +12,8 @@ type Currency = "USD" | "NGN";
 
 const SYMBOL: Record<Currency, string> = { USD: "$", NGN: "₦" };
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function buildStripePaymentLink(email: string): string | null {
   const base = import.meta.env.VITE_STRIPE_PAYMENT_LINK_URL;
   if (!base) return null;
@@ -44,7 +46,9 @@ export default function DonateForm({
 
   const parsedAmount = parseFloat(amount.replace(/,/g, ""));
   const amountValid = !Number.isNaN(parsedAmount) && parsedAmount > 0;
-  const emailValid = email.trim() !== "";
+  const emailValid = EMAIL_PATTERN.test(email.trim());
+  const amountTouched = amount.trim() !== "";
+  const emailTouched = email.trim() !== "";
   const isValid = amountValid && emailValid;
 
   function handleSubmit(e: FormEvent) {
@@ -145,6 +149,7 @@ export default function DonateForm({
                     inputMode="decimal"
                     id="donate-amount"
                     aria-label={`Enter donation amount in ${currency === "USD" ? "dollars" : "naira"}`}
+                    aria-invalid={amountTouched && !amountValid}
                     placeholder="0.00"
                     value={amount}
                     onChange={(e) => onAmountChange(e.target.value)}
@@ -168,8 +173,22 @@ export default function DonateForm({
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={pending}
                   placeholder="you@example.com"
+                  aria-invalid={emailTouched && !emailValid}
+                  aria-describedby={
+                    emailTouched && !emailValid
+                      ? "donate-email-hint"
+                      : undefined
+                  }
                   className="mt-3 w-full bg-transparent text-body text-heading outline-none placeholder:text-slate-400"
                 />
+                {emailTouched && !emailValid && (
+                  <p
+                    id="donate-email-hint"
+                    className="mt-2 text-small font-semibold text-red-600"
+                  >
+                    Please enter a valid email address.
+                  </p>
+                )}
               </div>
 
               {error && (

@@ -64,4 +64,34 @@ test.describe("mobile menu behaviour", () => {
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
   });
+
+  test("focus moves into the dialog on open, is trapped inside, and returns to the trigger on close", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const hamburger = page.getByRole("button", {
+      name: "Open navigation menu",
+    });
+    await hamburger.click();
+
+    const dialog = page.getByRole("dialog", { name: "Navigation menu" });
+    await expect(dialog).toBeVisible();
+    // First focusable in the dialog (the Close button) receives focus.
+    await expect(
+      dialog.getByRole("button", { name: "Close navigation menu" }),
+    ).toBeFocused();
+
+    // Tab cycles inside the dialog instead of reaching the page behind it.
+    for (let i = 0; i < 12; i++) {
+      await page.keyboard.press("Tab");
+      const focused = page.evaluate(() =>
+        Boolean(document.activeElement?.closest('[role="dialog"]')),
+      );
+      expect(await focused).toBe(true);
+    }
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).not.toBeVisible();
+    await expect(hamburger).toBeFocused();
+  });
 });

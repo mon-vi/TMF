@@ -18,20 +18,28 @@ export default function App() {
   return (
     <BrowserRouter>
       <LenisProvider>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] rounded bg-accent px-4 py-2 text-small font-semibold text-white"
+        >
+          Skip to content
+        </a>
         <ScrollToTop />
         <ScrollProgress />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/donate/thank-you" element={<DonateThankYou />} />
-          <Route path="/programs" element={<ProgramsPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div id="main-content" tabIndex={-1}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/donate/thank-you" element={<DonateThankYou />} />
+            <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/get-involved" element={<GetInvolved />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
         <Footer />
       </LenisProvider>
     </BrowserRouter>

@@ -179,6 +179,10 @@ export default function Contact() {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
+                        aria-invalid={
+                          formData.email.trim() !== "" &&
+                          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+                        }
                         className={inputClasses}
                         placeholder="example@domain.com"
                       />

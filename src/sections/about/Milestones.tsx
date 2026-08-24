@@ -37,6 +37,7 @@ function AccordionRow({
   dotRef: (el: HTMLSpanElement | null) => void;
 }) {
   const panelId = `milestone-${year}`;
+  const triggerId = `milestone-trigger-${year}`;
   return (
     <div className="relative">
       <span
@@ -47,6 +48,7 @@ function AccordionRow({
       <div className="tmf-glass-panel overflow-hidden rounded-2xl">
         <button
           type="button"
+          id={triggerId}
           onClick={onToggle}
           aria-expanded={open}
           aria-controls={panelId}
@@ -69,6 +71,7 @@ function AccordionRow({
       <div
         id={panelId}
         role="region"
+        aria-labelledby={triggerId}
         className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
