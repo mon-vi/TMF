@@ -12,6 +12,7 @@ import ProgramsPage from "@/pages/ProgramsPage";
 import EventsPage from "@/pages/EventsPage";
 import Contact from "@/pages/Contact";
 import GetInvolved from "@/pages/GetInvolved";
+import NotFound from "@/pages/NotFound";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/get-involved" element={<GetInvolved />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </LenisProvider>

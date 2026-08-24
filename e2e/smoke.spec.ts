@@ -30,4 +30,14 @@ test.describe("smoke", () => {
       await expect(page.locator("main")).toHaveCount(1);
     }
   });
+
+  test("unknown routes render the not-found page with a single main landmark", async ({
+    page,
+  }) => {
+    await page.goto("/this-route-does-not-exist");
+    await expect(
+      page.getByRole("heading", { level: 1, name: /doesn.t exist/i }),
+    ).toBeVisible();
+    await expect(page.locator("main")).toHaveCount(1);
+  });
 });

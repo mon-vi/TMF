@@ -38,7 +38,7 @@ export default function BoardTrustees() {
           </div>
 
           <div className="flex flex-col justify-center p-7 lg:p-14">
-            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-subtle text-accent">
+            <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-xl bg-tmf-icon-wash text-accent">
               <Quote className="h-5 w-5" aria-hidden="true" />
             </div>
             <blockquote className="font-display text-3xl font-semibold leading-tight text-heading lg:text-4xl">

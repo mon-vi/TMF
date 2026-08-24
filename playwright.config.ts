@@ -30,8 +30,8 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     env: {
-      VITE_STRIPE_PUBLISHABLE_KEY:
-        process.env.VITE_STRIPE_PUBLISHABLE_KEY ?? "pk_test_placeholder",
+      VITE_STRIPE_PAYMENT_LINK_URL:
+        process.env.VITE_STRIPE_PAYMENT_LINK_URL ?? "",
       VITE_PAYSTACK_PUBLIC_KEY:
         process.env.VITE_PAYSTACK_PUBLIC_KEY ?? "pk_test_placeholder",
     },

@@ -29,7 +29,7 @@ export default function MissionVision() {
                 style={{ animationDelay: `${index * 150 + 120}ms` }}
               >
                 <div className="flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-tmf-icon-wash text-accent transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
                     {isTarget ? (
                       <Target className="h-7 w-7 stroke-[1.8]" />
                     ) : (

@@ -61,7 +61,7 @@ function AccordionRow({
             </span>
           </span>
           <span
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-subtle text-accent transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-tmf-icon-wash text-accent transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           >
             <ChevronDown className="h-5 w-5" aria-hidden="true" />
           </span>

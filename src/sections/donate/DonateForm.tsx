@@ -6,12 +6,23 @@ import {
   type SetStateAction,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { stripePromise } from "@/lib/stripe";
 import { openPaystackPopup } from "@/lib/payment";
 
 type Currency = "USD" | "NGN";
 
 const SYMBOL: Record<Currency, string> = { USD: "$", NGN: "₦" };
+
+function buildStripePaymentLink(email: string): string | null {
+  const base = import.meta.env.VITE_STRIPE_PAYMENT_LINK_URL;
+  if (!base) return null;
+  try {
+    const url = new URL(base);
+    url.searchParams.set("prefilled_email", email);
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
 
 interface Props {
   amount: string;
@@ -36,7 +47,7 @@ export default function DonateForm({
   const emailValid = email.trim() !== "";
   const isValid = amountValid && emailValid;
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!isValid) return;
     setError("");
@@ -45,51 +56,30 @@ export default function DonateForm({
     const amountInSubunits = Math.round(parsedAmount * 100);
 
     if (currency === "USD") {
-      const stripe = await stripePromise;
-      if (!stripe) {
-        setError("Payment service unavailable. Please try again.");
+      const paymentLink = buildStripePaymentLink(email.trim());
+      if (!paymentLink) {
+        setError(
+          "Card payments are temporarily unavailable. Please try again soon or donate in NGN.",
+        );
         setPending(false);
         return;
       }
-
-      const { error: stripeError } = await stripe.redirectToCheckout({
-        lineItems: [
-          {
-            price_data: {
-              currency: "usd",
-              product_data: {
-                name: "Donation to TalentMakers Foundation",
-              },
-              unit_amount: amountInSubunits,
-            },
-            quantity: 1,
-          },
-        ],
-        mode: "payment",
-        submitType: "donate",
-        successUrl: `${window.location.origin}/donate/thank-you`,
-        cancelUrl: `${window.location.origin}/donate`,
-        customerEmail: email.trim(),
-      });
-
-      if (stripeError) {
-        setError(stripeError.message ?? "Payment failed. Please try again.");
-        setPending(false);
-      }
-    } else {
-      openPaystackPopup({
-        email: email.trim(),
-        amount: amountInSubunits,
-        currency: "NGN",
-        onSuccess() {
-          setPending(false);
-          navigate("/donate/thank-you");
-        },
-        onClose() {
-          setPending(false);
-        },
-      });
+      window.location.assign(paymentLink);
+      return;
     }
+
+    openPaystackPopup({
+      email: email.trim(),
+      amount: amountInSubunits,
+      currency: "NGN",
+      onSuccess() {
+        setPending(false);
+        navigate("/donate/thank-you");
+      },
+      onClose() {
+        setPending(false);
+      },
+    });
   }
 
   return (

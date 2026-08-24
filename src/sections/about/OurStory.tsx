@@ -13,7 +13,7 @@ export default function OurStory() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5 tmf-animate-fade-in-up">
             <div className="mb-6 flex items-center gap-3 text-accent">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-subtle">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-tmf-icon-wash">
                 <Compass className="h-5 w-5" aria-hidden="true" />
               </span>
               <span className="eyebrow text-xs">The beginning</span>
