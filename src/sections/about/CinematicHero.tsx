@@ -1,11 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import { ASSETS } from "@/lib/site";
-import {
-  gsap,
-  SplitText,
-  prefersReducedMotion,
-} from "@/lib/motion/gsapSetup";
+import { gsap, SplitText, prefersReducedMotion } from "@/lib/motion/gsapSetup";
 
 export default function CinematicHero() {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -45,8 +41,16 @@ export default function CinematicHero() {
             { yPercent: 115, duration: 0.9, stagger: 0.08 },
             "-=0.15",
           )
-          .from(q(".tmf-cine-lead"), { y: 24, opacity: 0, duration: 0.7 }, "-=0.5")
-          .from(q(".tmf-cine-card"), { y: 22, opacity: 0, duration: 0.65 }, "-=0.4")
+          .from(
+            q(".tmf-cine-lead"),
+            { y: 24, opacity: 0, duration: 0.7 },
+            "-=0.5",
+          )
+          .from(
+            q(".tmf-cine-card"),
+            { y: 22, opacity: 0, duration: 0.65 },
+            "-=0.4",
+          )
           .from(q(".tmf-cine-explore"), { opacity: 0, duration: 0.6 }, "-=0.3");
       };
 

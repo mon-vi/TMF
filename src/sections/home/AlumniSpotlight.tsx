@@ -66,7 +66,10 @@ export default function AlumniSpotlight() {
 
       {/* Carousel */}
       <div className="overflow-x-auto snap-x snap-mandatory pb-6 px-4 lg:overflow-visible lg:snap-none no-scrollbar">
-        <div ref={trackRef} className="flex gap-6 max-w-[1240px] mx-auto lg:max-w-none lg:w-max lg:mx-0 lg:pl-[5vw]">
+        <div
+          ref={trackRef}
+          className="flex gap-6 max-w-[1240px] mx-auto lg:max-w-none lg:w-max lg:mx-0 lg:pl-[5vw]"
+        >
           {ALUMNI.map(({ name, image }, i) => (
             <Reveal
               key={name}

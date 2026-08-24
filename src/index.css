@@ -408,7 +408,8 @@
   }
 
   .glow-gradient-mid {
-    box-shadow: 0 0 18px color-mix(in srgb, var(--gradient-mid) 75%, transparent);
+    box-shadow: 0 0 18px
+      color-mix(in srgb, var(--gradient-mid) 75%, transparent);
   }
 
   /* Route transitions (react-router viewTransition → View Transitions API) */

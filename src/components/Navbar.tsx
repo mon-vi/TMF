@@ -39,9 +39,7 @@ export default function Navbar() {
     // Move focus into the dialog on open; restore it to the trigger on close.
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const dialog = dialogRef.current;
-    dialog
-      ?.querySelector<HTMLElement>("button, a[href]")
-      ?.focus();
+    dialog?.querySelector<HTMLElement>("button, a[href]")?.focus();
     return () => previouslyFocused?.focus();
   }, [menuOpen]);
 

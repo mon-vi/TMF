@@ -217,9 +217,7 @@
   will-change: transform;
 }
 
-.tmf-page-scope
-  .group:hover
-  .tmf-image-frame img,
+.tmf-page-scope .group:hover .tmf-image-frame img,
 .tmf-page-scope .tmf-image-frame:hover img {
   transform: scale(1.05);
 }

@@ -181,7 +181,9 @@ export default function Contact() {
                         }
                         aria-invalid={
                           formData.email.trim() !== "" &&
-                          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+                          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                            formData.email.trim(),
+                          )
                         }
                         className={inputClasses}
                         placeholder="example@domain.com"

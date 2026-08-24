@@ -68,18 +68,18 @@ function AccordionRow({
             <ChevronDown className="h-5 w-5" aria-hidden="true" />
           </span>
         </button>
-      <div
-        id={panelId}
-        role="region"
-        aria-labelledby={triggerId}
-        className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-      >
-        <div className="overflow-hidden">
-          <div className="border-t border-slate-200/70 px-6 pb-8 pt-5 text-base leading-relaxed text-body-muted lg:px-10 lg:text-lg">
-            {MILESTONE_DETAILS[year] || `Milestone details for ${year}.`}
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={triggerId}
+          className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+        >
+          <div className="overflow-hidden">
+            <div className="border-t border-slate-200/70 px-6 pb-8 pt-5 text-base leading-relaxed text-body-muted lg:px-10 lg:text-lg">
+              {MILESTONE_DETAILS[year] || `Milestone details for ${year}.`}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
@@ -154,8 +154,8 @@ export default function Milestones() {
             </div>
             <h2 className="h2-display text-heading">Milestones of impact.</h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-body-muted">
-              Four years in, the through-line is unmistakable: talent given
-              room becomes unstoppable.
+              Four years in, the through-line is unmistakable: talent given room
+              becomes unstoppable.
             </p>
           </div>
           <span className="hidden font-display text-8xl font-semibold leading-none text-accent/10 sm:block">

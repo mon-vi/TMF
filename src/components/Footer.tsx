@@ -18,13 +18,7 @@ import {
 
 const currentYear = new Date().getFullYear();
 
-function FooterLink({
-  href,
-  label,
-}: {
-  href: string;
-  label: string;
-}) {
+function FooterLink({ href, label }: { href: string; label: string }) {
   const className =
     "text-small text-ink/70 transition-opacity hover:opacity-70";
   if (href === "#") {

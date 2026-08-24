@@ -57,9 +57,11 @@ accessibility floor.
 
 ```
 src/
-  components/         Shared across pages (Navbar, Footer)
+  components/         Shared across pages (Navbar, Footer, Reveal, Orb)
   sections/<page>/    One file per Figma section frame
-  pages/              Route-level composition only
+  pages/              Route-level composition (Figma pages) or full page
+                      markup (brand-doc pages: Contact, Events, Get Involved,
+                      Programs)
   lib/                Data, constants, asset references
 ```
 
@@ -79,17 +81,29 @@ src/
 
 ## Working with the design
 
-This site is a faithful implementation of a Figma design — not a design exercise.
-Read `AGENTS.md` for the full workflow, then consult:
+This site is a faithful implementation of two design sources — not a design
+exercise. Read `AGENTS.md` for the full workflow, then consult:
 
-| Doc                     | When                                  |
-| ----------------------- | ------------------------------------- |
-| `docs/DESIGN_SYSTEM.md` | Any styling work                      |
-| `docs/FIGMA_MAP.md`     | Before implementing a page or section |
-| `docs/CONVENTIONS.md`   | Before creating files or components   |
+| Doc                                  | When                                                 |
+| ------------------------------------ | ---------------------------------------------------- |
+| `docs/DESIGN_SYSTEM.md`              | Any styling work                                     |
+| `docs/FIGMA_MAP.md`                  | Before implementing a Figma-sourced page             |
+| `docs/CONVENTIONS.md`                | Before creating files or components                  |
+| `docs/TMF_Brand_UI_Design_System.md` | Before touching Programs/Events/Get Involved/Contact |
 
 **Never hardcode a colour, font size, or font family.** Every visual value comes
 from `tailwind.config.js` or the component classes in `src/index.css`.
+
+## Environment variables
+
+Copy `.env.example` to `.env` and fill in:
+
+| Variable                       | Purpose                                                   |
+| ------------------------------ | --------------------------------------------------------- |
+| `VITE_PAYSTACK_PUBLIC_KEY`     | Paystack inline popup (NGN donations)                     |
+| `VITE_STRIPE_PAYMENT_LINK_URL` | Stripe Payment Link for USD donations (pay-what-you-want) |
+
+Keys live in `.env` only — never commit them.
 
 ## Verification before pushing
 

@@ -1,19 +1,31 @@
 # Design System
 
-Extracted from Figma file `Smlz5HrtfbCIu2jNQY7cFZ`.
+Two sources feed this system, unified on one token set:
 
-Every value below is marked **Verified** (read via `get_design_context`, exact)
-or **Inferred** (derived from metadata and the surrounding system). Inferred
-values are a working assumption, not the design. Correct them when the owning
-node gets read.
+1. **Figma file** `Smlz5HrtfbCIu2jNQY7cFZ` — Home, About, Donate (sections/
+   architecture, node-verified values).
+2. **Brand UI Design System** (`docs/TMF_Brand_UI_Design_System.md`) — Contact,
+   Events, Get Involved, Programs (page-file composition).
+   Reverse-engineered from approved screenshots; its palette is canonical.
+
+Every value is marked **Verified** (read exactly from its source) or
+**Inferred** (derived; a working assumption, corrected when re-read).
 
 ---
+
+## Ruling: canonical palette (2026-08)
+
+The Figma accent was `#6A0DAD`; the brand-doc screenshots use `#6B21A8`
+(Tailwind purple-800). **The brand-doc palette wins.** `accent` in
+`tailwind.config.js` is `#6B21A8`; every `text-accent` / `bg-accent` consumer
+follows automatically. Do not reintroduce `#6A0DAD` anywhere — and do not
+hardcode `#6B21A8` either; always go through the token.
 
 ## Colour
 
 | Token           | Value                   | Tailwind     | Status                                               |
 | --------------- | ----------------------- | ------------ | ---------------------------------------------------- |
-| Accent          | `#6A0DAD`               | `accent`     | Verified — bound Figma variable                      |
+| Accent          | `#6B21A8`               | `accent`     | Ruling 2026-08 — brand-doc primary                   |
 | Primary / white | `#FFFFFF`               | `white`      | Verified — bound Figma variable                      |
 | Ink             | `#1E1E1E`               | `ink`        | Verified — hero background                           |
 | Nav tint        | `rgba(246,250,255,0.8)` | `nav-tint`   | Verified — nav bar                                   |
@@ -22,130 +34,152 @@ node gets read.
 | Body grey       | `#5F5E5E`               | `body-muted` | Verified — desktop lead paragraph                    |
 | Image panel     | `#ECF5FE`               | `panel`      | Verified — desktop hero image background             |
 
-**Important:** headings on a light background are `#141D23`, not `ink`
-(`#1E1E1E`). `ink` is the hero _background_ fill. The mobile read couldn't
-reveal this because the mobile hero heading is white over an image. Use
-`text-heading` for dark-on-light headings.
+### Brand-doc variables (`tmf.*` namespace)
 
-Only two colours are bound as Figma variables. Everything else in the file is a
-raw value, so colours must be read per section rather than assumed.
+CSS variables defined in `src/index.css`, exposed via `tailwind.config.js`:
+`tmf-primary #6b21a8`, `tmf-primary-hover #581c87`, `tmf-secondary #b794f6`,
+`tmf-page #f0f4f8`, `tmf-surface #ffffff`, `tmf-text-primary #0f172a`,
+`tmf-text-secondary #64748b`, `tmf-text-accent #805ad5`,
+`tmf-text-muted #cbd5e1`, `tmf-line #e2e8f0`, `tmf-icon-wash #f3e8ff`.
 
-**Body text on dark**: `text-white/90` (verified, hero paragraph).
-**Body text on light**: `text-ink/70` (inferred — verify per section).
+Decorative gradient endpoints live as root constants: `--gradient-mid`
+(`#8b5cf6`, violet-500) and `--gradient-end` (`#d946ef`, fuchsia-500) — used by
+`.tmf-text-gradient`, the marquee wash, and glow effects. They are deliberately
+not Tailwind tokens.
+
+**Important:** headings on a light background are `#141D23` (`heading`), not
+`ink` (`#1E1E1E`). `ink` is the hero _background_ fill. Use `text-heading` for
+dark-on-light headings.
+
+**Body text on dark**: `text-white/90`. **Body text on light**: `text-ink/70`
+or `text-prose` (`#3F4942`, node-verified on Donate/About).
 
 ### Hero scrim
 
-Verified. Bottom-to-top gradient over the hero image:
-
-```
-linear-gradient(to top,
-  rgba(0,0,0,0.8) 0%,
-  rgba(0,0,0,0.2) 50%,
-  rgba(0,0,0,0) 100%)
-```
-
-Available as `bg-hero-scrim`. Reuse it — every page hero in the design uses the
-same image-plus-scrim treatment.
+Verified. Bottom-to-top gradient over hero images, available as
+`bg-hero-scrim`: `rgba(0,0,0,0.8) → 0.2 → 0`. Reuse it — every Figma page hero
+uses the same treatment.
 
 ---
 
 ## Typography
 
-Two families. Playfair Display for display, Public Sans for everything else.
-Loaded from Google Fonts in `index.html`.
+Two families: Playfair Display (display), Public Sans (everything else).
+Loaded from Google Fonts in `index.html`. (Inter was removed 2026-08 — the
+`font-ui` family had no consumers.)
 
-The type scale is **responsive** — desktop is not a scaled-up mobile. Build
-mobile-first and step up at the `lg` breakpoint (1024px). Both columns below are
-the value at that breakpoint.
+The scale is **responsive** — build mobile-first, step up at `lg` (1024px).
 
-| Role           | Family               | Mobile (base) | Desktop (`lg:`) | Tracking                       | Status                                |
-| -------------- | -------------------- | ------------- | --------------- | ------------------------------ | ------------------------------------- |
-| `text-h1`      | Playfair Bold        | 44 / 52       | 72 / 84         | mob `-0.44px` · desk `-1.44px` | Verified both                         |
-| `text-h2`      | Playfair Bold        | 32 / 40       | ~56 / 64        | `-0.32px`                      | mob Verified · desk Inferred          |
-| `text-h3`      | Playfair Bold        | 28 / 36       | ~40             | —                              | Inferred                              |
-| `text-h4`      | Playfair Bold        | 20 / 28       | 20 / 28         | —                              | Inferred                              |
-| `text-stat`    | Playfair Bold        | 36 / 44       | ~96             | —                              | mob Inferred · desk from Impact block |
-| `text-lead`    | Public Sans Regular  | 16 / 24       | 20 / 32         | —                              | Verified — hero lead paragraph        |
-| `text-body`    | Public Sans Regular  | 16 / 24       | 16 / 24         | —                              | Verified                              |
-| `text-small`   | Public Sans          | 14 / 20       | 14 / 20         | —                              | Verified                              |
-| `text-eyebrow` | Public Sans Semibold | 14 / 20       | 14 / 20         | `2.8px`                        | Verified                              |
+| Role           | Family               | Mobile (base) | Desktop (`lg:`) | Tracking        | Status                        |
+| -------------- | -------------------- | ------------- | --------------- | --------------- | ----------------------------- |
+| `text-h1`      | Playfair Bold        | 44 / 52       | 72 / 84         | -0.44 / -1.44px | Verified both                 |
+| `text-h2`      | Playfair Bold        | 32 / 40       | 48 / 56         | -0.32px         | desk Verified (208:3061+)     |
+| `text-h3`      | Playfair Bold        | 28 / 36       | 40 / 48         | —               | desk Estimated (frame height) |
+| `text-h4`      | Playfair Bold        | 20 / 28       | 20 / 28         | —               | Inferred                      |
+| `text-stat`    | Playfair Bold        | 36 / 44       | 72 / 84         | -1.44px desk    | desk Verified (= h1-lg)       |
+| `text-lead`    | Public Sans Regular  | 16 / 24       | 20 / 32         | —               | Verified                      |
+| `text-body`    | Public Sans Regular  | 16 / 24       | 16 / 24         | —               | Verified                      |
+| `text-small`   | Public Sans          | 14 / 20       | 14 / 20         | —               | Verified                      |
+| `text-eyebrow` | Public Sans Semibold | 14 / 20       | 14 / 20         | 2.8px           | Verified                      |
 
-Notes:
+Plus verified utility roles in config: `metric-eyebrow` (20/28 + 1.4px),
+`body-relaxed` (16/26), `cta` (18/24 + 1.8px), `alumni-name(-lg)`,
+`timeline-year(-mobile)`.
 
-- **H1** is fully verified at both ends. The jump is large (44→72); it is real,
-  not a guess.
-- **`text-lead`** is new — the hero's intro paragraph is 20/32 on desktop,
-  distinct from `text-body`. Colour `body-muted` (`#5F5E5E`).
-- Desktop h2/h3/stat sizes are read from frame heights, not a `get_design_context`
-  call yet. Treat the `~` values as Inferred and confirm per section.
-- `.h1-display` etc. must carry the `lg:` step internally so callers don't repeat it.
+### Letter-spacing tokens (added 2026-08)
+
+Recurring uppercase micro-label tracking collapsed into four tokens:
+
+| Token              | Value | Usage                          |
+| ------------------ | ----- | ------------------------------ |
+| `tracking-chip`    | 2.8px | Hero chips, glass-chip badges  |
+| `tracking-caption` | 2px   | Captions over imagery          |
+| `tracking-label`   | 1.4px | Card micro-labels, arrow links |
+| `tracking-field`   | 0.7px | Form labels, quiet buttons     |
+
+Do not introduce new arbitrary `tracking-[Npx]` values — extend this table if a
+genuinely new value is needed, and say so.
 
 ### Eyebrow
 
-The design's most consistent signature — it opens nearly every section.
-Uppercase, semibold, wide tracking, accent colour.
-
-Use the `.eyebrow` class. Write the label in sentence case in JSX and let CSS
-uppercase it, so screen readers don't read it as an initialism.
+The design's most consistent signature — uppercase, semibold, wide tracking,
+accent colour. Use the `.eyebrow` class and write labels in sentence case so
+screen readers don't read them as initialisms.
 
 ---
 
 ## Spacing
-
-Two verified grids:
 
 |         | Frame | Side margin | Content column | Gutter      |
 | ------- | ----- | ----------- | -------------- | ----------- |
 | Mobile  | 390   | 24          | 342            | —           |
 | Desktop | 1280  | 64          | 1152           | 32 (12-col) |
 
-`.container-page` handles the outer gutter (24px mobile). On desktop the design
-uses a **12-column grid** with a 32px gutter inside the 1152px column — the hero
-is a 6/6 split, Blog is an 8-col grid plus a 240px sidebar. Reach for
-`lg:grid lg:grid-cols-12 lg:gap-8` inside `.container-page` for those layouts.
+`.container-page` handles the gutter and caps content at **1200px**
+(`max-w-[1200px]`). Desktop uses a 12-column grid with a 32px gutter inside
+it: reach for `lg:grid lg:grid-cols-12 lg:gap-8`.
 
-Section rhythm: desktop sections open with 120px top padding consistently
-(verified across Impact, Programs, About). Mobile is 60–96px. The 120px desktop
-figure is solid; the mobile range is still Inferred.
+Section rhythm: desktop sections open with ~120px top padding; mobile 60–96px.
+
+### Radius tokens (ruled 2026-08)
+
+**Buttons are pill-shaped everywhere** (`border-radius: 9999px` via the button
+classes). The earlier "no border radius anywhere" rule is reversed — shipped
+pages all use pills and that is now canonical.
+
+Panels/cards use these deliberate tokens:
+
+| Token             | Value | Usage                              |
+| ----------------- | ----- | ---------------------------------- |
+| `rounded-card-xl` | 28px  | Glass panels, media frames         |
+| `rounded-card-lg` | 22px  | Inner images inside card-xl frames |
+| `rounded-image`   | 24px  | Standalone image cards             |
+| `rounded-card-sm` | 18px  | Nested imagery inside 24px cards   |
+
+Existing tokens `rounded-ui` (0), `rounded-icon` (8px) stay as-is.
 
 ---
 
 ## Component classes
 
 Defined in `src/index.css` under `@layer components`. Prefer these over
-assembling utilities inline — that's what keeps sections consistent.
+assembling utilities inline.
 
-| Class             | Purpose                                        | Status   |
-| ----------------- | ---------------------------------------------- | -------- |
-| `.container-page` | Page gutter and max width                      | Inferred |
-| `.eyebrow`        | Section label                                  | Verified |
-| `.h1-display`     | Page title                                     | Verified |
-| `.h2-display`     | Section title                                  | Inferred |
-| `.btn-solid`      | Primary button — accent fill, white text       | Verified |
-| `.btn-outline`    | Secondary — white fill, accent border and text | Verified |
+| Class                 | Purpose                                    | Status          |
+| --------------------- | ------------------------------------------ | --------------- |
+| `.container-page`     | Page gutter + 1200px max width             | Inferred        |
+| `.eyebrow`            | Section label                              | Verified        |
+| `.h1-display`         | Page title (carries `lg:` step)            | Verified        |
+| `.h2-display`         | Section title (carries `lg:` step)         | Inferred        |
+| `.lead`               | Lead paragraph                             | Verified        |
+| `.stat-display`       | Metric number display                      | Inferred        |
+| `.btn-solid`          | Primary button — accent fill, white text   | Verified        |
+| `.btn-outline`        | Secondary — white fill, accent border/text | Verified        |
+| `.btn-donate`         | Donate form submit                         | Inferred        |
+| `.btn-invert-solid`   | Primary on dark backgrounds                | Inferred        |
+| `.btn-invert-outline` | Secondary on dark backgrounds              | Inferred        |
+| `.btn-cta`            | Final CTA emphasis                         | Inferred        |
+| `.metric-eyebrow`     | Impact stat label                          | Verified (node) |
+| `.metric-caption`     | Impact stat caption                        | Verified (node) |
 
-Button geometry is verified from the hero: solid is 40px horizontal padding with
-16.5/17.5px vertical; outline is 41px/17px, the 1px difference absorbing its
-border so both buttons match height. Don't "tidy" that asymmetry away.
+Button geometry is verified from the hero: solid is 40px horizontal padding
+with 16.5/17.5px vertical; outline is 41px/17px, the 1px difference absorbing
+its border so both match height. Don't "tidy" that asymmetry away.
 
-Buttons have **no border radius** anywhere in the design. Keep it that way.
+Premium-page effects (glass panels, mesh/grid surfaces, orbs, reveals,
+marquee, milestone rail) live in `src/styles/tmf-premium-pages.css` scoped
+under `.tmf-page-scope`. All brand colours there derive from the root CSS
+variables — no raw hexes.
 
 ---
 
 ## Known gaps
 
-- Desktop h2/h3/stat sizes read from frame heights, not `get_design_context`.
-  Confirm per section.
-- Footer typography and colour still unextracted. Desktop footer is node
-  `208:3105` (544px tall), mobile is `189:918` (946px). Both pending.
-- No hover, focus, active, or disabled states are specified in the design.
-  Current hovers (`opacity-90`, colour inversion) are invented. Flag before
-  treating them as final.
-- No dark mode in the design. Don't build one.
-- **Nav height is inconsistent in the design itself** — desktop frames show it
-  at 80px on some pages, 104/105px on others. This is a design inconsistency, not
-  a spec. Standardize on one (recommend 104px desktop / 79px mobile) and flag it;
-  do not faithfully reproduce the variance.
-- Tablet (`md`, 768px) has no frame in either canvas. Only mobile (390) and
-  desktop (1280) are designed. `md` behaviour is interpolation — mark it Inferred
-  wherever you introduce it.
+- Footer type sizes/spacing still not node-verified (`TODO(design)` in
+  `Footer.tsx`; nodes `208:3105` desktop / `189:918` mobile).
+- No hover/focus/active/disabled states are specified by either source.
+  Current hovers are invented; flag before treating them as final.
+- No dark mode. Don't build one.
+- **Nav height is inconsistent in the Figma itself** (80px vs 104/105px).
+  Standardized on 104px desktop / 79px mobile in code.
+- Tablet (`md`, 768px) has no frame anywhere. `md` behaviour is interpolation.

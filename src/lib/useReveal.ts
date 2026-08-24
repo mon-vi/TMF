@@ -14,8 +14,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(
 ): [RefObject<T | null>, boolean] {
   const ref = useRef<T | null>(null);
   const [revealed, setRevealed] = useState(
-    () =>
-      prefersReducedMotion() || typeof IntersectionObserver === "undefined",
+    () => prefersReducedMotion() || typeof IntersectionObserver === "undefined",
   );
 
   useEffect(() => {

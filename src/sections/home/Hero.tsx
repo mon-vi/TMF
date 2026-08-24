@@ -2,11 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ASSETS } from "@/lib/site";
-import {
-  gsap,
-  SplitText,
-  prefersReducedMotion,
-} from "@/lib/motion/gsapSetup";
+import { gsap, SplitText, prefersReducedMotion } from "@/lib/motion/gsapSetup";
 
 export default function Hero() {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -56,17 +52,29 @@ export default function Hero() {
             { yPercent: 115, duration: 0.9, stagger: 0.07 },
             "-=0.2",
           )
-          .from(q(".tmf-hero-lead"), { y: 26, opacity: 0, duration: 0.7 }, "-=0.5")
+          .from(
+            q(".tmf-hero-lead"),
+            { y: 26, opacity: 0, duration: 0.7 },
+            "-=0.5",
+          )
           .from(
             q(".tmf-hero-ctas > *"),
             { y: 22, opacity: 0, duration: 0.6, stagger: 0.1 },
             "-=0.45",
           )
-          .from(q(".tmf-hero-card"), { y: 26, opacity: 0, duration: 0.7 }, "-=0.4")
+          .from(
+            q(".tmf-hero-card"),
+            { y: 26, opacity: 0, duration: 0.7 },
+            "-=0.4",
+          )
           .fromTo(
             q(".tmf-hero-media"),
             { clipPath: "inset(0 0 100% 0)" },
-            { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "power4.inOut" },
+            {
+              clipPath: "inset(0 0 0% 0)",
+              duration: 1.1,
+              ease: "power4.inOut",
+            },
             "-=0.55",
           )
           .from(
@@ -107,7 +115,10 @@ export default function Hero() {
       data-node-id="173:7430"
     >
       <div className="absolute inset-0 -z-10 tmf-surface-grid opacity-60" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
         <div className="tmf-hero-orb-a absolute -left-24 top-24 h-72 w-72">
           <div className="h-full w-full rounded-full bg-violet-300/35 blur-3xl tmf-animate-pulse-soft" />
         </div>

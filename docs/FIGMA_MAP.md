@@ -27,18 +27,21 @@ cause — it isn't a tool bug.
 
 ## Pages (mobile, 390px)
 
-| Page                | Mobile node | Desktop node | Route                   |
-| ------------------- | ----------- | ------------ | ----------------------- |
-| Homepage            | `173:7383`  | `208:3011`   | `/`                     |
-| About Us            | `161:3003`  | `208:3460`   | `/about`                |
-| Programs            | `161:1420`  | `208:3165`   | `/programs`             |
-| Scholarship Program | `199:3831`  | `208:3760`   | `/programs/scholarship` |
-| Tech Spark          | `199:4226`  | `208:3888`   | `/programs/tech-spark`  |
-| Events              | `161:2643`  | `208:3246`   | `/events`               |
-| Blog                | `161:3573`  | `208:3327`   | `/blog`                 |
-| Get Involved        | `199:3244`  | `208:3657`   | `/get-involved`         |
-| Contact             | `161:3303`  | `208:3574`   | `/contact`              |
-| Donate              | `161:744`   | `208:3108`   | `/donate`               |
+| Page                | Mobile node | Desktop node | Route                   | Built?                        |
+| ------------------- | ----------- | ------------ | ----------------------- | ----------------------------- |
+| Homepage            | `173:7383`  | `208:3011`   | `/`                     | Yes                           |
+| About Us            | `161:3003`  | `208:3460`   | `/about`                | Yes                           |
+| Programs            | `161:1420`  | `208:3165`   | `/programs`             | Rebuilt from brand doc        |
+| Scholarship Program | `199:3831`  | `208:3760`   | `/programs/scholarship` | No — links pruned until built |
+| Tech Spark          | `199:4226`  | `208:3888`   | `/programs/tech-spark`  | No — links pruned until built |
+| Events              | `161:2643`  | `208:3246`   | `/events`               | Rebuilt from brand doc        |
+| Blog                | `161:3573`  | `208:3327`   | `/blog`                 | No — nav/footer links removed |
+| Get Involved        | `199:3244`  | `208:3657`   | `/get-involved`         | Rebuilt from brand doc        |
+| Contact             | `161:3303`  | `208:3574`   | `/contact`              | Rebuilt from brand doc        |
+| Donate              | `161:744`   | `208:3108`   | `/donate`               | Yes                           |
+
+Unknown routes fall through to a placeholder `NotFound` page (no design exists
+for one).
 
 Workflow per section: read the mobile node AND the desktop node, implement
 mobile-first, add `lg:` overrides for the desktop layout. They often differ in
@@ -75,7 +78,19 @@ extraction. Read both nodes — mobile is 946px tall (stacked), desktop is 544px
 
 ---
 
-## Homepage sections — `173:7383`
+## Provenance split (2026-08)
+
+Four pages were rebuilt against `docs/TMF_Brand_UI_Design_System.md`
+(screenshot-derived) rather than Figma nodes: **Programs, Events, Get
+Involved, Contact**. They use page-file composition, no `data-node-id`, and
+the canonical brand palette. Their earlier Figma node IDs above are historical
+reference only. Home, About, Donate, and shared components remain
+Figma-sourced with node-verified values. See CONVENTIONS.md for the two
+composition patterns.
+
+## Built pages — section maps
+
+### Homepage sections — `173:7383`
 
 | Section                 | Node       | Component                           | Status                             |
 | ----------------------- | ---------- | ----------------------------------- | ---------------------------------- |
@@ -89,11 +104,7 @@ Alumni carousel internals: `314:1224` (a 2580px strip of ten 240px cards).
 
 ---
 
-## Section nodes on unbuilt pages
-
-Enough to start each page without re-reading the whole canvas.
-
-**About Us** — `161:3003` (mobile) / `208:3460` (desktop)
+### About Us sections — `161:3003` (mobile) / `208:3460` (desktop)
 
 | Section              | Node       | Component                           | Status                                   |
 | -------------------- | ---------- | ----------------------------------- | ---------------------------------------- |
@@ -101,7 +112,7 @@ Enough to start each page without re-reading the whole canvas.
 | Our Story            | `208:3462` | `sections/about/OurStory.tsx`       | Verified (node)                          |
 | Mission & Vision     | `208:3473` | `sections/about/MissionVision.tsx`  | Verified (node)                          |
 | Milestones           | `346:1534` | `sections/about/Milestones.tsx`     | Inferred — no expanded content in design |
-| Board of Trustees    | `208:3557` | `sections/about/BoardTrustees.tsx`  | Verified (node)                          |
+| Board of Trustees    | `208:3557` | `sections/about/BoardTrustees.tsx`  | Verified (node); trustee photo pending   |
 | Join the Mission CTA | `208:3487` | `sections/about/JoinMissionCTA.tsx` | Verified (node)                          |
 
 **Programs** — `161:1420`
@@ -135,10 +146,10 @@ Hero `208:3110` · Form `208:3135`
 
 Donate sections built:
 
-| Section     | Node       | Component                        | Status                           |
-| ----------- | ---------- | -------------------------------- | -------------------------------- |
-| Donate Hero | `208:3110` | `sections/donate/DonateHero.tsx` | Verified (node)                  |
-| Donate Form | `208:3135` | `sections/donate/DonateForm.tsx` | Verified (node), payment stubbed |
+| Section     | Node       | Component                        | Status                                                                                                         |
+| ----------- | ---------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Donate Hero | `208:3110` | `sections/donate/DonateHero.tsx` | Verified (node)                                                                                                |
+| Donate Form | `208:3135` | `sections/donate/DonateForm.tsx` | Verified (node); NGN via Paystack popup, USD via Stripe Payment Link redirect (`VITE_STRIPE_PAYMENT_LINK_URL`) |
 
 ---
 
