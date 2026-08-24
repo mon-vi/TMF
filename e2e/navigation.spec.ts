@@ -84,10 +84,7 @@ test.describe("mobile menu behaviour", () => {
     // Tab cycles inside the dialog instead of reaching the page behind it.
     for (let i = 0; i < 12; i++) {
       await page.keyboard.press("Tab");
-      const focused = page.evaluate(() =>
-        Boolean(document.activeElement?.closest('[role="dialog"]')),
-      );
-      expect(await focused).toBe(true);
+      await expect(dialog.locator(":scope :focus")).toHaveCount(1);
     }
 
     await page.keyboard.press("Escape");
