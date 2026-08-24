@@ -83,7 +83,7 @@ export default function AlumniSpotlight() {
                     loading="lazy"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-[#6B21A8]/90 via-[#6B21A8]/30 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-accent/90 via-accent/30 to-transparent"
                     aria-hidden="true"
                   />
                   <span className="absolute left-6 top-6 self-end px-3 py-1 bg-white/90 text-accent font-sans font-bold text-xs uppercase tracking-wider rounded-full">

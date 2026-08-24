@@ -14,8 +14,9 @@ function CheckIcon() {
       viewBox="0 0 48 48"
       fill="none"
       aria-hidden="true"
+      className="text-accent"
     >
-      <circle cx="24" cy="24" r="24" fill="#6A0DAD" />
+      <circle cx="24" cy="24" r="24" fill="currentColor" />
       <path
         d="M14 24l6 6 14-14"
         stroke="white"

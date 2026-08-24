@@ -1,7 +1,7 @@
-/* Page-scoped visual layer for Home, About Us, Programs, and Donate Us. */
+/* Page-scoped visual layer for Home, About Us, Programs, and Donate Us.
+   All brand colours derive from the root tokens in index.css so a palette
+   change propagates everywhere at once. */
 .tmf-page-scope {
-  --tmf-primary: #6b21a8;
-  --tmf-primary-dark: #581c87;
   --tmf-surface: rgba(255, 255, 255, 0.64);
   --tmf-border: rgba(255, 255, 255, 0.72);
   --tmf-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
@@ -62,13 +62,27 @@
 
 .tmf-page-scope .tmf-surface-grid {
   background-image:
-    linear-gradient(rgba(107, 33, 168, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 33, 168, 0.06) 1px, transparent 1px);
+    linear-gradient(
+      color-mix(in srgb, var(--color-brand-primary) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-brand-primary) 6%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 48px 48px;
 }
 
 .tmf-page-scope .tmf-text-gradient {
-  background: linear-gradient(90deg, #6b21a8, #8b5cf6, #d946ef);
+  /* Gradient endpoints are decorative scope-local constants (violet-500,
+     fuchsia-500); the brand start-stop follows the root token. */
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-primary),
+    var(--tmf-gradient-mid, #8b5cf6),
+    var(--tmf-gradient-end, #d946ef)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -261,9 +275,9 @@
   overflow: hidden;
   background: linear-gradient(
     90deg,
-    rgba(107, 33, 168, 0.04),
-    rgba(217, 70, 239, 0.07),
-    rgba(107, 33, 168, 0.04)
+    color-mix(in srgb, var(--color-brand-primary) 4%, transparent),
+    color-mix(in srgb, var(--tmf-gradient-end, #d946ef) 7%, transparent),
+    color-mix(in srgb, var(--color-brand-primary) 4%, transparent)
   );
 }
 
@@ -296,14 +310,15 @@
     box-shadow 0.35s ease;
 }
 .tmf-page-scope .tmf-milestone-dot.is-lit {
-  background-color: #6b21a8;
+  background-color: var(--color-brand-primary);
   box-shadow:
-    0 0 0 4px rgb(107 33 168 / 0.15),
-    0 0 16px rgb(107 33 168 / 0.45);
+    0 0 0 4px color-mix(in srgb, var(--color-brand-primary) 15%, transparent),
+    0 0 16px color-mix(in srgb, var(--color-brand-primary) 45%, transparent);
 }
 @media (prefers-reduced-motion: reduce) {
   .tmf-page-scope .tmf-milestone-dot {
-    background-color: #6b21a8;
-    box-shadow: 0 0 0 3px rgb(107 33 168 / 0.12);
+    background-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 3px
+      color-mix(in srgb, var(--color-brand-primary) 12%, transparent);
   }
 }

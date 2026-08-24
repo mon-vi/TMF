@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: "#6A0DAD",
+        accent: "#6B21A8", // Ruling 2026-08: brand-doc palette wins — #6B21A8 canonical (was Figma #6A0DAD)
         ink: "#1E1E1E",
         heading: "#141D23", // Verified (docs) — blue-black, NOT ink
         "body-muted": "#5F5E5E", // Verified (docs) — lead paragraph
