@@ -33,7 +33,6 @@ export default {
       fontFamily: {
         display: ['"Playfair Display"', "serif"],
         sans: ['"Public Sans"', "sans-serif"],
-        ui: ["Inter", "system-ui", "sans-serif"],
       },
       borderRadius: {
         ui: "var(--radius-ui)",
@@ -69,8 +68,6 @@ export default {
       backgroundImage: {
         "hero-scrim":
           "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%)",
-        "alumni-overlay":
-          "linear-gradient(to bottom, rgba(33,22,13,0.9), rgba(135,92,54,0.9))",
       },
       boxShadow: {
         card: "0px 0px 2px rgba(0,0,0,0.25)", // Verified (node) — Timeline card shadow
