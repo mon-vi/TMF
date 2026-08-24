@@ -279,11 +279,11 @@ export default function Contact() {
                   </span>
                   <div className="mt-4 flex items-center gap-4">
                     {SOCIAL_LINKS.map((social) => (
-                      <a
+                      <span
                         key={social.label}
-                        href="#"
-                        aria-label={social.label}
-                        className="flex h-11 w-11 items-center justify-center border border-white/30 transition-all duration-300 hover:-translate-y-1 hover:bg-white/10"
+                        aria-disabled="true"
+                        title="Coming soon"
+                        className="flex h-11 w-11 items-center justify-center border border-white/30 opacity-60"
                       >
                         <svg
                           className="h-4 w-4 text-white"
@@ -294,7 +294,7 @@ export default function Contact() {
                         >
                           {social.path}
                         </svg>
-                      </a>
+                      </span>
                     ))}
                   </div>
                 </div>

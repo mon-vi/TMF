@@ -24,7 +24,6 @@ export const NAV_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
 
@@ -46,19 +45,21 @@ export const METRICS = [
   },
 ] as const;
 
+// NOTE: program subpages (/programs/scholarship, /programs/tech-spark) are
+// not built yet; cards link to /programs until those routes exist.
 export const PROGRAMS = [
   {
     title: "TMF Scholarships",
     description:
       "Academic excellence shouldn’t be limited by financial boundaries. We provide full-ride scholarships to the world’s leading institutions.",
-    href: "/programs/scholarship",
+    href: "/programs",
     image: "/assets/scholarship.jpg",
   },
   {
     title: "Tech Spark",
     description:
       "Equipping the next generation of engineers with high-performance computing access, mentorship, and industry-standard labs.",
-    href: "/programs/tech-spark",
+    href: "/programs",
     image: "/assets/tech-spark.jpg",
   },
 ] as const;
@@ -92,9 +93,10 @@ export const FOOTER_QUICK_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
-  { label: "Blog", href: "/blog" },
 ] as const;
 
+// TODO(design): social/legal destinations unknown — rendered as disabled
+// placeholders until real URLs are supplied.
 export const FOOTER_CONNECT = [
   { label: "LinkedIn", href: "#" },
   { label: "X / Twitter", href: "#" },

@@ -252,13 +252,15 @@ export default function EventsPage() {
 
           <Reveal delay={180}>
             <div className="mt-14 text-center">
-              <Link
-                to="/archives"
+              {/* TODO(design): full archives page doesn't exist yet — link
+                  returns to Events top until an archive route is designed. */}
+              <a
+                href="#top"
                 className="tmf-link-arrow inline-flex items-center gap-2 border-b border-heading pb-1 text-small font-semibold uppercase tracking-label text-heading transition-colors hover:border-accent hover:text-accent"
               >
                 Explore Full Archives
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>

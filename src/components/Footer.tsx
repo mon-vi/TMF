@@ -12,9 +12,34 @@ import {
   confirm on nodes 208:3105 (desktop) / 189:918 (mobile).
   Provenance: Inferred.
   NOTE: design hardcodes © 2024; using dynamic year instead.
+  NOTE: social/legal entries without destinations render as disabled text
+  until real URLs exist (see FOOTER_CONNECT / FOOTER_LEGAL in site.ts).
 */
 
 const currentYear = new Date().getFullYear();
+
+function FooterLink({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) {
+  const className =
+    "text-small text-ink/70 transition-opacity hover:opacity-70";
+  if (href === "#") {
+    return (
+      <span className="text-small text-ink/40" aria-disabled="true">
+        {label}
+      </span>
+    );
+  }
+  return (
+    <Link to={href} viewTransition className={className}>
+      {label}
+    </Link>
+  );
+}
 
 export default function Footer() {
   return (
@@ -45,13 +70,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {FOOTER_QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    viewTransition
-                    className="text-small text-ink/70 transition-opacity hover:opacity-70"
-                  >
-                    {link.label}
-                  </Link>
+                  <FooterLink href={link.href} label={link.label} />
                 </li>
               ))}
             </ul>
@@ -63,13 +82,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {FOOTER_CONNECT.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    viewTransition
-                    className="text-small text-ink/70 transition-opacity hover:opacity-70"
-                  >
-                    {link.label}
-                  </Link>
+                  <FooterLink href={link.href} label={link.label} />
                 </li>
               ))}
             </ul>
@@ -81,13 +94,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {FOOTER_LEGAL.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    viewTransition
-                    className="text-small text-ink/70 transition-opacity hover:opacity-70"
-                  >
-                    {link.label}
-                  </Link>
+                  <FooterLink href={link.href} label={link.label} />
                 </li>
               ))}
             </ul>
