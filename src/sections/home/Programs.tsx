@@ -34,10 +34,10 @@ export default function Programs() {
           {PROGRAMS.map((program, index) => (
             <article
               key={program.title}
-              className="tmf-glass-panel group rounded-[24px] p-3 tmf-hover-lift tmf-animate-fade-in-up"
+              className="tmf-glass-panel group rounded-image p-3 tmf-hover-lift tmf-animate-fade-in-up"
               style={{ animationDelay: `${index * 150 + 120}ms` }}
             >
-              <div className="relative h-[280px] overflow-hidden rounded-[18px] lg:h-[350px]">
+              <div className="relative h-[280px] overflow-hidden rounded-card-sm lg:h-[350px]">
                 {program.image ? (
                   <img
                     src={program.image}
@@ -52,7 +52,7 @@ export default function Programs() {
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
-                <span className="absolute left-5 top-5 rounded-full border border-white/40 bg-white/15 px-3 py-2 text-xs font-bold uppercase tracking-[1.6px] text-white backdrop-blur-md">
+                <span className="absolute left-5 top-5 rounded-full border border-white/40 bg-white/15 px-3 py-2 text-xs font-bold uppercase tracking-label text-white backdrop-blur-md">
                   0{index + 1} · Pathway
                 </span>
               </div>

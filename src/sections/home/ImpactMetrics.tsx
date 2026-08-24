@@ -102,7 +102,7 @@ export default function ImpactMetrics() {
             confidence, and more room to lead.
           </p>
         </div>
-        <div className="grid gap-1 rounded-[28px] bg-panel p-1 sm:grid-cols-3">
+        <div className="grid gap-1 rounded-card-xl bg-panel p-1 sm:grid-cols-3">
           {METRICS.map((metric, index) => (
             <AnimatedStat
               key={metric.label}

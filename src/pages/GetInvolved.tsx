@@ -8,6 +8,7 @@ import {
   Heart,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import Orb from "@/components/Orb";
 import { ASSETS } from "@/lib/site";
 import "@/styles/tmf-premium-pages.css";
 
@@ -76,14 +77,10 @@ export default function GetInvolved() {
           className="absolute inset-0 tmf-surface-grid opacity-25"
           aria-hidden="true"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift left-[-8%] top-[-12%] h-[420px] w-[420px] bg-accent/20"
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift right-[-6%] bottom-[-24%] h-[360px] w-[360px] bg-violet-300/35"
-          style={{ animationDelay: "-4s" }}
-          aria-hidden="true"
+        <Orb className="left-[-8%] top-[-12%] h-[420px] w-[420px] bg-accent/20" />
+        <Orb
+          className="right-[-6%] bottom-[-24%] h-[360px] w-[360px] bg-violet-300/35"
+          delay="-4s"
         />
 
         <div className="container-page relative">
@@ -136,7 +133,7 @@ export default function GetInvolved() {
                   <p className="font-display text-stat font-semibold leading-none text-heading">
                     120+
                   </p>
-                  <p className="mt-2 text-small font-semibold uppercase tracking-[1.4px] text-accent">
+                  <p className="mt-2 text-small font-semibold uppercase tracking-label text-accent">
                     Lives in Motion
                   </p>
                 </div>
@@ -197,7 +194,7 @@ export default function GetInvolved() {
                   <div className="mt-8 border-t border-card-divider/30 pt-5">
                     <Link
                       to={pathway.href}
-                      className="tmf-link-arrow inline-flex items-center gap-2 text-small font-semibold uppercase tracking-[1.4px] text-accent"
+                      className="tmf-link-arrow inline-flex items-center gap-2 text-small font-semibold uppercase tracking-label text-accent"
                     >
                       {pathway.cta}
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -260,7 +257,7 @@ export default function GetInvolved() {
                       {step.numeral}
                     </span>
                     <div>
-                      <h3 className="text-small font-semibold uppercase tracking-[1.4px] text-accent">
+                      <h3 className="text-small font-semibold uppercase tracking-label text-accent">
                         {step.kicker}
                       </h3>
                       <p className="mt-2 max-w-md text-body-relaxed leading-relaxed text-body-muted sm:text-lg">

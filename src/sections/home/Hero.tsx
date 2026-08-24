@@ -120,7 +120,7 @@ export default function Hero() {
         <div className="grid items-center gap-12 pb-20 lg:grid-cols-12 lg:gap-16 lg:pb-28">
           <div className="relative z-10 lg:col-span-6">
             <div>
-              <span className="tmf-glass-chip tmf-hero-chip mb-6 inline-flex items-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-[2.8px] text-accent">
+              <span className="tmf-glass-chip tmf-hero-chip mb-6 inline-flex items-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-chip text-accent">
                 Invest in the future
               </span>
               <h1 className="h1-display max-w-3xl text-heading">
@@ -162,8 +162,8 @@ export default function Hero() {
           <div className="relative lg:col-span-6">
             <div className="absolute -right-5 -top-5 z-10 hidden h-24 w-24 rounded-full border border-white/70 bg-white/35 backdrop-blur-md lg:block tmf-animate-float-slow" />
             <div className="absolute -bottom-6 -left-6 z-10 hidden h-32 w-32 rounded-full bg-accent/20 blur-2xl lg:block tmf-animate-pulse-soft" />
-            <div className="tmf-hero-media relative overflow-hidden rounded-[28px] border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl">
-              <div className="relative overflow-hidden rounded-[22px]">
+            <div className="tmf-hero-media relative overflow-hidden rounded-card-xl border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-card-lg">
                 <img
                   src={ASSETS.homeHero}
                   alt="A TalentMakers scholar on their journey"
@@ -171,7 +171,7 @@ export default function Hero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
                 <div className="tmf-hero-media-caption absolute bottom-5 left-5 right-5 tmf-glass-chip p-4 text-white">
-                  <p className="text-xs font-bold uppercase tracking-[2px] text-white/70">
+                  <p className="text-xs font-bold uppercase tracking-caption text-white/70">
                     TalentMakers Foundation
                   </p>
                   <p className="mt-1 font-display text-xl">
@@ -194,7 +194,7 @@ export default function Hero() {
               <p className="font-display text-2xl font-semibold text-heading lg:text-3xl">
                 {value}
               </p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[1.4px] text-body-muted">
+              <p className="mt-1 text-xs font-semibold uppercase tracking-label text-body-muted">
                 {label}
               </p>
             </div>

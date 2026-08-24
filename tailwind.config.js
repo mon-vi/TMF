@@ -38,6 +38,17 @@ export default {
         ui: "var(--radius-ui)",
         icon: "var(--radius-icon)",
         image: "var(--radius-image)",
+        // Deliberate tokens (2026-08 cleanup): recurring glass-panel radii
+        "card-sm": "18px",
+        "card-lg": "22px",
+        "card-xl": "28px",
+      },
+      letterSpacing: {
+        // Deliberate tokens (2026-08 cleanup): recurring uppercase micro-labels
+        chip: "2.8px", // hero chips / glass-chip badges
+        caption: "2px", // captions over imagery
+        label: "1.4px", // card micro-labels and arrow links
+        field: "0.7px", // form labels, quiet buttons
       },
       fontSize: {
         h1: ["44px", { lineHeight: "52px", letterSpacing: "-0.44px" }],

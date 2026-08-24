@@ -106,7 +106,7 @@ export default function AlumniSpotlight() {
       </div>
 
       {/* Caption */}
-      <p className="container-page text-center text-xs font-sans font-semibold uppercase tracking-[1.8px] text-body-muted mt-8">
+      <p className="container-page text-center text-xs font-sans font-semibold uppercase tracking-caption text-body-muted mt-8">
         TalentMakers Foundation Cohort 1
       </p>
     </section>

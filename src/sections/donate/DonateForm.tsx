@@ -103,9 +103,9 @@ export default function DonateForm({
             </div>
           </div>
 
-          <div className="tmf-glass-panel rounded-[28px] p-4 sm:p-6 lg:p-8 tmf-animate-fade-in-up delay-150">
+          <div className="tmf-glass-panel rounded-card-xl p-4 sm:p-6 lg:p-8 tmf-animate-fade-in-up">
             <form onSubmit={handleSubmit} noValidate>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[1.8px] text-accent">
+              <p className="mb-4 text-xs font-bold uppercase tracking-caption text-accent">
                 Or enter a custom amount
               </p>
 
@@ -129,7 +129,7 @@ export default function DonateForm({
               <div className="rounded-2xl border border-slate-200 bg-white/70 p-5 transition-colors focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/10 sm:p-6">
                 <label
                   htmlFor="donate-amount"
-                  className="block text-xs font-bold uppercase tracking-[1.5px] text-body-muted"
+                  className="block text-xs font-bold uppercase tracking-label text-body-muted"
                 >
                   Donation amount
                 </label>
@@ -157,7 +157,7 @@ export default function DonateForm({
               <div className="mt-4 rounded-2xl border border-slate-200 bg-white/70 p-5 transition-colors focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/10">
                 <label
                   htmlFor="donate-email"
-                  className="block text-xs font-bold uppercase tracking-[1.5px] text-body-muted"
+                  className="block text-xs font-bold uppercase tracking-label text-body-muted"
                 >
                   Email address
                 </label>
@@ -190,7 +190,7 @@ export default function DonateForm({
                 {pending ? "Processing..." : "Continue to payment"}
               </button>
 
-              <div className="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold uppercase tracking-[1.2px] text-body-muted/80">
+              <div className="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold uppercase tracking-label text-body-muted/80">
                 <ShieldCheck
                   className="h-4 w-4 text-accent"
                   aria-hidden="true"

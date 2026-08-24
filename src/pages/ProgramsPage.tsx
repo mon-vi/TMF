@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PROGRAMS, METRICS, ASSETS } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import Orb from "@/components/Orb";
 import {
   Check,
   ArrowRight,
@@ -49,19 +50,14 @@ export default function ProgramsPage() {
           className="absolute inset-0 tmf-surface-grid opacity-30"
           aria-hidden="true"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift left-[-8%] top-[-12%] h-[420px] w-[420px] bg-accent/25"
-          aria-hidden="true"
+        <Orb className="left-[-8%] top-[-12%] h-[420px] w-[420px] bg-accent/25" />
+        <Orb
+          className="right-[-6%] top-[18%] h-[360px] w-[360px] bg-violet-300/40"
+          delay="-3s"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift right-[-6%] top-[18%] h-[360px] w-[360px] bg-violet-300/40"
-          style={{ animationDelay: "-3s" }}
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift left-[38%] bottom-[-24%] h-[300px] w-[300px] bg-fuchsia-200/40"
-          style={{ animationDelay: "-6s" }}
-          aria-hidden="true"
+        <Orb
+          className="left-[38%] bottom-[-24%] h-[300px] w-[300px] bg-fuchsia-200/40"
+          delay="-6s"
         />
 
         <div className="container-page relative">
@@ -182,7 +178,7 @@ export default function ProgramsPage() {
                   <p className="font-display text-stat font-semibold leading-none text-white">
                     100%
                   </p>
-                  <p className="mt-2 text-small font-semibold uppercase tracking-[1.4px] text-tmf-secondary">
+                  <p className="mt-2 text-small font-semibold uppercase tracking-label text-tmf-secondary">
                     Tuition Covered
                   </p>
                 </div>
@@ -212,7 +208,7 @@ export default function ProgramsPage() {
                   <p className="font-display text-stat font-semibold leading-none text-white">
                     50+
                   </p>
-                  <p className="mt-2 text-small font-semibold uppercase tracking-[1.4px] text-tmf-secondary">
+                  <p className="mt-2 text-small font-semibold uppercase tracking-label text-tmf-secondary">
                     Schools Reached
                   </p>
                 </div>
@@ -255,7 +251,7 @@ export default function ProgramsPage() {
                         {track.numeral}
                       </span>
                       <div>
-                        <h3 className="text-small font-semibold uppercase tracking-[1.4px] text-accent">
+                        <h3 className="text-small font-semibold uppercase tracking-label text-accent">
                           {track.label}
                         </h3>
                         <p className="mt-2 text-small leading-relaxed text-prose">
@@ -287,14 +283,10 @@ export default function ProgramsPage() {
           CLOSING QUOTE BANNER — glass card on deep brand purple
          ============================================================ */}
       <section className="relative overflow-hidden bg-accent py-24 lg:py-32">
-        <div
-          className="tmf-orb tmf-aurora-drift left-[10%] top-[-30%] h-[380px] w-[380px] bg-white/10"
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift bottom-[-40%] right-[5%] h-[420px] w-[420px] bg-tmf-secondary/25"
-          style={{ animationDelay: "-4s" }}
-          aria-hidden="true"
+        <Orb className="left-[10%] top-[-30%] h-[380px] w-[380px] bg-white/10" />
+        <Orb
+          className="bottom-[-40%] right-[5%] h-[420px] w-[420px] bg-tmf-secondary/25"
+          delay="-4s"
         />
 
         <div className="container-page relative">

@@ -24,7 +24,7 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
       <div className="container-page relative">
         <div className="grid items-center gap-12 pb-16 lg:grid-cols-12 lg:gap-16 lg:pb-24">
           <div className="order-2 lg:order-1 lg:col-span-6 tmf-animate-fade-in-up">
-            <div className="mb-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[2.8px] text-accent">
+            <div className="mb-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-chip text-accent">
               <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
               Invest in the future
             </div>
@@ -57,12 +57,12 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
                     <p className="mt-2 text-xs font-semibold leading-relaxed text-body-muted">
                       {preset.label}
                     </p>
-                    <span className="mt-4 flex items-center gap-1 text-xs font-bold uppercase tracking-[1px] text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="mt-4 flex items-center gap-1 text-xs font-bold uppercase tracking-field text-accent opacity-0 transition-opacity group-hover:opacity-100">
                       Select{" "}
                       <ArrowRight className="h-3 w-3" aria-hidden="true" />
                     </span>
                     {index === 1 && (
-                      <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[1.4px] text-violet-500">
+                      <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-label text-violet-500">
                         Most popular
                       </span>
                     )}
@@ -72,9 +72,9 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 lg:col-span-6 tmf-animate-fade-in-up delay-150">
-            <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl">
-              <div className="relative overflow-hidden rounded-[22px]">
+          <div className="order-1 lg:order-2 lg:col-span-6 tmf-animate-fade-in-up">
+            <div className="relative overflow-hidden rounded-card-xl border border-white/80 bg-white/50 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-card-lg">
                 <img
                   src={ASSETS.donateHero}
                   alt="A scholar whose path was opened by donor support"
@@ -82,7 +82,7 @@ export default function DonateHero({ currency, onSelectAmount, rate }: Props) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 tmf-glass-chip p-4 text-white">
-                  <p className="text-xs font-bold uppercase tracking-[2px] text-white/70">
+                  <p className="text-xs font-bold uppercase tracking-caption text-white/70">
                     Your impact, in motion
                   </p>
                   <p className="mt-1 font-display text-xl">

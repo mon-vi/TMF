@@ -49,15 +49,11 @@ export default function StorySpine() {
     >
       <span
         ref={lineRef}
-        className="absolute inset-0 origin-top bg-gradient-to-b from-accent/50 via-accent/25 to-fuchsia-300/40"
-        style={{ transform: "scaleY(0)" }}
+        className="draw-hidden-y absolute inset-0 origin-top bg-gradient-to-b from-accent/50 via-accent/25 to-fuchsia-300/40"
       />
       <span
         ref={dotRef}
-        className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-accent"
-        style={{
-          boxShadow: "0 0 18px rgba(139, 92, 246, 0.75)",
-        }}
+        className="glow-gradient-mid absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-accent"
       />
     </div>
   );

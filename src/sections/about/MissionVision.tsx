@@ -25,7 +25,7 @@ export default function MissionVision() {
             return (
               <article
                 key={item.title}
-                className="tmf-glass-panel group rounded-[24px] p-7 tmf-hover-lift lg:p-10 tmf-animate-fade-in-up"
+                className="tmf-glass-panel group rounded-image p-7 tmf-hover-lift lg:p-10 tmf-animate-fade-in-up"
                 style={{ animationDelay: `${index * 150 + 120}ms` }}
               >
                 <div className="flex items-start justify-between">

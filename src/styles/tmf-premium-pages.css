@@ -75,13 +75,11 @@
 }
 
 .tmf-page-scope .tmf-text-gradient {
-  /* Gradient endpoints are decorative scope-local constants (violet-500,
-     fuchsia-500); the brand start-stop follows the root token. */
   background: linear-gradient(
     90deg,
     var(--color-brand-primary),
-    var(--tmf-gradient-mid, #8b5cf6),
-    var(--tmf-gradient-end, #d946ef)
+    var(--gradient-mid),
+    var(--gradient-end)
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -276,7 +274,7 @@
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--color-brand-primary) 4%, transparent),
-    color-mix(in srgb, var(--tmf-gradient-end, #d946ef) 7%, transparent),
+    color-mix(in srgb, var(--gradient-end) 7%, transparent),
     color-mix(in srgb, var(--color-brand-primary) 4%, transparent)
   );
 }

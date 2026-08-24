@@ -19,6 +19,11 @@
 
   --color-icon-wash: #f3e8ff;
 
+  /* Decorative gradient endpoints (violet-500 / fuchsia-500) used by the
+     premium-page text gradient, marquee wash, and glow effects. */
+  --gradient-mid: #8b5cf6;
+  --gradient-end: #d946ef;
+
   --font-family-display: "Playfair Display", Georgia, serif;
 
   --radius-ui: 0px;
@@ -389,6 +394,21 @@
       opacity: 1;
       transform: none;
     }
+  }
+
+  /* Pre-draw initial states for GSAP scroll-driven reveals. GSAP overrides
+     these with inline transforms at runtime; the classes only prevent the
+     pre-animation flash. Components render null under reduced motion. */
+  .draw-hidden-y {
+    transform: scaleY(0);
+  }
+
+  .draw-hidden-x {
+    transform: scaleX(0);
+  }
+
+  .glow-gradient-mid {
+    box-shadow: 0 0 18px color-mix(in srgb, var(--gradient-mid) 75%, transparent);
   }
 
   /* Route transitions (react-router viewTransition → View Transitions API) */

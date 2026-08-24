@@ -20,15 +20,15 @@ export default function BoardTrustees() {
           </p>
         </div>
 
-        <div className="tmf-glass-panel mx-auto grid max-w-5xl overflow-hidden rounded-[28px] p-3 lg:grid-cols-[0.9fr_1.1fr] lg:p-4">
-          <div className="relative min-h-[360px] overflow-hidden rounded-[22px] bg-slate-200 lg:min-h-[520px]">
+        <div className="tmf-glass-panel mx-auto grid max-w-5xl overflow-hidden rounded-card-xl p-3 lg:grid-cols-[0.9fr_1.1fr] lg:p-4">
+          <div className="relative min-h-[360px] overflow-hidden rounded-card-lg bg-slate-200 lg:min-h-[520px]">
             <div
               className="h-full w-full bg-gradient-to-br from-slate-950 via-accent to-violet-300"
               aria-hidden="true"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 tmf-glass-chip px-4 py-3 text-white">
-              <p className="text-xs font-bold uppercase tracking-[2px] text-white/70">
+              <p className="text-xs font-bold uppercase tracking-caption text-white/70">
                 Board of Trustees
               </p>
               <p className="mt-1 font-display text-lg">
@@ -49,7 +49,7 @@ export default function BoardTrustees() {
               <p className="font-display text-2xl font-semibold text-heading">
                 {BOARD_MEMBER.name}
               </p>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-[2px] text-accent">
+              <p className="mt-2 text-sm font-semibold uppercase tracking-caption text-accent">
                 {BOARD_MEMBER.role}
               </p>
             </div>

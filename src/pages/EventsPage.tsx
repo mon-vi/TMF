@@ -9,6 +9,7 @@ import {
   Cpu,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import Orb from "@/components/Orb";
 import { ASSETS } from "@/lib/site";
 import "@/styles/tmf-premium-pages.css";
 
@@ -62,19 +63,14 @@ export default function EventsPage() {
           className="absolute inset-0 tmf-surface-grid opacity-20"
           aria-hidden="true"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift left-[-8%] top-[-14%] h-[460px] w-[460px] bg-accent/40"
-          aria-hidden="true"
+        <Orb className="left-[-8%] top-[-14%] h-[460px] w-[460px] bg-accent/40" />
+        <Orb
+          className="right-[-6%] top-[10%] h-[380px] w-[380px] bg-violet-500/25"
+          delay="-3s"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift right-[-6%] top-[10%] h-[380px] w-[380px] bg-violet-500/25"
-          style={{ animationDelay: "-3s" }}
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift bottom-[-30%] left-[30%] h-[340px] w-[340px] bg-fuchsia-500/15"
-          style={{ animationDelay: "-6s" }}
-          aria-hidden="true"
+        <Orb
+          className="bottom-[-30%] left-[30%] h-[340px] w-[340px] bg-fuchsia-500/15"
+          delay="-6s"
         />
 
         <div className="container-page relative">
@@ -96,7 +92,7 @@ export default function EventsPage() {
               heart of Zurich.
             </p>
 
-            <span className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-small font-semibold uppercase tracking-[1.4px] text-mint backdrop-blur-md">
+            <span className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-small font-semibold uppercase tracking-label text-mint backdrop-blur-md">
               <span
                 className="tmf-pulse-soft inline-block h-2 w-2 rounded-full bg-mint"
                 aria-hidden="true"
@@ -159,7 +155,7 @@ export default function EventsPage() {
                 <p className="font-display text-stat font-semibold leading-none text-white">
                   72
                 </p>
-                <p className="mt-2 text-small font-semibold uppercase tracking-[1.4px] text-tmf-secondary">
+                <p className="mt-2 text-small font-semibold uppercase tracking-label text-tmf-secondary">
                   Days To Go
                 </p>
               </div>
@@ -193,10 +189,7 @@ export default function EventsPage() {
           ARCHIVE — Editorial glass ledger on the tinted surface
          ============================================================ */}
       <section className="relative overflow-hidden bg-surface-light py-24 text-ink lg:py-32">
-        <div
-          className="tmf-orb tmf-aurora-drift right-[-10%] top-[-20%] h-[380px] w-[380px] bg-accent/15"
-          aria-hidden="true"
-        />
+        <Orb className="right-[-10%] top-[-20%] h-[380px] w-[380px] bg-accent/15" />
 
         <div className="container-page relative">
           <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -233,7 +226,7 @@ export default function EventsPage() {
                         {event.numeral}
                       </p>
                       <div>
-                        <p className="text-small font-semibold uppercase tracking-[1.4px] text-accent">
+                        <p className="text-small font-semibold uppercase tracking-label text-accent">
                           {event.month} · Past Event
                         </p>
                         <h3 className="mt-1 font-display text-h3 font-semibold text-heading transition-colors duration-300 group-hover:text-accent lg:text-alumni-name-lg">
@@ -261,7 +254,7 @@ export default function EventsPage() {
             <div className="mt-14 text-center">
               <Link
                 to="/archives"
-                className="tmf-link-arrow inline-flex items-center gap-2 border-b border-heading pb-1 text-small font-semibold uppercase tracking-[1.4px] text-heading transition-colors hover:border-accent hover:text-accent"
+                className="tmf-link-arrow inline-flex items-center gap-2 border-b border-heading pb-1 text-small font-semibold uppercase tracking-label text-heading transition-colors hover:border-accent hover:text-accent"
               >
                 Explore Full Archives
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

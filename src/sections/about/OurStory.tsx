@@ -46,7 +46,7 @@ export default function OurStory() {
                   <span className="font-display text-4xl font-semibold text-accent/20">
                     0{index + 1}
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-[2px] text-body-muted">
+                  <span className="text-xs font-bold uppercase tracking-caption text-body-muted">
                     Our story
                   </span>
                 </div>

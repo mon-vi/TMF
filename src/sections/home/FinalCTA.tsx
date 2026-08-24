@@ -61,7 +61,7 @@ export default function FinalCTA() {
       <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-violet-300/30 blur-3xl tmf-animate-pulse-soft" />
       <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl tmf-animate-float-slow" />
       <div className="container-page relative">
-        <div className="tmf-mesh-surface tmf-glass-panel mx-auto max-w-5xl rounded-[28px] p-8 text-center sm:p-12 lg:p-20 tmf-animate-fade-in-up">
+        <div className="tmf-mesh-surface tmf-glass-panel mx-auto max-w-5xl rounded-card-xl p-8 text-center sm:p-12 lg:p-20 tmf-animate-fade-in-up">
           <p className="eyebrow mt-6 text-xs">Join us today</p>
           <h2 className="h2-display mx-auto mt-4 max-w-2xl text-heading">
             Ready to make a{" "}

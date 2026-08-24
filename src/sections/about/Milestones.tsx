@@ -56,7 +56,7 @@ function AccordionRow({
             <span className="block font-display text-5xl font-semibold tracking-tight text-accent transition-transform duration-300 group-hover:translate-x-1 lg:text-7xl">
               {year}
             </span>
-            <span className="mt-1 block text-xs font-bold uppercase tracking-[1.4px] text-body-muted lg:text-small">
+            <span className="mt-1 block text-xs font-bold uppercase tracking-label text-body-muted lg:text-small">
               {MILESTONE_CHAPTERS[year]}
             </span>
           </span>
@@ -167,8 +167,7 @@ export default function Milestones() {
           <span
             ref={railRef}
             aria-hidden="true"
-            className="absolute left-[-1px] top-3 bottom-3 hidden w-[2px] origin-top bg-accent/70 lg:block"
-            style={{ transform: "scaleY(0)" }}
+            className="draw-hidden-y absolute left-[-1px] top-3 bottom-3 hidden w-[2px] origin-top bg-accent/70 lg:block"
           />
           <div className="flex flex-col gap-4 lg:pl-10">
             {MILESTONES.map((year, index) => (

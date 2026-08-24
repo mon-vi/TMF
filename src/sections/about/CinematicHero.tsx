@@ -84,7 +84,7 @@ export default function CinematicHero() {
 
       <div className="container-page relative flex min-h-[620px] items-end py-20 lg:min-h-[760px] lg:py-28">
         <div className="max-w-3xl">
-          <div className="tmf-cine-badge mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[3px] text-purple-100 backdrop-blur-md">
+          <div className="tmf-cine-badge mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-chip text-purple-100 backdrop-blur-md">
             Est. 2023 · Our story
           </div>
           <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-8xl">
@@ -106,7 +106,7 @@ export default function CinematicHero() {
 
         <a
           href="#our-story"
-          className="tmf-cine-explore absolute bottom-8 right-8 hidden items-center gap-3 text-xs font-bold uppercase tracking-[2px] text-white/70 hover:text-white lg:flex"
+          className="tmf-cine-explore absolute bottom-8 right-8 hidden items-center gap-3 text-xs font-bold uppercase tracking-caption text-white/70 hover:text-white lg:flex"
         >
           Explore our story
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/10 backdrop-blur-md">

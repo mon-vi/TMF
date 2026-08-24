@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Check, Clock, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import Orb from "@/components/Orb";
 import "@/styles/tmf-premium-pages.css";
 
 const INITIAL_FORM = {
@@ -14,7 +15,7 @@ const inputClasses =
   "w-full bg-transparent border-b border-card-divider pb-3 text-body text-heading placeholder:text-body-muted/60 caret-accent transition-colors duration-300 focus:border-accent focus:outline-none";
 
 const labelClasses =
-  "mb-2 block text-small font-semibold uppercase tracking-[0.7px] text-heading";
+  "mb-2 block text-small font-semibold uppercase tracking-field text-heading";
 
 const SOCIAL_LINKS = [
   {
@@ -67,14 +68,10 @@ export default function Contact() {
           className="absolute inset-0 tmf-surface-grid opacity-25"
           aria-hidden="true"
         />
-        <div
-          className="tmf-orb tmf-aurora-drift left-[-10%] top-[-12%] h-[420px] w-[420px] bg-accent/20"
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift right-[-8%] bottom-[-20%] h-[380px] w-[380px] bg-violet-300/35"
-          style={{ animationDelay: "-4s" }}
-          aria-hidden="true"
+        <Orb className="left-[-10%] top-[-12%] h-[420px] w-[420px] bg-accent/20" />
+        <Orb
+          className="right-[-8%] bottom-[-20%] h-[380px] w-[380px] bg-violet-300/35"
+          delay="-4s"
         />
 
         <div className="container-page relative">
@@ -223,7 +220,7 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="btn-solid w-full  tracking-[0.7px] transition-colors hover:bg-accent/90"
+                      className="btn-solid w-full  tracking-field transition-colors hover:bg-accent/90"
                     >
                       Send Message
                     </button>
@@ -239,20 +236,16 @@ export default function Contact() {
           CONTACT BAND — glass card on deep brand purple
          ============================================================ */}
       <section className="relative overflow-hidden bg-accent py-24 text-white lg:py-32">
-        <div
-          className="tmf-orb tmf-aurora-drift left-[8%] top-[-30%] h-[380px] w-[380px] bg-white/10"
-          aria-hidden="true"
-        />
-        <div
-          className="tmf-orb tmf-aurora-drift bottom-[-40%] right-[4%] h-[420px] w-[420px] bg-tmf-secondary/25"
-          style={{ animationDelay: "-5s" }}
-          aria-hidden="true"
+        <Orb className="left-[8%] top-[-30%] h-[380px] w-[380px] bg-white/10" />
+        <Orb
+          className="bottom-[-40%] right-[4%] h-[420px] w-[420px] bg-tmf-secondary/25"
+          delay="-5s"
         />
 
         <div className="container-page relative">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
-              <p className="text-small font-semibold uppercase tracking-[1.4px] text-tmf-secondary">
+              <p className="text-small font-semibold uppercase tracking-label text-tmf-secondary">
                 Contact Information
               </p>
               <h2 className="mt-5 max-w-md font-display text-h2 font-semibold leading-snug lg:text-h2-lg">
@@ -266,7 +259,7 @@ export default function Contact() {
 
             <Reveal delay={150}>
               <div className="rounded-none border border-white/25 bg-white/10 p-8 shadow-overlay backdrop-blur-md sm:p-10">
-                <span className="text-small font-semibold uppercase tracking-[0.7px] text-white/80">
+                <span className="text-small font-semibold uppercase tracking-field text-white/80">
                   Email
                 </span>
                 <a
@@ -281,7 +274,7 @@ export default function Contact() {
                 </a>
 
                 <div className="mt-9 border-t border-white/20 pt-7">
-                  <span className="text-small font-semibold uppercase tracking-[0.7px] text-white/80">
+                  <span className="text-small font-semibold uppercase tracking-field text-white/80">
                     Follow the mission
                   </span>
                   <div className="mt-4 flex items-center gap-4">

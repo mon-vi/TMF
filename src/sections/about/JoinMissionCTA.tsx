@@ -11,7 +11,7 @@ export default function JoinMissionCTA() {
       <div className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-fuchsia-300/25 blur-3xl tmf-animate-pulse-soft" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-indigo-300/20 blur-3xl tmf-animate-float-slow" />
       <div className="container-page relative mx-auto max-w-4xl text-center">
-        <div className="tmf-glass-chip mx-auto mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[2.8px] text-white">
+        <div className="tmf-glass-chip mx-auto mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-chip text-white">
           Shape the future
         </div>
         <h2 className="h2-display text-white">Join the mission.</h2>
